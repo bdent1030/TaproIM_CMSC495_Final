@@ -23,7 +23,7 @@ public class Inventory extends JFrame {
         ArrayList columnNames = new ArrayList();
         ArrayList data = new ArrayList();
 
-        //  Connect to an MySQL Database, run query, get result set
+        //  Establishing location, UID, password and sql command string
         String url = "jdbc:mysql://siteground324.com:3306/gunnargo_cmsc495";
         String userid = "gunnargo_umuc15";
         String password = "Ib7t5BRa74mTr0N9aS6";
