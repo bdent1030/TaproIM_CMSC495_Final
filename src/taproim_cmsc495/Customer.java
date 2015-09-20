@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package taproim_cmsc495;
 
 import java.awt.*;
@@ -36,9 +31,7 @@ public class Customer extends JFrame {
         String password = "Ib7t5BRa74mTr0N9aS6";
         String sql = "SELECT * FROM gunnargo_cmsc495.Customer";
 
-        // Java SE 7 has try-with-resources
-        // This will ensure that the sql objects are closed when the program 
-        // is finished with them
+        // Try command to establish JDBC connection with above provided credentials
         try (Connection connection = DriverManager.getConnection( url, userid, password );
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery( sql ))
@@ -68,9 +61,6 @@ public class Customer extends JFrame {
             System.out.println( e.getMessage() );}
 
         // Create Vectors and copy over elements from ArrayLists to them
-        // Vector is deprecated but I am using them in this example to keep 
-        // things simple - the best practice would be to create a custom defined
-        // class which inherits from the AbstractTableModel class
         Vector columnNamesVector = new Vector();
         Vector dataVector = new Vector();
 
