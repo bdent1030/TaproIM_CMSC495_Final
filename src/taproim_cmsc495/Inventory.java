@@ -19,9 +19,7 @@ public class Inventory extends JFrame {
 
     public Inventory()
     {
-        this.setTitle("                               "
-                + "                                         "
-                + "                      TAPRO-IM Inventory Table");
+        this.setTitle("TAPRO-IM Inventory Table");
         ArrayList columnNames = new ArrayList();
         ArrayList data = new ArrayList();
 
