@@ -19,9 +19,7 @@ public class Customer extends JFrame {
 
     public Customer()
     {
-        this.setTitle("                               "
-                + "                                         "
-                + "                      TAPRO-IM Customer Table");
+        this.setTitle("TAPRO-IM Customer Table");
         ArrayList columnNames = new ArrayList();
         ArrayList data = new ArrayList();
 
