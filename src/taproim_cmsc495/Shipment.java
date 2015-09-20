@@ -19,9 +19,7 @@ public class Shipment extends JFrame {
 
     public Shipment()
     {
-        this.setTitle("                               "
-                + "                                         "
-                + "                      TAPRO-IM Shipment Table");
+        this.setTitle("TAPRO-IM Shipment Table");
         ArrayList columnNames = new ArrayList();
         ArrayList data = new ArrayList();
 
