@@ -16,6 +16,13 @@ import javax.swing.*;
  * This pop-out simply displays SQL table information for Inventory
  */
 public class Inventory extends JFrame {
+   
+    //private variable associated with inventory objects
+    private String itemName;
+    private String category;
+    private String vendor;
+    private int vendorInventory;
+    private float vendorPrice;
 
     public Inventory()
     {
@@ -101,5 +108,46 @@ public class Inventory extends JFrame {
         JPanel buttonPanel = new JPanel();
         getContentPane().add( buttonPanel, BorderLayout.SOUTH );
     }
+    //setter for itemName
+    public void setItemName(String data) {
+        itemName = data;
+    }
+    //setter for category
+    public void setCategory(String data) {
+        category = data;
+    }
+    //setter for vendorInventory
+    public void setVendorInventory(int data) {
+        vendorInventory = data;
+    }
+    //setter for vendor
+    public void setVendor(String data) {
+        vendor = data;
+    }
+    //setter for vendorPrice
+    public void setVendorPrice(float data) {
+        vendorPrice = data;
+    }
+    //getter for itemName
+    public String getItemName() {
+        return itemName;
+    }
+    //getter for category
+    public String getCategory() {
+        return category;
+    }
+    //getter for vendorInventory
+    public int getVendorInventory() {
+        return vendorInventory;
+    }
+    //getter for vendor
+    public String getVendor() {
+        return vendor;
+    }
+    //getter for vendorPrice
+    public float getVendorPrice() {
+        return vendorPrice;
+    }
+    
     
 }

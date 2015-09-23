@@ -21,7 +21,7 @@ public class Display_GUI extends javax.swing.JFrame {
                 + "                      TAPRO-IM SYSTEMS");
         //getContentPane().setBackground(Color.GRAY);
         initComponents();
-        newOrderPanel.setVisible(false);
+        newShipmentPanel.setVisible(false);
         updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
@@ -49,7 +49,7 @@ public class Display_GUI extends javax.swing.JFrame {
         viewCustomerTableButton = new javax.swing.JButton();
         logOutButton = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        newOrderPanel = new javax.swing.JPanel();
+        newShipmentPanel = new javax.swing.JPanel();
         customerNameLabel = new javax.swing.JLabel();
         customerNameField = new javax.swing.JTextField();
         customerIDLabel = new javax.swing.JLabel();
@@ -82,7 +82,7 @@ public class Display_GUI extends javax.swing.JFrame {
         itemDescriptionUpdateField = new javax.swing.JTextField();
         updateInventoryButtonFinal = new javax.swing.JButton();
         deleteInventoryButton = new javax.swing.JButton();
-        notificationUpdateInventoryLabel = new javax.swing.JLabel();
+        notificationInventoryUpdateLabel = new javax.swing.JLabel();
         searchInventoryButton = new javax.swing.JButton();
         updateCustomerPanel = new javax.swing.JPanel();
         customerIDCustomerUpdateLabel = new javax.swing.JLabel();
@@ -98,16 +98,30 @@ public class Display_GUI extends javax.swing.JFrame {
         searchUpdateCustomerButton = new javax.swing.JButton();
         deleteCustomerButton = new javax.swing.JButton();
         updateShipmentPanel = new javax.swing.JPanel();
-        customerIDShippingUpdateLabel = new javax.swing.JLabel();
-        customerIDShippingUpdateField = new javax.swing.JTextField();
-        currentCityShippingUpdateLabel = new javax.swing.JLabel();
-        currentCityShippingUpdateField = new javax.swing.JTextField();
-        shippingDateShippingUpdateLabel = new javax.swing.JLabel();
-        shippingDateShippingUpdateField = new javax.swing.JTextField();
-        updateShippingButtonFinal = new javax.swing.JButton();
-        invalidShippingUpdateLabel = new javax.swing.JLabel();
-        arrivalDateShippingUpdateLabel = new javax.swing.JLabel();
-        arrivalDateShippingUpdateField = new javax.swing.JTextField();
+        shipmentIDUpdateLabel = new javax.swing.JLabel();
+        shipmentIDUpdateField = new javax.swing.JTextField();
+        itemIDUpdateShipmentLabel = new javax.swing.JLabel();
+        itemIDUpdateShipmentField = new javax.swing.JTextField();
+        customerIDUpdateShipmentLabel = new javax.swing.JLabel();
+        customerIDUpdateShipmentField = new javax.swing.JTextField();
+        updateShipmentButtonFinal = new javax.swing.JButton();
+        notificationShipmentUpdateLabel = new javax.swing.JLabel();
+        itemDestinationUpdateShipmentLabel = new javax.swing.JLabel();
+        itemDestinationUpdateShipmentField = new javax.swing.JTextField();
+        itemLocationUpdateShipmentLabel = new javax.swing.JLabel();
+        itemWeightUpdateShipmentLabel = new javax.swing.JLabel();
+        itemCountUpdateShipmentLabel = new javax.swing.JLabel();
+        trackingNumberUpdateShipmentLabel = new javax.swing.JLabel();
+        carrierUpdateShipmentLabel = new javax.swing.JLabel();
+        signerUpdateShipmentLabel = new javax.swing.JLabel();
+        itemLocationUpdateShipmentField = new javax.swing.JTextField();
+        itemWeightUpdateShipmentField = new javax.swing.JTextField();
+        itemCountUpdateShipmentField = new javax.swing.JTextField();
+        trackingNumberUpdateShipmentField = new javax.swing.JTextField();
+        carrierUpdateShipmentField = new javax.swing.JTextField();
+        signerUpdateShipmentField = new javax.swing.JTextField();
+        deleteShipmentButton = new javax.swing.JButton();
+        searchUpdateShipmentButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -199,7 +213,7 @@ public class Display_GUI extends javax.swing.JFrame {
             }
         });
 
-        newOrderPanel.setEnabled(false);
+        newShipmentPanel.setEnabled(false);
 
         customerNameLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         customerNameLabel.setText("Customer Name:");
@@ -247,13 +261,13 @@ public class Display_GUI extends javax.swing.JFrame {
         shipmentIDLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         shipmentIDLabel.setText("Shipment ID:");
 
-        javax.swing.GroupLayout newOrderPanelLayout = new javax.swing.GroupLayout(newOrderPanel);
-        newOrderPanel.setLayout(newOrderPanelLayout);
-        newOrderPanelLayout.setHorizontalGroup(
-            newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newOrderPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout newShipmentPanelLayout = new javax.swing.GroupLayout(newShipmentPanel);
+        newShipmentPanel.setLayout(newShipmentPanelLayout);
+        newShipmentPanelLayout.setHorizontalGroup(
+            newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(newShipmentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(shipmentIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(customerEmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(destinationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -264,8 +278,8 @@ public class Display_GUI extends javax.swing.JFrame {
                     .addComponent(customerIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(customerNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(newOrderPanelLayout.createSequentialGroup()
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(newShipmentPanelLayout.createSequentialGroup()
                         .addComponent(submitButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(clearAllButton)
@@ -283,56 +297,56 @@ public class Display_GUI extends javax.swing.JFrame {
                     .addComponent(shipmentIDField))
                 .addContainerGap())
         );
-        newOrderPanelLayout.setVerticalGroup(
-            newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newOrderPanelLayout.createSequentialGroup()
+        newShipmentPanelLayout.setVerticalGroup(
+            newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(newShipmentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(customerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(customerNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(customerIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customerAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(customerAddressButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customerEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(customerEmailLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(itemIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(itemIDButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(destinationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(destinationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(itemWeightField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(itemWeightButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(itemCountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(itemCountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(shipmentIDLabel)
                     .addComponent(shipmentIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(clearAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(notificationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(newOrderPanel);
-        newOrderPanel.setBounds(10, 0, 710, 340);
+        jLayeredPane1.add(newShipmentPanel);
+        newShipmentPanel.setBounds(10, 0, 710, 340);
 
         itemIDUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         itemIDUpdateLabel.setText("Item ID:");
@@ -368,8 +382,8 @@ public class Display_GUI extends javax.swing.JFrame {
             }
         });
 
-        notificationUpdateInventoryLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        notificationUpdateInventoryLabel.setForeground(new java.awt.Color(153, 0, 0));
+        notificationInventoryUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        notificationInventoryUpdateLabel.setForeground(new java.awt.Color(153, 0, 0));
 
         searchInventoryButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         searchInventoryButton.setText("SEARCH");
@@ -386,27 +400,29 @@ public class Display_GUI extends javax.swing.JFrame {
             .addGroup(updateInventoryPanelLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(itemIDUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                     .addComponent(itemWeightUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(itemStockLevelUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(itemDescriptionUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(itemDescriptionUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(itemIDUpdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                 .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(itemIDUpdateField)
-                    .addComponent(itemStockLevelUpdateField)
-                    .addComponent(itemDescriptionUpdateField)
-                    .addGroup(updateInventoryPanelLayout.createSequentialGroup()
-                        .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchInventoryButton)
+                    .addComponent(searchInventoryButton)
+                    .addComponent(deleteInventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(updateInventoryPanelLayout.createSequentialGroup()
-                                .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(deleteInventoryButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(updateInventoryButtonFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(notificationUpdateInventoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(itemWeightUpdateField))
-                .addContainerGap())
+                                .addComponent(updateInventoryButtonFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(25, 25, 25)
+                                .addComponent(notificationInventoryUpdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(itemDescriptionUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(itemStockLevelUpdateField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(itemWeightUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateInventoryPanelLayout.createSequentialGroup()
+                                .addComponent(itemIDUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         updateInventoryPanelLayout.setVerticalGroup(
             updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -416,15 +432,12 @@ public class Display_GUI extends javax.swing.JFrame {
                     .addComponent(itemIDUpdateLabel)
                     .addComponent(itemIDUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(updateInventoryPanelLayout.createSequentialGroup()
-                        .addComponent(searchInventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateInventoryPanelLayout.createSequentialGroup()
-                        .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(itemWeightUpdateLabel)
-                            .addComponent(itemWeightUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(5, 5, 5)))
+                .addComponent(searchInventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemWeightUpdateLabel)
+                    .addComponent(itemWeightUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(itemStockLevelUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(itemStockLevelUpdateLabel))
@@ -434,7 +447,7 @@ public class Display_GUI extends javax.swing.JFrame {
                     .addComponent(itemDescriptionUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(notificationUpdateInventoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(notificationInventoryUpdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(updateInventoryButtonFinal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deleteInventoryButton)
@@ -556,27 +569,82 @@ public class Display_GUI extends javax.swing.JFrame {
         jLayeredPane1.add(updateCustomerPanel);
         updateCustomerPanel.setBounds(0, 0, 730, 340);
 
-        customerIDShippingUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        customerIDShippingUpdateLabel.setText("Customer ID:");
+        shipmentIDUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        shipmentIDUpdateLabel.setText("Shipment ID:");
 
-        currentCityShippingUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        currentCityShippingUpdateLabel.setText("Current City:");
+        itemIDUpdateShipmentLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        itemIDUpdateShipmentLabel.setText("Item ID:");
 
-        shippingDateShippingUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        shippingDateShippingUpdateLabel.setText("Shipping Date:");
+        itemIDUpdateShipmentField.setEnabled(false);
 
-        updateShippingButtonFinal.setText("UPDATE");
-        updateShippingButtonFinal.addActionListener(new java.awt.event.ActionListener() {
+        customerIDUpdateShipmentLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        customerIDUpdateShipmentLabel.setText("Customer ID:");
+
+        customerIDUpdateShipmentField.setEnabled(false);
+
+        updateShipmentButtonFinal.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        updateShipmentButtonFinal.setText("UPDATE");
+        updateShipmentButtonFinal.setEnabled(false);
+        updateShipmentButtonFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateShippingButtonFinalActionPerformed(evt);
+                updateShipmentButtonFinalActionPerformed(evt);
             }
         });
 
-        invalidShippingUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        invalidShippingUpdateLabel.setForeground(new java.awt.Color(153, 0, 0));
+        notificationShipmentUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        notificationShipmentUpdateLabel.setForeground(new java.awt.Color(153, 0, 0));
 
-        arrivalDateShippingUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        arrivalDateShippingUpdateLabel.setText("Arrival Date:");
+        itemDestinationUpdateShipmentLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        itemDestinationUpdateShipmentLabel.setText("Item Destination:");
+
+        itemDestinationUpdateShipmentField.setEnabled(false);
+
+        itemLocationUpdateShipmentLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        itemLocationUpdateShipmentLabel.setText("Item Location:");
+
+        itemWeightUpdateShipmentLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        itemWeightUpdateShipmentLabel.setText("Item Weight:");
+
+        itemCountUpdateShipmentLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        itemCountUpdateShipmentLabel.setText("Item Count:");
+
+        trackingNumberUpdateShipmentLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        trackingNumberUpdateShipmentLabel.setText("Tracking Number:");
+
+        carrierUpdateShipmentLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        carrierUpdateShipmentLabel.setText("Carrier:");
+
+        signerUpdateShipmentLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        signerUpdateShipmentLabel.setText("Signer:");
+
+        itemLocationUpdateShipmentField.setEnabled(false);
+
+        itemWeightUpdateShipmentField.setEnabled(false);
+
+        itemCountUpdateShipmentField.setEnabled(false);
+
+        trackingNumberUpdateShipmentField.setEnabled(false);
+
+        carrierUpdateShipmentField.setEnabled(false);
+
+        signerUpdateShipmentField.setEnabled(false);
+
+        deleteShipmentButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        deleteShipmentButton.setText("DELETE");
+        deleteShipmentButton.setEnabled(false);
+        deleteShipmentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteShipmentButtonActionPerformed(evt);
+            }
+        });
+
+        searchUpdateShipmentButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        searchUpdateShipmentButton.setText("SEARCH");
+        searchUpdateShipmentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchUpdateShipmentButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout updateShipmentPanelLayout = new javax.swing.GroupLayout(updateShipmentPanel);
         updateShipmentPanel.setLayout(updateShipmentPanelLayout);
@@ -585,50 +653,100 @@ public class Display_GUI extends javax.swing.JFrame {
             .addGroup(updateShipmentPanelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(arrivalDateShippingUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(shippingDateShippingUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
-                    .addComponent(currentCityShippingUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(customerIDShippingUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(signerUpdateShipmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(carrierUpdateShipmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(trackingNumberUpdateShipmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(itemCountUpdateShipmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(itemWeightUpdateShipmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(itemLocationUpdateShipmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(itemDestinationUpdateShipmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(customerIDUpdateShipmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                    .addComponent(itemIDUpdateShipmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(shipmentIDUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(customerIDShippingUpdateField)
-                    .addComponent(currentCityShippingUpdateField)
-                    .addComponent(shippingDateShippingUpdateField)
+                .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(updateShipmentPanelLayout.createSequentialGroup()
-                        .addComponent(updateShippingButtonFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(invalidShippingUpdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(arrivalDateShippingUpdateField))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addComponent(deleteShipmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(updateShipmentPanelLayout.createSequentialGroup()
+                        .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(updateShipmentPanelLayout.createSequentialGroup()
+                                .addComponent(updateShipmentButtonFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(notificationShipmentUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
+                            .addComponent(customerIDUpdateShipmentField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(itemDestinationUpdateShipmentField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(itemLocationUpdateShipmentField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(itemWeightUpdateShipmentField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(itemCountUpdateShipmentField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(trackingNumberUpdateShipmentField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(shipmentIDUpdateField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(itemIDUpdateShipmentField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(signerUpdateShipmentField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(carrierUpdateShipmentField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, updateShipmentPanelLayout.createSequentialGroup()
+                                .addComponent(searchUpdateShipmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(71, 71, 71))))
         );
         updateShipmentPanelLayout.setVerticalGroup(
             updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(updateShipmentPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerIDShippingUpdateLabel)
-                    .addComponent(customerIDShippingUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(currentCityShippingUpdateLabel)
-                    .addComponent(currentCityShippingUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(shippingDateShippingUpdateLabel)
-                    .addComponent(shippingDateShippingUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(shipmentIDUpdateLabel)
+                    .addComponent(shipmentIDUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addComponent(searchUpdateShipmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(arrivalDateShippingUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(arrivalDateShippingUpdateLabel))
-                .addGap(13, 13, 13)
+                    .addComponent(itemIDUpdateShipmentLabel)
+                    .addComponent(itemIDUpdateShipmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updateShippingButtonFinal)
-                    .addComponent(invalidShippingUpdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
+                    .addComponent(customerIDUpdateShipmentLabel)
+                    .addComponent(customerIDUpdateShipmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemDestinationUpdateShipmentLabel)
+                    .addComponent(itemDestinationUpdateShipmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemLocationUpdateShipmentLabel)
+                    .addComponent(itemLocationUpdateShipmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemWeightUpdateShipmentLabel)
+                    .addComponent(itemWeightUpdateShipmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemCountUpdateShipmentLabel)
+                    .addComponent(itemCountUpdateShipmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(trackingNumberUpdateShipmentLabel)
+                    .addComponent(trackingNumberUpdateShipmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(carrierUpdateShipmentLabel)
+                    .addComponent(carrierUpdateShipmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(signerUpdateShipmentLabel)
+                    .addComponent(signerUpdateShipmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(updateShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(updateShipmentPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(updateShipmentButtonFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateShipmentPanelLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(notificationShipmentUpdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteShipmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(updateShipmentPanel);
-        updateShipmentPanel.setBounds(0, 0, 730, 240);
+        updateShipmentPanel.setBounds(0, 0, 730, 410);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -658,7 +776,7 @@ public class Display_GUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newShipmentButton)
@@ -683,38 +801,42 @@ public class Display_GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void newShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newShipmentButtonActionPerformed
-        newOrderPanel.setVisible(true);
+        //set newShipmentPanel visible
+        newShipmentPanel.setVisible(true);
         updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
     }//GEN-LAST:event_newShipmentButtonActionPerformed
 
     private void updateInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateInventoryButtonActionPerformed
-        newOrderPanel.setVisible(false);
+        //set updateInventoryPanel visible
+        newShipmentPanel.setVisible(false);
         updateInventoryPanel.setVisible(true);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
     }//GEN-LAST:event_updateInventoryButtonActionPerformed
 
     private void updateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerButtonActionPerformed
-        newOrderPanel.setVisible(false);
+        //set updateCustomerPanel visible
+        newShipmentPanel.setVisible(false);
         updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(true);
         updateShipmentPanel.setVisible(false);
     }//GEN-LAST:event_updateCustomerButtonActionPerformed
 
     private void updateShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateShipmentButtonActionPerformed
-        newOrderPanel.setVisible(false);
+        //set updateShipmentPanel visible
+        newShipmentPanel.setVisible(false);
         updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(false);
-        updateShipmentPanel.setVisible(false);
+        updateShipmentPanel.setVisible(true);
     }//GEN-LAST:event_updateShipmentButtonActionPerformed
 
     private void viewInventoryTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInventoryTableButtonActionPerformed
         Inventory frame = new Inventory();
         frame.pack();
         frame.setVisible(true);
-        newOrderPanel.setVisible(false);
+        newShipmentPanel.setVisible(false);
         updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
@@ -724,7 +846,7 @@ public class Display_GUI extends javax.swing.JFrame {
         Shipment frame = new Shipment();
         frame.pack();
         frame.setVisible(true);
-        newOrderPanel.setVisible(false);
+        newShipmentPanel.setVisible(false);
         updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
@@ -734,7 +856,7 @@ public class Display_GUI extends javax.swing.JFrame {
         Customer frame = new Customer();
         frame.pack();
         frame.setVisible(true);
-        newOrderPanel.setVisible(false);
+        newShipmentPanel.setVisible(false);
         updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
@@ -785,11 +907,47 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_clearAllButtonActionPerformed
 
     private void updateInventoryButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateInventoryButtonFinalActionPerformed
-       
+       //code to check all fields are valid
+        
+        //if all fields are not valid, display error message to employee
+        //notificationInventoryUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        
+        //code to submit updated data to the database
+        
+        //clear fields and disable fields/buttons
+        itemIDUpdateField.setText("");
+        itemWeightUpdateField.setText("");
+        itemStockLevelUpdateField.setText("");
+        itemDescriptionUpdateField.setText("");
+        itemWeightUpdateField.setEnabled(false);
+        itemStockLevelUpdateField.setEnabled(false);
+        itemDescriptionUpdateField.setEnabled(false);
+        updateInventoryButtonFinal.setEnabled(false);
+        deleteInventoryButton.setEnabled(false);
+        //display notification to the employee that data was successfully updated
+        notificationInventoryUpdateLabel.setText("SUCCESSFULLY UPDATED!");
     }//GEN-LAST:event_updateInventoryButtonFinalActionPerformed
 
     private void deleteInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteInventoryButtonActionPerformed
+        //code to check all fields are valid
         
+        //if all fields are not valid, display error message to employee
+        //notificationInventoryUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        
+        //if all fields are valid, code to delete data from the database
+        
+        //clear fields and disable fields/buttons
+        itemIDUpdateField.setText("");
+        itemWeightUpdateField.setText("");
+        itemStockLevelUpdateField.setText("");
+        itemDescriptionUpdateField.setText("");
+        itemWeightUpdateField.setEnabled(false);
+        itemStockLevelUpdateField.setEnabled(false);
+        itemDescriptionUpdateField.setEnabled(false);
+        updateInventoryButtonFinal.setEnabled(false);
+        deleteInventoryButton.setEnabled(false);
+        //display notification to the employee that data was successfully deleted
+        notificationInventoryUpdateLabel.setText("SUCCESSFULLY DELETED!");
     }//GEN-LAST:event_deleteInventoryButtonActionPerformed
 
     private void updateCustomerButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerButtonFinalActionPerformed
@@ -801,6 +959,7 @@ public class Display_GUI extends javax.swing.JFrame {
         //code to submit updated data to the database
         
         //clear fields and disable fields/buttons
+        customerIDCustomerUpdateField.setText("");
         customerNameUpdateField.setText("");
         customerAddressUpdateField.setText("");
         customerEmailUpdateField.setText("");
@@ -813,12 +972,44 @@ public class Display_GUI extends javax.swing.JFrame {
         notificationCustomerUpdateLabel.setText("SUCCESSFULLY UPDATED!");
     }//GEN-LAST:event_updateCustomerButtonFinalActionPerformed
 
-    private void updateShippingButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateShippingButtonFinalActionPerformed
-       
-    }//GEN-LAST:event_updateShippingButtonFinalActionPerformed
+    private void updateShipmentButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateShipmentButtonFinalActionPerformed
+        //code to check all fields are valid
+        
+        //if all fields are not valid, display error message to employee
+        //notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        
+        //code to submit updated data to the database
+        
+        //clear fields and disable fields/buttons
+        shipmentIDUpdateField.setText("");
+        itemIDUpdateShipmentField.setText("");
+        customerIDUpdateShipmentField.setText("");
+        itemDestinationUpdateShipmentField.setText("");
+        itemLocationUpdateShipmentField.setText("");
+        itemWeightUpdateShipmentField.setText("");
+        itemCountUpdateShipmentField.setText("");
+        trackingNumberUpdateShipmentField.setText("");
+        carrierUpdateShipmentField.setText("");
+        signerUpdateShipmentField.setText("");
+        itemIDUpdateShipmentField.setEnabled(false);
+        customerIDUpdateShipmentField.setEnabled(false);
+        itemDestinationUpdateShipmentField.setEnabled(false);
+        itemLocationUpdateShipmentField.setEnabled(false);
+        itemWeightUpdateShipmentField.setEnabled(false);
+        itemCountUpdateShipmentField.setEnabled(false);
+        trackingNumberUpdateShipmentField.setEnabled(false);
+        carrierUpdateShipmentField.setEnabled(false);
+        signerUpdateShipmentField.setEnabled(false);
+        updateShipmentButtonFinal.setEnabled(false);
+        deleteShipmentButton.setEnabled(false);
+        //display notification to the employee that data was successfully updated
+        notificationShipmentUpdateLabel.setText("SUCCESSFULLY UPDATED!");
+    }//GEN-LAST:event_updateShipmentButtonFinalActionPerformed
 
     private void searchUpdateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUpdateCustomerButtonActionPerformed
         //code to check search field is valid
+        
+        
         
         //if search field is not valid, display error message to employee
         //notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
@@ -841,6 +1032,7 @@ public class Display_GUI extends javax.swing.JFrame {
         //if all fields are valid, code to delete data from the database
         
         //clear fields and disable fields/buttons
+        customerIDCustomerUpdateField.setText("");
         customerNameUpdateField.setText("");
         customerAddressUpdateField.setText("");
         customerEmailUpdateField.setText("");
@@ -854,15 +1046,84 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteCustomerButtonActionPerformed
 
     private void searchInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInventoryButtonActionPerformed
-        // TODO add your handling code here:
+        //code to check search field is valid
+        
+        
+        
+        //if search field is not valid, display error message to employee
+        //notificationInventoryUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        
+        
+        //if search field is valid, enable and populate associated fields/buttons to update information
+        itemWeightUpdateField.setEnabled(true);
+        itemStockLevelUpdateField.setEnabled(true);
+        itemDescriptionUpdateField.setEnabled(true);
+        updateInventoryButtonFinal.setEnabled(true);
+        deleteInventoryButton.setEnabled(true);
     }//GEN-LAST:event_searchInventoryButtonActionPerformed
 
+    private void searchUpdateShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUpdateShipmentButtonActionPerformed
+        //code to check search field is valid
+        
+        
+        
+        //if search field is not valid, display error message to employee
+        //notificationShippingUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        
+        
+        //if search field is valid, enable and populate associated fields/buttons to update information
+        shipmentIDUpdateField.setEnabled(true);
+        itemIDUpdateShipmentField.setEnabled(true);
+        customerIDUpdateShipmentField.setEnabled(true);
+        itemDestinationUpdateShipmentField.setEnabled(true);
+        itemLocationUpdateShipmentField.setEnabled(true);
+        itemWeightUpdateShipmentField.setEnabled(true);
+        itemCountUpdateShipmentField.setEnabled(true);
+        trackingNumberUpdateShipmentField.setEnabled(true);
+        carrierUpdateShipmentField.setEnabled(true);
+        signerUpdateShipmentField.setEnabled(true);
+        updateShipmentButtonFinal.setEnabled(true);
+        deleteShipmentButton.setEnabled(true);
+    }//GEN-LAST:event_searchUpdateShipmentButtonActionPerformed
+
+    private void deleteShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteShipmentButtonActionPerformed
+        //code to check all fields are valid
+        
+        //if all fields are not valid, display error message to employee
+        //notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        
+        //if all fields are valid, code to delete data from the database
+        
+        //clear fields and disable fields/buttons
+        shipmentIDUpdateField.setText("");
+        itemIDUpdateShipmentField.setText("");
+        customerIDUpdateShipmentField.setText("");
+        itemDestinationUpdateShipmentField.setText("");
+        itemLocationUpdateShipmentField.setText("");
+        itemWeightUpdateShipmentField.setText("");
+        itemCountUpdateShipmentField.setText("");
+        trackingNumberUpdateShipmentField.setText("");
+        carrierUpdateShipmentField.setText("");
+        signerUpdateShipmentField.setText("");
+        itemIDUpdateShipmentField.setEnabled(false);
+        customerIDUpdateShipmentField.setEnabled(false);
+        itemDestinationUpdateShipmentField.setEnabled(false);
+        itemLocationUpdateShipmentField.setEnabled(false);
+        itemWeightUpdateShipmentField.setEnabled(false);
+        itemCountUpdateShipmentField.setEnabled(false);
+        trackingNumberUpdateShipmentField.setEnabled(false);
+        carrierUpdateShipmentField.setEnabled(false);
+        signerUpdateShipmentField.setEnabled(false);
+        updateShipmentButtonFinal.setEnabled(false);
+        deleteShipmentButton.setEnabled(false);
+        //display notification to the employee that data was successfully deleted
+        notificationShipmentUpdateLabel.setText("SUCCESSFULLY DELETED!");
+    }//GEN-LAST:event_deleteShipmentButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField arrivalDateShippingUpdateField;
-    private javax.swing.JLabel arrivalDateShippingUpdateLabel;
+    private javax.swing.JTextField carrierUpdateShipmentField;
+    private javax.swing.JLabel carrierUpdateShipmentLabel;
     private javax.swing.JButton clearAllButton;
-    private javax.swing.JTextField currentCityShippingUpdateField;
-    private javax.swing.JLabel currentCityShippingUpdateLabel;
     private javax.swing.JLabel customerAddressButton;
     private javax.swing.JTextField customerAddressField;
     private javax.swing.JTextField customerAddressUpdateField;
@@ -875,49 +1136,65 @@ public class Display_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel customerIDCustomerUpdateLabel;
     private javax.swing.JTextField customerIDField;
     private javax.swing.JLabel customerIDLabel;
-    private javax.swing.JTextField customerIDShippingUpdateField;
-    private javax.swing.JLabel customerIDShippingUpdateLabel;
+    private javax.swing.JTextField customerIDUpdateShipmentField;
+    private javax.swing.JLabel customerIDUpdateShipmentLabel;
     private javax.swing.JTextField customerNameField;
     private javax.swing.JLabel customerNameLabel;
     private javax.swing.JTextField customerNameUpdateField;
     private javax.swing.JLabel customerNameUpdateLabel;
     private javax.swing.JButton deleteCustomerButton;
     private javax.swing.JButton deleteInventoryButton;
+    private javax.swing.JButton deleteShipmentButton;
     private javax.swing.JTextField destinationField;
     private javax.swing.JLabel destinationLabel;
-    private javax.swing.JLabel invalidShippingUpdateLabel;
     private javax.swing.JLabel itemCountButton;
     private javax.swing.JTextField itemCountField;
+    private javax.swing.JTextField itemCountUpdateShipmentField;
+    private javax.swing.JLabel itemCountUpdateShipmentLabel;
     private javax.swing.JTextField itemDescriptionUpdateField;
     private javax.swing.JLabel itemDescriptionUpdateLabel;
+    private javax.swing.JTextField itemDestinationUpdateShipmentField;
+    private javax.swing.JLabel itemDestinationUpdateShipmentLabel;
     private javax.swing.JLabel itemIDButton;
     private javax.swing.JTextField itemIDField;
     private javax.swing.JTextField itemIDUpdateField;
     private javax.swing.JLabel itemIDUpdateLabel;
+    private javax.swing.JTextField itemIDUpdateShipmentField;
+    private javax.swing.JLabel itemIDUpdateShipmentLabel;
+    private javax.swing.JTextField itemLocationUpdateShipmentField;
+    private javax.swing.JLabel itemLocationUpdateShipmentLabel;
     private javax.swing.JTextField itemStockLevelUpdateField;
     private javax.swing.JLabel itemStockLevelUpdateLabel;
     private javax.swing.JLabel itemWeightButton;
     private javax.swing.JTextField itemWeightField;
     private javax.swing.JTextField itemWeightUpdateField;
     private javax.swing.JLabel itemWeightUpdateLabel;
+    private javax.swing.JTextField itemWeightUpdateShipmentField;
+    private javax.swing.JLabel itemWeightUpdateShipmentLabel;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton logOutButton;
-    private javax.swing.JPanel newOrderPanel;
     private javax.swing.JButton newShipmentButton;
+    private javax.swing.JPanel newShipmentPanel;
     private javax.swing.JLabel notificationCustomerUpdateLabel;
+    private javax.swing.JLabel notificationInventoryUpdateLabel;
     private javax.swing.JLabel notificationLabel;
-    private javax.swing.JLabel notificationUpdateInventoryLabel;
+    private javax.swing.JLabel notificationShipmentUpdateLabel;
     private javax.swing.JButton searchInventoryButton;
     private javax.swing.JButton searchUpdateCustomerButton;
+    private javax.swing.JButton searchUpdateShipmentButton;
     private javax.swing.JTextField shipmentIDField;
     private javax.swing.JLabel shipmentIDLabel;
-    private javax.swing.JTextField shippingDateShippingUpdateField;
-    private javax.swing.JLabel shippingDateShippingUpdateLabel;
+    private javax.swing.JTextField shipmentIDUpdateField;
+    private javax.swing.JLabel shipmentIDUpdateLabel;
+    private javax.swing.JTextField signerUpdateShipmentField;
+    private javax.swing.JLabel signerUpdateShipmentLabel;
     private javax.swing.JButton submitButton;
     private javax.swing.JLabel tableLabel;
     private javax.swing.JPanel tablePanel;
+    private javax.swing.JTextField trackingNumberUpdateShipmentField;
+    private javax.swing.JLabel trackingNumberUpdateShipmentLabel;
     private javax.swing.JButton updateCustomerButton;
     private javax.swing.JButton updateCustomerButtonFinal;
     private javax.swing.JPanel updateCustomerPanel;
@@ -925,8 +1202,8 @@ public class Display_GUI extends javax.swing.JFrame {
     private javax.swing.JButton updateInventoryButtonFinal;
     private javax.swing.JPanel updateInventoryPanel;
     private javax.swing.JButton updateShipmentButton;
+    private javax.swing.JButton updateShipmentButtonFinal;
     private javax.swing.JPanel updateShipmentPanel;
-    private javax.swing.JButton updateShippingButtonFinal;
     private javax.swing.JButton viewCustomerTableButton;
     private javax.swing.JButton viewInventoryTableButton;
     private javax.swing.JButton viewShipmentTableButton;

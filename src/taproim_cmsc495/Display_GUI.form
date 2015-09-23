@@ -53,7 +53,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Component id="jLayeredPane1" pref="327" max="32767" attributes="0"/>
+              <Component id="jLayeredPane1" pref="399" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="newShipmentButton" min="-2" max="-2" attributes="0"/>
@@ -218,7 +218,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="newOrderPanel">
+        <Container class="javax.swing.JPanel" name="newShipmentPanel">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -464,36 +464,40 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="itemIDUpdateLabel" pref="319" max="32767" attributes="0"/>
                           <Component id="itemWeightUpdateLabel" max="32767" attributes="0"/>
                           <Component id="itemStockLevelUpdateLabel" max="32767" attributes="0"/>
                           <Component id="itemDescriptionUpdateLabel" max="32767" attributes="0"/>
+                          <Component id="itemIDUpdateLabel" alignment="0" min="-2" pref="319" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="6" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="itemIDUpdateField" max="32767" attributes="0"/>
-                          <Component id="itemStockLevelUpdateField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="itemDescriptionUpdateField" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="searchInventoryButton" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="deleteInventoryButton" max="32767" attributes="0"/>
-                                          <Component id="updateInventoryButtonFinal" pref="129" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="notificationUpdateInventoryLabel" min="-2" pref="273" max="-2" attributes="0"/>
+                          <Component id="searchInventoryButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="deleteInventoryButton" min="-2" pref="94" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="updateInventoryButtonFinal" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="notificationInventoryUpdateLabel" min="-2" pref="255" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Component id="itemDescriptionUpdateField" alignment="0" min="-2" pref="372" max="-2" attributes="0"/>
+                                      <Component id="itemStockLevelUpdateField" alignment="1" min="-2" pref="372" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="itemWeightUpdateField" alignment="0" min="-2" pref="372" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="itemIDUpdateField" min="-2" pref="364" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <Component id="itemWeightUpdateField" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -506,19 +510,13 @@
                           <Component id="itemIDUpdateField" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="searchInventoryButton" min="-2" pref="15" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="itemWeightUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="itemWeightUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          </Group>
+                      <Component id="searchInventoryButton" min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="itemWeightUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemWeightUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="itemStockLevelUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="itemStockLevelUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -530,7 +528,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="notificationUpdateInventoryLabel" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="notificationInventoryUpdateLabel" min="-2" pref="22" max="-2" attributes="0"/>
                           <Component id="updateInventoryButtonFinal" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -608,7 +606,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteInventoryButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="notificationUpdateInventoryLabel">
+            <Component class="javax.swing.JLabel" name="notificationInventoryUpdateLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -813,7 +811,7 @@
         <Container class="javax.swing.JPanel" name="updateShipmentPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="730" height="240"/>
+              <AbsoluteConstraints x="0" y="0" width="730" height="410"/>
             </Constraint>
           </Constraints>
 
@@ -823,62 +821,147 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="arrivalDateShippingUpdateLabel" max="32767" attributes="0"/>
-                          <Component id="shippingDateShippingUpdateLabel" pref="329" max="32767" attributes="0"/>
-                          <Component id="currentCityShippingUpdateLabel" max="32767" attributes="0"/>
-                          <Component id="customerIDShippingUpdateLabel" max="32767" attributes="0"/>
+                          <Component id="signerUpdateShipmentLabel" max="32767" attributes="0"/>
+                          <Component id="carrierUpdateShipmentLabel" max="32767" attributes="0"/>
+                          <Component id="trackingNumberUpdateShipmentLabel" max="32767" attributes="0"/>
+                          <Component id="itemCountUpdateShipmentLabel" max="32767" attributes="0"/>
+                          <Component id="itemWeightUpdateShipmentLabel" max="32767" attributes="0"/>
+                          <Component id="itemLocationUpdateShipmentLabel" max="32767" attributes="0"/>
+                          <Component id="itemDestinationUpdateShipmentLabel" max="32767" attributes="0"/>
+                          <Component id="customerIDUpdateShipmentLabel" pref="329" max="32767" attributes="0"/>
+                          <Component id="itemIDUpdateShipmentLabel" max="32767" attributes="0"/>
+                          <Component id="shipmentIDUpdateLabel" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="customerIDShippingUpdateField" max="32767" attributes="0"/>
-                          <Component id="currentCityShippingUpdateField" max="32767" attributes="0"/>
-                          <Component id="shippingDateShippingUpdateField" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="updateShippingButtonFinal" min="-2" pref="118" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="invalidShippingUpdateLabel" min="-2" pref="215" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="deleteShipmentButton" min="-2" pref="108" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
-                          <Component id="arrivalDateShippingUpdateField" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="updateShipmentButtonFinal" min="-2" pref="108" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <Component id="notificationShipmentUpdateLabel" pref="261" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="customerIDUpdateShipmentField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="itemDestinationUpdateShipmentField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="itemLocationUpdateShipmentField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="itemWeightUpdateShipmentField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="itemCountUpdateShipmentField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="trackingNumberUpdateShipmentField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="shipmentIDUpdateField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="itemIDUpdateShipmentField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="signerUpdateShipmentField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="carrierUpdateShipmentField" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="searchUpdateShipmentButton" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="23" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="shipmentIDUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="shipmentIDUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="searchUpdateShipmentButton" min="-2" pref="15" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="customerIDShippingUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="customerIDShippingUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="currentCityShippingUpdateLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="currentCityShippingUpdateField" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="shippingDateShippingUpdateLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="shippingDateShippingUpdateField" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemIDUpdateShipmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemIDUpdateShipmentField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="arrivalDateShippingUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="arrivalDateShippingUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="customerIDUpdateShipmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="customerIDUpdateShipmentField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="updateShippingButtonFinal" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="invalidShippingUpdateLabel" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="itemDestinationUpdateShipmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemDestinationUpdateShipmentField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="80" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="itemLocationUpdateShipmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemLocationUpdateShipmentField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="itemWeightUpdateShipmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemWeightUpdateShipmentField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="itemCountUpdateShipmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemCountUpdateShipmentField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="trackingNumberUpdateShipmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="trackingNumberUpdateShipmentField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="carrierUpdateShipmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="carrierUpdateShipmentField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="signerUpdateShipmentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="signerUpdateShipmentField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="updateShipmentButtonFinal" min="-2" pref="16" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              <Component id="notificationShipmentUpdateLabel" min="-2" pref="15" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="deleteShipmentButton" min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace pref="94" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="customerIDShippingUpdateLabel">
+            <Component class="javax.swing.JLabel" name="shipmentIDUpdateLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Shipment ID:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="shipmentIDUpdateField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="itemIDUpdateShipmentLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Item ID:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="itemIDUpdateShipmentField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="customerIDUpdateShipmentLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -886,37 +969,24 @@
                 <Property name="text" type="java.lang.String" value="Customer ID:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="customerIDShippingUpdateField">
-            </Component>
-            <Component class="javax.swing.JLabel" name="currentCityShippingUpdateLabel">
+            <Component class="javax.swing.JTextField" name="customerIDUpdateShipmentField">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="11" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Current City:"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="currentCityShippingUpdateField">
-            </Component>
-            <Component class="javax.swing.JLabel" name="shippingDateShippingUpdateLabel">
+            <Component class="javax.swing.JButton" name="updateShipmentButtonFinal">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="11" style="1"/>
+                  <Font name="Tahoma" size="10" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Shipping Date:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="shippingDateShippingUpdateField">
-            </Component>
-            <Component class="javax.swing.JButton" name="updateShippingButtonFinal">
-              <Properties>
                 <Property name="text" type="java.lang.String" value="UPDATE"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateShippingButtonFinalActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateShipmentButtonFinalActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="invalidShippingUpdateLabel">
+            <Component class="javax.swing.JLabel" name="notificationShipmentUpdateLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -926,15 +996,119 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="arrivalDateShippingUpdateLabel">
+            <Component class="javax.swing.JLabel" name="itemDestinationUpdateShipmentLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Arrival Date:"/>
+                <Property name="text" type="java.lang.String" value="Item Destination:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="arrivalDateShippingUpdateField">
+            <Component class="javax.swing.JTextField" name="itemDestinationUpdateShipmentField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="itemLocationUpdateShipmentLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Item Location:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="itemWeightUpdateShipmentLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Item Weight:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="itemCountUpdateShipmentLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Item Count:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="trackingNumberUpdateShipmentLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Tracking Number:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="carrierUpdateShipmentLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Carrier:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="signerUpdateShipmentLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Signer:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="itemLocationUpdateShipmentField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="itemWeightUpdateShipmentField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="itemCountUpdateShipmentField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="trackingNumberUpdateShipmentField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="carrierUpdateShipmentField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="signerUpdateShipmentField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="deleteShipmentButton">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="10" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="DELETE"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteShipmentButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="searchUpdateShipmentButton">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="10" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="SEARCH"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchUpdateShipmentButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
