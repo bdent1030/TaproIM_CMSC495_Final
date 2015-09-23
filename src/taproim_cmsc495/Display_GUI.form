@@ -27,13 +27,13 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="newOrderButton" alignment="0" max="32767" attributes="0"/>
+                  <Component id="newShipmentButton" alignment="0" max="32767" attributes="0"/>
                   <Component id="updateShipmentButton" max="32767" attributes="0"/>
                   <Component id="viewCustomerTableButton" pref="226" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="updateOrderButton" alignment="0" pref="211" max="32767" attributes="0"/>
+                  <Component id="updateInventoryButton" alignment="0" pref="211" max="32767" attributes="0"/>
                   <Component id="viewInventoryTableButton" max="32767" attributes="0"/>
                   <Component id="logOutButton" alignment="1" max="32767" attributes="0"/>
               </Group>
@@ -53,12 +53,12 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Component id="jLayeredPane1" pref="225" max="32767" attributes="0"/>
+              <Component id="jLayeredPane1" pref="327" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="newOrderButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="newShipmentButton" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="updateOrderButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="updateInventoryButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="updateCustomerButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -82,12 +82,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="newOrderButton">
+    <Component class="javax.swing.JButton" name="newShipmentButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="NEW ORDER"/>
+        <Property name="text" type="java.lang.String" value="NEW SHIPMENT"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newOrderButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newShipmentButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="updateCustomerButton">
@@ -98,12 +98,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateCustomerButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="updateOrderButton">
+    <Component class="javax.swing.JButton" name="updateInventoryButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="UPDATE/CANCEL ORDER"/>
+        <Property name="text" type="java.lang.String" value="UPDATE INVENTORY"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateOrderButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateInventoryButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="updateShipmentButton">
@@ -224,7 +224,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="0" width="710" height="220"/>
+              <AbsoluteConstraints x="10" y="0" width="710" height="340"/>
             </Constraint>
           </Constraints>
 
@@ -234,6 +234,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="shipmentIDLabel" max="32767" attributes="0"/>
+                          <Component id="customerEmailLabel" max="32767" attributes="0"/>
+                          <Component id="destinationLabel" max="32767" attributes="0"/>
                           <Component id="itemWeightButton" max="32767" attributes="0"/>
                           <Component id="itemCountButton" max="32767" attributes="0"/>
                           <Component id="itemIDButton" max="32767" attributes="0"/>
@@ -245,17 +248,21 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="submitButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="clearAllButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="invalidLabel" pref="170" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="notificationLabel" min="-2" pref="178" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
                           </Group>
                           <Component id="customerNameField" max="32767" attributes="0"/>
                           <Component id="customerIDField" max="32767" attributes="0"/>
                           <Component id="customerAddressField" alignment="0" max="32767" attributes="0"/>
                           <Component id="itemIDField" alignment="0" max="32767" attributes="0"/>
                           <Component id="itemCountField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="destinationField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="customerEmailField" alignment="0" max="32767" attributes="0"/>
                           <Component id="itemWeightField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="shipmentIDField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -264,44 +271,60 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="customerNameLabel" min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="customerNameField" min="-2" max="-2" attributes="0"/>
+                          <Component id="customerNameLabel" min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="customerIDLabel" min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="customerIDField" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="customerIDField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="customerIDLabel" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="customerAddressButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="customerAddressField" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="customerAddressField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="customerAddressButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="itemIDButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="itemIDField" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="customerEmailField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="customerEmailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="itemIDField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemIDButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="destinationLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="destinationField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="itemWeightField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemWeightButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="itemCountButton" min="-2" pref="16" max="-2" attributes="0"/>
                           <Component id="itemCountField" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="itemWeightButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="itemWeightField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" max="-2" attributes="0">
-                                  <Component id="clearAllButton" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Component id="invalidLabel" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="submitButton" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="shipmentIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="shipmentIDField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="submitButton" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                              <Component id="clearAllButton" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="notificationLabel" min="-2" pref="14" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="81" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -389,126 +412,52 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearAllButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="invalidLabel">
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="searchCustomerPanel">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="730" height="240"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="customerIDSearchLabel" min="-2" pref="338" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="customerIDSearchField" min="-2" pref="587" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="invalidCustomerIDLabel" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="orderSearchButton" min="-2" pref="104" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="shipmentSearchButton" min="-2" pref="109" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="customerInfoSearchButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="customerIDSearchLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="customerIDSearchField" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="orderSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="shipmentSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="customerInfoSearchButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="invalidCustomerIDLabel" min="-2" pref="23" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="154" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="customerIDSearchLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="11" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Customer ID:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="customerIDSearchField">
-            </Component>
-            <Component class="javax.swing.JButton" name="orderSearchButton">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="10" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Order Search"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="orderSearchButtonActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="invalidCustomerIDLabel">
+            <Component class="javax.swing.JLabel" name="notificationLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="99" type="rgb"/>
+                  <Color blue="0" green="0" red="66" type="rgb"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="shipmentSearchButton">
+            <Component class="javax.swing.JLabel" name="destinationLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="10" style="0"/>
+                  <Font name="Tahoma" size="11" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Shipment Search"/>
+                <Property name="text" type="java.lang.String" value="Destination:"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="shipmentSearchButtonActionPerformed"/>
-              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="customerInfoSearchButton">
+            <Component class="javax.swing.JTextField" name="destinationField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="customerEmailLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="10" style="0"/>
+                  <Font name="Tahoma" size="11" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Customer Search"/>
+                <Property name="text" type="java.lang.String" value="Customer Email:"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customerInfoSearchButtonActionPerformed"/>
-              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="customerEmailField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="shipmentIDLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Shipment ID:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="shipmentIDField">
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="updateOrderPanel">
+        <Container class="javax.swing.JPanel" name="updateInventoryPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="730" height="240"/>
+              <AbsoluteConstraints x="0" y="0" width="730" height="340"/>
             </Constraint>
           </Constraints>
 
@@ -518,28 +467,31 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="customerIDOrderUpdateLabel" pref="319" max="32767" attributes="0"/>
-                          <Component id="itemIDUpdateLabel" max="32767" attributes="0"/>
-                          <Component id="itemCountUpdateLabel" max="32767" attributes="0"/>
+                          <Component id="itemIDUpdateLabel" pref="319" max="32767" attributes="0"/>
                           <Component id="itemWeightUpdateLabel" max="32767" attributes="0"/>
+                          <Component id="itemStockLevelUpdateLabel" max="32767" attributes="0"/>
+                          <Component id="itemDescriptionUpdateLabel" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="customerIDOrderUpdateField" max="32767" attributes="0"/>
                           <Component id="itemIDUpdateField" max="32767" attributes="0"/>
-                          <Component id="itemCountUpdateField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="itemWeightUpdateField" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="invalidUpdateOrderLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="updateButtonFinal" min="-2" pref="129" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="cancelOrderButtonFinal" min="-2" pref="126" max="-2" attributes="0"/>
+                          <Component id="itemStockLevelUpdateField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="itemDescriptionUpdateField" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="searchInventoryButton" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="deleteInventoryButton" max="32767" attributes="0"/>
+                                          <Component id="updateInventoryButtonFinal" pref="129" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="notificationUpdateInventoryLabel" min="-2" pref="273" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="103" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="itemWeightUpdateField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -550,59 +502,51 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="customerIDOrderUpdateLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="customerIDOrderUpdateField" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemIDUpdateLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemIDUpdateField" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="searchInventoryButton" min="-2" pref="15" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="itemWeightUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="itemWeightUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="itemStockLevelUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemStockLevelUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="itemDescriptionUpdateLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemDescriptionUpdateField" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="itemIDUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="itemIDUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="notificationUpdateInventoryLabel" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="updateInventoryButtonFinal" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="itemCountUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="itemCountUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="itemWeightUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="itemWeightUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="updateButtonFinal" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cancelOrderButtonFinal" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="invalidUpdateOrderLabel" min="-2" pref="22" max="-2" attributes="0"/>
-                      <EmptySpace pref="46" max="32767" attributes="0"/>
+                      <Component id="deleteInventoryButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="122" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="customerIDOrderUpdateLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="11" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Customer ID:"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="itemIDUpdateLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Item ID:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="itemCountUpdateLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="11" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Item Count:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="itemWeightUpdateLabel">
@@ -613,34 +557,58 @@
                 <Property name="text" type="java.lang.String" value="Item Weight:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="customerIDOrderUpdateField">
+            <Component class="javax.swing.JLabel" name="itemStockLevelUpdateLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Item Stock Level:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="itemDescriptionUpdateLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Item Description:"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="itemIDUpdateField">
             </Component>
-            <Component class="javax.swing.JTextField" name="itemCountUpdateField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemCountUpdateFieldActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JTextField" name="itemWeightUpdateField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="updateButtonFinal">
+            <Component class="javax.swing.JTextField" name="itemStockLevelUpdateField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="itemDescriptionUpdateField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="updateInventoryButtonFinal">
               <Properties>
                 <Property name="text" type="java.lang.String" value="UPDATE"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateButtonFinalActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateInventoryButtonFinalActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="cancelOrderButtonFinal">
+            <Component class="javax.swing.JButton" name="deleteInventoryButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="CANCEL ORDER"/>
+                <Property name="text" type="java.lang.String" value="DELETE"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelOrderButtonFinalActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteInventoryButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="invalidUpdateOrderLabel">
+            <Component class="javax.swing.JLabel" name="notificationUpdateInventoryLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -650,12 +618,23 @@
                 </Property>
               </Properties>
             </Component>
+            <Component class="javax.swing.JButton" name="searchInventoryButton">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="10" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="SEARCH"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchInventoryButtonActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="updateCustomerPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="730" height="240"/>
+              <AbsoluteConstraints x="0" y="0" width="730" height="340"/>
             </Constraint>
           </Constraints>
 
@@ -665,22 +644,36 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="customerEmailUpdateLabel" max="32767" attributes="0"/>
                           <Component id="customerAddressUpdateLabel" pref="324" max="32767" attributes="0"/>
                           <Component id="customerNameUpdateLabel" alignment="0" max="32767" attributes="0"/>
                           <Component id="customerIDCustomerUpdateLabel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="customerIDCustomerUpdateField" max="32767" attributes="0"/>
-                          <Component id="customerNameUpdateField" max="32767" attributes="0"/>
-                          <Component id="customerAddressUpdateField" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="updateCustomerButtonFinal" min="-2" pref="115" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="invalidCustomerUpdateLabel" pref="223" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="customerNameUpdateField" max="32767" attributes="0"/>
+                                  <Component id="customerAddressUpdateField" max="32767" attributes="0"/>
+                                  <Component id="customerEmailUpdateField" max="32767" attributes="0"/>
+                                  <Component id="customerIDCustomerUpdateField" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="updateCustomerButtonFinal" min="-2" pref="115" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="notificationCustomerUpdateLabel" min="-2" pref="223" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="searchUpdateCustomerButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="deleteCustomerButton" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="21" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -692,22 +685,36 @@
                           <Component id="customerIDCustomerUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="customerIDCustomerUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="customerNameUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="customerNameUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="searchUpdateCustomerButton" min="-2" pref="18" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="customerNameUpdateField" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="customerNameUpdateLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="customerAddressUpdateField" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="customerAddressUpdateLabel" min="-2" pref="12" max="-2" attributes="0"/>
+                              <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="customerAddressUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="customerAddressUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="customerEmailUpdateField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="customerEmailUpdateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="updateCustomerButtonFinal" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="invalidCustomerUpdateLabel" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="updateCustomerButtonFinal" min="-2" max="-2" attributes="0"/>
+                          <Component id="notificationCustomerUpdateLabel" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="104" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="deleteCustomerButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="132" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -740,21 +747,66 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="customerNameUpdateField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customerNameUpdateFieldActionPerformed"/>
-              </Events>
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="customerAddressUpdateField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="updateCustomerButtonFinal">
               <Properties>
                 <Property name="text" type="java.lang.String" value="UPDATE"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateCustomerButtonFinalActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="invalidCustomerUpdateLabel">
+            <Component class="javax.swing.JLabel" name="notificationCustomerUpdateLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="99" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="customerEmailUpdateLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Customer Email:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="customerEmailUpdateField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="searchUpdateCustomerButton">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="10" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="SEARCH"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchUpdateCustomerButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="deleteCustomerButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="DELETE"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteCustomerButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

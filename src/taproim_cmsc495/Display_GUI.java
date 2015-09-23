@@ -22,8 +22,7 @@ public class Display_GUI extends javax.swing.JFrame {
         //getContentPane().setBackground(Color.GRAY);
         initComponents();
         newOrderPanel.setVisible(false);
-        searchCustomerPanel.setVisible(false);
-        updateOrderPanel.setVisible(false);
+        updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
     }
@@ -37,9 +36,9 @@ public class Display_GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        newOrderButton = new javax.swing.JButton();
+        newShipmentButton = new javax.swing.JButton();
         updateCustomerButton = new javax.swing.JButton();
-        updateOrderButton = new javax.swing.JButton();
+        updateInventoryButton = new javax.swing.JButton();
         updateShipmentButton = new javax.swing.JButton();
         tablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -65,26 +64,26 @@ public class Display_GUI extends javax.swing.JFrame {
         itemWeightField = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
         clearAllButton = new javax.swing.JButton();
-        invalidLabel = new javax.swing.JLabel();
-        searchCustomerPanel = new javax.swing.JPanel();
-        customerIDSearchLabel = new javax.swing.JLabel();
-        customerIDSearchField = new javax.swing.JTextField();
-        orderSearchButton = new javax.swing.JButton();
-        invalidCustomerIDLabel = new javax.swing.JLabel();
-        shipmentSearchButton = new javax.swing.JButton();
-        customerInfoSearchButton = new javax.swing.JButton();
-        updateOrderPanel = new javax.swing.JPanel();
-        customerIDOrderUpdateLabel = new javax.swing.JLabel();
+        notificationLabel = new javax.swing.JLabel();
+        destinationLabel = new javax.swing.JLabel();
+        destinationField = new javax.swing.JTextField();
+        customerEmailLabel = new javax.swing.JLabel();
+        customerEmailField = new javax.swing.JTextField();
+        shipmentIDLabel = new javax.swing.JLabel();
+        shipmentIDField = new javax.swing.JTextField();
+        updateInventoryPanel = new javax.swing.JPanel();
         itemIDUpdateLabel = new javax.swing.JLabel();
-        itemCountUpdateLabel = new javax.swing.JLabel();
         itemWeightUpdateLabel = new javax.swing.JLabel();
-        customerIDOrderUpdateField = new javax.swing.JTextField();
+        itemStockLevelUpdateLabel = new javax.swing.JLabel();
+        itemDescriptionUpdateLabel = new javax.swing.JLabel();
         itemIDUpdateField = new javax.swing.JTextField();
-        itemCountUpdateField = new javax.swing.JTextField();
         itemWeightUpdateField = new javax.swing.JTextField();
-        updateButtonFinal = new javax.swing.JButton();
-        cancelOrderButtonFinal = new javax.swing.JButton();
-        invalidUpdateOrderLabel = new javax.swing.JLabel();
+        itemStockLevelUpdateField = new javax.swing.JTextField();
+        itemDescriptionUpdateField = new javax.swing.JTextField();
+        updateInventoryButtonFinal = new javax.swing.JButton();
+        deleteInventoryButton = new javax.swing.JButton();
+        notificationUpdateInventoryLabel = new javax.swing.JLabel();
+        searchInventoryButton = new javax.swing.JButton();
         updateCustomerPanel = new javax.swing.JPanel();
         customerIDCustomerUpdateLabel = new javax.swing.JLabel();
         customerIDCustomerUpdateField = new javax.swing.JTextField();
@@ -93,7 +92,11 @@ public class Display_GUI extends javax.swing.JFrame {
         customerNameUpdateField = new javax.swing.JTextField();
         customerAddressUpdateField = new javax.swing.JTextField();
         updateCustomerButtonFinal = new javax.swing.JButton();
-        invalidCustomerUpdateLabel = new javax.swing.JLabel();
+        notificationCustomerUpdateLabel = new javax.swing.JLabel();
+        customerEmailUpdateLabel = new javax.swing.JLabel();
+        customerEmailUpdateField = new javax.swing.JTextField();
+        searchUpdateCustomerButton = new javax.swing.JButton();
+        deleteCustomerButton = new javax.swing.JButton();
         updateShipmentPanel = new javax.swing.JPanel();
         customerIDShippingUpdateLabel = new javax.swing.JLabel();
         customerIDShippingUpdateField = new javax.swing.JTextField();
@@ -108,10 +111,10 @@ public class Display_GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        newOrderButton.setText("NEW ORDER");
-        newOrderButton.addActionListener(new java.awt.event.ActionListener() {
+        newShipmentButton.setText("NEW SHIPMENT");
+        newShipmentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newOrderButtonActionPerformed(evt);
+                newShipmentButtonActionPerformed(evt);
             }
         });
 
@@ -122,10 +125,10 @@ public class Display_GUI extends javax.swing.JFrame {
             }
         });
 
-        updateOrderButton.setText("UPDATE/CANCEL ORDER");
-        updateOrderButton.addActionListener(new java.awt.event.ActionListener() {
+        updateInventoryButton.setText("UPDATE INVENTORY");
+        updateInventoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateOrderButtonActionPerformed(evt);
+                updateInventoryButtonActionPerformed(evt);
             }
         });
 
@@ -232,6 +235,18 @@ public class Display_GUI extends javax.swing.JFrame {
             }
         });
 
+        notificationLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        notificationLabel.setForeground(new java.awt.Color(102, 0, 0));
+
+        destinationLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        destinationLabel.setText("Destination:");
+
+        customerEmailLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        customerEmailLabel.setText("Customer Email:");
+
+        shipmentIDLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        shipmentIDLabel.setText("Shipment ID:");
+
         javax.swing.GroupLayout newOrderPanelLayout = new javax.swing.GroupLayout(newOrderPanel);
         newOrderPanel.setLayout(newOrderPanelLayout);
         newOrderPanelLayout.setHorizontalGroup(
@@ -239,6 +254,9 @@ public class Display_GUI extends javax.swing.JFrame {
             .addGroup(newOrderPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(shipmentIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(customerEmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(destinationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(itemWeightButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(itemCountButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(itemIDButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -249,220 +267,182 @@ public class Display_GUI extends javax.swing.JFrame {
                 .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(newOrderPanelLayout.createSequentialGroup()
                         .addComponent(submitButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(clearAllButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(invalidLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(notificationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 2, Short.MAX_VALUE))
                     .addComponent(customerNameField)
                     .addComponent(customerIDField)
                     .addComponent(customerAddressField)
                     .addComponent(itemIDField)
                     .addComponent(itemCountField)
-                    .addComponent(itemWeightField))
+                    .addComponent(destinationField)
+                    .addComponent(customerEmailField)
+                    .addComponent(itemWeightField)
+                    .addComponent(shipmentIDField))
                 .addContainerGap())
         );
         newOrderPanelLayout.setVerticalGroup(
             newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newOrderPanelLayout.createSequentialGroup()
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(customerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(customerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(customerNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(customerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(customerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(customerIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerAddressButton)
-                    .addComponent(customerAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(customerAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(customerAddressButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(itemIDButton)
-                    .addComponent(itemIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(customerEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(customerEmailLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(itemIDButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(destinationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(destinationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemWeightField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(itemWeightButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(itemCountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(itemCountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(shipmentIDLabel)
+                    .addComponent(shipmentIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(itemWeightButton)
-                    .addGroup(newOrderPanelLayout.createSequentialGroup()
-                        .addComponent(itemWeightField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                            .addComponent(clearAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(invalidLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                    .addGroup(newOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(clearAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(notificationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(newOrderPanel);
-        newOrderPanel.setBounds(10, 0, 710, 220);
-
-        searchCustomerPanel.setEnabled(false);
-
-        customerIDSearchLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        customerIDSearchLabel.setText("Customer ID:");
-
-        orderSearchButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        orderSearchButton.setText("Order Search");
-        orderSearchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderSearchButtonActionPerformed(evt);
-            }
-        });
-
-        invalidCustomerIDLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        invalidCustomerIDLabel.setForeground(new java.awt.Color(153, 0, 0));
-
-        shipmentSearchButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        shipmentSearchButton.setText("Shipment Search");
-        shipmentSearchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                shipmentSearchButtonActionPerformed(evt);
-            }
-        });
-
-        customerInfoSearchButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        customerInfoSearchButton.setText("Customer Search");
-        customerInfoSearchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customerInfoSearchButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout searchCustomerPanelLayout = new javax.swing.GroupLayout(searchCustomerPanel);
-        searchCustomerPanel.setLayout(searchCustomerPanelLayout);
-        searchCustomerPanelLayout.setHorizontalGroup(
-            searchCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchCustomerPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(customerIDSearchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(searchCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerIDSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(searchCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(invalidCustomerIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(searchCustomerPanelLayout.createSequentialGroup()
-                            .addComponent(orderSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(shipmentSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(customerInfoSearchButton))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        searchCustomerPanelLayout.setVerticalGroup(
-            searchCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchCustomerPanelLayout.createSequentialGroup()
-                .addGroup(searchCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerIDSearchLabel)
-                    .addComponent(customerIDSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(searchCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(searchCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(orderSearchButton)
-                        .addComponent(shipmentSearchButton))
-                    .addComponent(customerInfoSearchButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(invalidCustomerIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 154, Short.MAX_VALUE))
-        );
-
-        jLayeredPane1.add(searchCustomerPanel);
-        searchCustomerPanel.setBounds(0, 0, 730, 240);
-
-        customerIDOrderUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        customerIDOrderUpdateLabel.setText("Customer ID:");
+        newOrderPanel.setBounds(10, 0, 710, 340);
 
         itemIDUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         itemIDUpdateLabel.setText("Item ID:");
 
-        itemCountUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        itemCountUpdateLabel.setText("Item Count:");
-
         itemWeightUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         itemWeightUpdateLabel.setText("Item Weight:");
 
-        itemCountUpdateField.addActionListener(new java.awt.event.ActionListener() {
+        itemStockLevelUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        itemStockLevelUpdateLabel.setText("Item Stock Level:");
+
+        itemDescriptionUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        itemDescriptionUpdateLabel.setText("Item Description:");
+
+        itemWeightUpdateField.setEnabled(false);
+
+        itemStockLevelUpdateField.setEnabled(false);
+
+        itemDescriptionUpdateField.setEnabled(false);
+
+        updateInventoryButtonFinal.setText("UPDATE");
+        updateInventoryButtonFinal.setEnabled(false);
+        updateInventoryButtonFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemCountUpdateFieldActionPerformed(evt);
+                updateInventoryButtonFinalActionPerformed(evt);
             }
         });
 
-        updateButtonFinal.setText("UPDATE");
-        updateButtonFinal.addActionListener(new java.awt.event.ActionListener() {
+        deleteInventoryButton.setText("DELETE");
+        deleteInventoryButton.setEnabled(false);
+        deleteInventoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonFinalActionPerformed(evt);
+                deleteInventoryButtonActionPerformed(evt);
             }
         });
 
-        cancelOrderButtonFinal.setText("CANCEL ORDER");
-        cancelOrderButtonFinal.addActionListener(new java.awt.event.ActionListener() {
+        notificationUpdateInventoryLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        notificationUpdateInventoryLabel.setForeground(new java.awt.Color(153, 0, 0));
+
+        searchInventoryButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        searchInventoryButton.setText("SEARCH");
+        searchInventoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelOrderButtonFinalActionPerformed(evt);
+                searchInventoryButtonActionPerformed(evt);
             }
         });
 
-        invalidUpdateOrderLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        invalidUpdateOrderLabel.setForeground(new java.awt.Color(153, 0, 0));
-
-        javax.swing.GroupLayout updateOrderPanelLayout = new javax.swing.GroupLayout(updateOrderPanel);
-        updateOrderPanel.setLayout(updateOrderPanelLayout);
-        updateOrderPanelLayout.setHorizontalGroup(
-            updateOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(updateOrderPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout updateInventoryPanelLayout = new javax.swing.GroupLayout(updateInventoryPanel);
+        updateInventoryPanel.setLayout(updateInventoryPanelLayout);
+        updateInventoryPanelLayout.setHorizontalGroup(
+            updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updateInventoryPanelLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(updateOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(customerIDOrderUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                    .addComponent(itemIDUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(itemCountUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(itemWeightUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(itemIDUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                    .addComponent(itemWeightUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(itemStockLevelUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(itemDescriptionUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(updateOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerIDOrderUpdateField)
+                .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(itemIDUpdateField)
-                    .addComponent(itemCountUpdateField)
-                    .addComponent(itemWeightUpdateField)
-                    .addGroup(updateOrderPanelLayout.createSequentialGroup()
-                        .addGroup(updateOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(invalidUpdateOrderLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(updateOrderPanelLayout.createSequentialGroup()
-                                .addComponent(updateButtonFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cancelOrderButtonFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 103, Short.MAX_VALUE)))
+                    .addComponent(itemStockLevelUpdateField)
+                    .addComponent(itemDescriptionUpdateField)
+                    .addGroup(updateInventoryPanelLayout.createSequentialGroup()
+                        .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(searchInventoryButton)
+                            .addGroup(updateInventoryPanelLayout.createSequentialGroup()
+                                .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(deleteInventoryButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(updateInventoryButtonFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(notificationUpdateInventoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(itemWeightUpdateField))
                 .addContainerGap())
         );
-        updateOrderPanelLayout.setVerticalGroup(
-            updateOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(updateOrderPanelLayout.createSequentialGroup()
+        updateInventoryPanelLayout.setVerticalGroup(
+            updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updateInventoryPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(updateOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerIDOrderUpdateLabel)
-                    .addComponent(customerIDOrderUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(updateOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(itemIDUpdateLabel)
                     .addComponent(itemIDUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(updateOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(itemCountUpdateLabel)
-                    .addComponent(itemCountUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(updateInventoryPanelLayout.createSequentialGroup()
+                        .addComponent(searchInventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateInventoryPanelLayout.createSequentialGroup()
+                        .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(itemWeightUpdateLabel)
+                            .addComponent(itemWeightUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)))
+                .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(itemStockLevelUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(itemStockLevelUpdateLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(updateOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(itemWeightUpdateLabel)
-                    .addComponent(itemWeightUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(updateOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updateButtonFinal)
-                    .addComponent(cancelOrderButtonFinal))
+                .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(itemDescriptionUpdateLabel)
+                    .addComponent(itemDescriptionUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(notificationUpdateInventoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateInventoryButtonFinal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(invalidUpdateOrderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addComponent(deleteInventoryButton)
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
-        jLayeredPane1.add(updateOrderPanel);
-        updateOrderPanel.setBounds(0, 0, 730, 240);
+        jLayeredPane1.add(updateInventoryPanel);
+        updateInventoryPanel.setBounds(0, 0, 730, 340);
 
         customerIDCustomerUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         customerIDCustomerUpdateLabel.setText("Customer ID:");
@@ -473,16 +453,39 @@ public class Display_GUI extends javax.swing.JFrame {
         customerAddressUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         customerAddressUpdateLabel.setText("Customer Address:");
 
-        customerNameUpdateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customerNameUpdateFieldActionPerformed(evt);
-            }
-        });
+        customerNameUpdateField.setEnabled(false);
+
+        customerAddressUpdateField.setEnabled(false);
 
         updateCustomerButtonFinal.setText("UPDATE");
+        updateCustomerButtonFinal.setEnabled(false);
         updateCustomerButtonFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateCustomerButtonFinalActionPerformed(evt);
+            }
+        });
+
+        notificationCustomerUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        notificationCustomerUpdateLabel.setForeground(new java.awt.Color(153, 0, 0));
+
+        customerEmailUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        customerEmailUpdateLabel.setText("Customer Email:");
+
+        customerEmailUpdateField.setEnabled(false);
+
+        searchUpdateCustomerButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        searchUpdateCustomerButton.setText("SEARCH");
+        searchUpdateCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchUpdateCustomerButtonActionPerformed(evt);
+            }
+        });
+
+        deleteCustomerButton.setText("DELETE");
+        deleteCustomerButton.setEnabled(false);
+        deleteCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteCustomerButtonActionPerformed(evt);
             }
         });
 
@@ -493,19 +496,29 @@ public class Display_GUI extends javax.swing.JFrame {
             .addGroup(updateCustomerPanelLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(customerEmailUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(customerAddressUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                     .addComponent(customerNameUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(customerIDCustomerUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(customerIDCustomerUpdateField)
-                    .addComponent(customerNameUpdateField)
-                    .addComponent(customerAddressUpdateField)
+                .addGroup(updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(updateCustomerPanelLayout.createSequentialGroup()
-                        .addComponent(updateCustomerButtonFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(invalidCustomerUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addGroup(updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(customerNameUpdateField)
+                            .addComponent(customerAddressUpdateField)
+                            .addComponent(customerEmailUpdateField)
+                            .addComponent(customerIDCustomerUpdateField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(updateCustomerPanelLayout.createSequentialGroup()
+                                .addComponent(updateCustomerButtonFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(notificationCustomerUpdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(21, 21, 21))
+                    .addGroup(updateCustomerPanelLayout.createSequentialGroup()
+                        .addGroup(updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(searchUpdateCustomerButton)
+                            .addComponent(deleteCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         updateCustomerPanelLayout.setVerticalGroup(
             updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,23 +527,34 @@ public class Display_GUI extends javax.swing.JFrame {
                 .addGroup(updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customerIDCustomerUpdateLabel)
                     .addComponent(customerIDCustomerUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerNameUpdateLabel)
-                    .addComponent(customerNameUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(updateCustomerPanelLayout.createSequentialGroup()
+                        .addComponent(searchUpdateCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(customerNameUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(customerNameUpdateLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(customerAddressUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(updateCustomerPanelLayout.createSequentialGroup()
+                        .addComponent(customerAddressUpdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerAddressUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(customerAddressUpdateLabel))
+                    .addComponent(customerEmailUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(customerEmailUpdateLabel))
                 .addGap(18, 18, 18)
-                .addGroup(updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(updateCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(updateCustomerButtonFinal)
-                    .addComponent(invalidCustomerUpdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                    .addComponent(notificationCustomerUpdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteCustomerButton)
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(updateCustomerPanel);
-        updateCustomerPanel.setBounds(0, 0, 730, 240);
+        updateCustomerPanel.setBounds(0, 0, 730, 340);
 
         customerIDShippingUpdateLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         customerIDShippingUpdateLabel.setText("Customer ID:");
@@ -614,12 +638,12 @@ public class Display_GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(newOrderButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(newShipmentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(updateShipmentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(viewCustomerTableButton, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(updateOrderButton, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                    .addComponent(updateInventoryButton, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                     .addComponent(viewInventoryTableButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(logOutButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(33, 33, 33)
@@ -634,12 +658,12 @@ public class Display_GUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newOrderButton)
+                    .addComponent(newShipmentButton)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(updateOrderButton)
+                        .addComponent(updateInventoryButton)
                         .addComponent(updateCustomerButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -658,34 +682,30 @@ public class Display_GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newOrderButtonActionPerformed
+    private void newShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newShipmentButtonActionPerformed
         newOrderPanel.setVisible(true);
-        searchCustomerPanel.setVisible(false);
-        updateOrderPanel.setVisible(false);
+        updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
-    }//GEN-LAST:event_newOrderButtonActionPerformed
+    }//GEN-LAST:event_newShipmentButtonActionPerformed
 
-    private void updateOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateOrderButtonActionPerformed
+    private void updateInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateInventoryButtonActionPerformed
         newOrderPanel.setVisible(false);
-        searchCustomerPanel.setVisible(true);
-        updateOrderPanel.setVisible(false);
+        updateInventoryPanel.setVisible(true);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
-    }//GEN-LAST:event_updateOrderButtonActionPerformed
+    }//GEN-LAST:event_updateInventoryButtonActionPerformed
 
     private void updateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerButtonActionPerformed
         newOrderPanel.setVisible(false);
-        searchCustomerPanel.setVisible(true);
-        updateOrderPanel.setVisible(false);
-        updateCustomerPanel.setVisible(false);
+        updateInventoryPanel.setVisible(false);
+        updateCustomerPanel.setVisible(true);
         updateShipmentPanel.setVisible(false);
     }//GEN-LAST:event_updateCustomerButtonActionPerformed
 
     private void updateShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateShipmentButtonActionPerformed
         newOrderPanel.setVisible(false);
-        searchCustomerPanel.setVisible(true);
-        updateOrderPanel.setVisible(false);
+        updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
     }//GEN-LAST:event_updateShipmentButtonActionPerformed
@@ -695,8 +715,7 @@ public class Display_GUI extends javax.swing.JFrame {
         frame.pack();
         frame.setVisible(true);
         newOrderPanel.setVisible(false);
-        searchCustomerPanel.setVisible(false);
-        updateOrderPanel.setVisible(false);
+        updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
     }//GEN-LAST:event_viewInventoryTableButtonActionPerformed
@@ -706,8 +725,7 @@ public class Display_GUI extends javax.swing.JFrame {
         frame.pack();
         frame.setVisible(true);
         newOrderPanel.setVisible(false);
-        searchCustomerPanel.setVisible(false);
-        updateOrderPanel.setVisible(false);
+        updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
     }//GEN-LAST:event_viewShipmentTableButtonActionPerformed
@@ -717,8 +735,7 @@ public class Display_GUI extends javax.swing.JFrame {
         frame.pack();
         frame.setVisible(true);
         newOrderPanel.setVisible(false);
-        searchCustomerPanel.setVisible(false);
-        updateOrderPanel.setVisible(false);
+        updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
     }//GEN-LAST:event_viewCustomerTableButtonActionPerformed
@@ -727,57 +744,122 @@ public class Display_GUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_logOutButtonActionPerformed
 
-    private void orderSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderSearchButtonActionPerformed
-        searchCustomerPanel.setVisible(false);
-        updateOrderPanel.setVisible(true);
-    }//GEN-LAST:event_orderSearchButtonActionPerformed
-
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         
+        //code to check all fields are valid
+        
+        //if all fields are not valid, display error message to employee
+        //notificationLabel.setText("INVALID DATA! TRY AGAIN!");
+        
+        //code to submit all data to the database
+        
+        
+        
+        //clear all fields after data was successfully submitted
+        customerNameField.setText("");
+        customerIDField.setText("");
+        customerAddressField.setText("");
+        customerEmailField.setText("");
+        itemIDField.setText("");
+        destinationField.setText("");
+        itemWeightField.setText("");
+        itemCountField.setText("");
+        shipmentIDField.setText("");
+        //display notification to the employee that data was successfully submitted
+        notificationLabel.setText("SUCCESSFULLY SUBMITTED!");
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void clearAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearAllButtonActionPerformed
-        
+        //clear all fields
+        customerNameField.setText("");
+        customerIDField.setText("");
+        customerAddressField.setText("");
+        customerEmailField.setText("");
+        itemIDField.setText("");
+        destinationField.setText("");
+        itemWeightField.setText("");
+        itemCountField.setText("");
+        shipmentIDField.setText("");
+        //display notification to the employee that all fields are cleared
+        notificationLabel.setText("ALL FIELDS CLEARED!");
     }//GEN-LAST:event_clearAllButtonActionPerformed
 
-    private void shipmentSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shipmentSearchButtonActionPerformed
-        searchCustomerPanel.setVisible(false);
-        updateShipmentPanel.setVisible(true);
-    }//GEN-LAST:event_shipmentSearchButtonActionPerformed
-
-    private void customerInfoSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerInfoSearchButtonActionPerformed
-        searchCustomerPanel.setVisible(false);
-        updateCustomerPanel.setVisible(true);
-    }//GEN-LAST:event_customerInfoSearchButtonActionPerformed
-
-    private void itemCountUpdateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCountUpdateFieldActionPerformed
-        
-    }//GEN-LAST:event_itemCountUpdateFieldActionPerformed
-
-    private void updateButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonFinalActionPerformed
+    private void updateInventoryButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateInventoryButtonFinalActionPerformed
        
-    }//GEN-LAST:event_updateButtonFinalActionPerformed
+    }//GEN-LAST:event_updateInventoryButtonFinalActionPerformed
 
-    private void cancelOrderButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOrderButtonFinalActionPerformed
+    private void deleteInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteInventoryButtonActionPerformed
         
-    }//GEN-LAST:event_cancelOrderButtonFinalActionPerformed
-
-    private void customerNameUpdateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerNameUpdateFieldActionPerformed
-        
-    }//GEN-LAST:event_customerNameUpdateFieldActionPerformed
+    }//GEN-LAST:event_deleteInventoryButtonActionPerformed
 
     private void updateCustomerButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerButtonFinalActionPerformed
+        //code to check all fields are valid
         
+        //if all fields are not valid, display error message to employee
+        //notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        
+        //code to submit updated data to the database
+        
+        //clear fields and disable fields/buttons
+        customerNameUpdateField.setText("");
+        customerAddressUpdateField.setText("");
+        customerEmailUpdateField.setText("");
+        customerNameUpdateField.setEnabled(false);
+        customerAddressUpdateField.setEnabled(false);
+        customerEmailUpdateField.setEnabled(false);
+        updateCustomerButtonFinal.setEnabled(false);
+        deleteCustomerButton.setEnabled(false);
+        //display notification to the employee that data was successfully updated
+        notificationCustomerUpdateLabel.setText("SUCCESSFULLY UPDATED!");
     }//GEN-LAST:event_updateCustomerButtonFinalActionPerformed
 
     private void updateShippingButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateShippingButtonFinalActionPerformed
        
     }//GEN-LAST:event_updateShippingButtonFinalActionPerformed
 
+    private void searchUpdateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUpdateCustomerButtonActionPerformed
+        //code to check search field is valid
+        
+        //if search field is not valid, display error message to employee
+        //notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        
+        
+        //if search field is valid, enable and populate associated fields/buttons to update information
+        customerNameUpdateField.setEnabled(true);
+        customerAddressUpdateField.setEnabled(true);
+        customerEmailUpdateField.setEnabled(true);
+        updateCustomerButtonFinal.setEnabled(true);
+        deleteCustomerButton.setEnabled(true);
+    }//GEN-LAST:event_searchUpdateCustomerButtonActionPerformed
+
+    private void deleteCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCustomerButtonActionPerformed
+        //code to check all fields are valid
+        
+        //if all fields are not valid, display error message to employee
+        //notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        
+        //if all fields are valid, code to delete data from the database
+        
+        //clear fields and disable fields/buttons
+        customerNameUpdateField.setText("");
+        customerAddressUpdateField.setText("");
+        customerEmailUpdateField.setText("");
+        customerNameUpdateField.setEnabled(false);
+        customerAddressUpdateField.setEnabled(false);
+        customerEmailUpdateField.setEnabled(false);
+        updateCustomerButtonFinal.setEnabled(false);
+        deleteCustomerButton.setEnabled(false);
+        //display notification to the employee that data was successfully deleted
+        notificationCustomerUpdateLabel.setText("SUCCESSFULLY DELETED!");
+    }//GEN-LAST:event_deleteCustomerButtonActionPerformed
+
+    private void searchInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInventoryButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchInventoryButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField arrivalDateShippingUpdateField;
     private javax.swing.JLabel arrivalDateShippingUpdateLabel;
-    private javax.swing.JButton cancelOrderButtonFinal;
     private javax.swing.JButton clearAllButton;
     private javax.swing.JTextField currentCityShippingUpdateField;
     private javax.swing.JLabel currentCityShippingUpdateLabel;
@@ -785,34 +867,35 @@ public class Display_GUI extends javax.swing.JFrame {
     private javax.swing.JTextField customerAddressField;
     private javax.swing.JTextField customerAddressUpdateField;
     private javax.swing.JLabel customerAddressUpdateLabel;
+    private javax.swing.JTextField customerEmailField;
+    private javax.swing.JLabel customerEmailLabel;
+    private javax.swing.JTextField customerEmailUpdateField;
+    private javax.swing.JLabel customerEmailUpdateLabel;
     private javax.swing.JTextField customerIDCustomerUpdateField;
     private javax.swing.JLabel customerIDCustomerUpdateLabel;
     private javax.swing.JTextField customerIDField;
     private javax.swing.JLabel customerIDLabel;
-    private javax.swing.JTextField customerIDOrderUpdateField;
-    private javax.swing.JLabel customerIDOrderUpdateLabel;
-    private javax.swing.JTextField customerIDSearchField;
-    private javax.swing.JLabel customerIDSearchLabel;
     private javax.swing.JTextField customerIDShippingUpdateField;
     private javax.swing.JLabel customerIDShippingUpdateLabel;
-    private javax.swing.JButton customerInfoSearchButton;
     private javax.swing.JTextField customerNameField;
     private javax.swing.JLabel customerNameLabel;
     private javax.swing.JTextField customerNameUpdateField;
     private javax.swing.JLabel customerNameUpdateLabel;
-    private javax.swing.JLabel invalidCustomerIDLabel;
-    private javax.swing.JLabel invalidCustomerUpdateLabel;
-    private javax.swing.JLabel invalidLabel;
+    private javax.swing.JButton deleteCustomerButton;
+    private javax.swing.JButton deleteInventoryButton;
+    private javax.swing.JTextField destinationField;
+    private javax.swing.JLabel destinationLabel;
     private javax.swing.JLabel invalidShippingUpdateLabel;
-    private javax.swing.JLabel invalidUpdateOrderLabel;
     private javax.swing.JLabel itemCountButton;
     private javax.swing.JTextField itemCountField;
-    private javax.swing.JTextField itemCountUpdateField;
-    private javax.swing.JLabel itemCountUpdateLabel;
+    private javax.swing.JTextField itemDescriptionUpdateField;
+    private javax.swing.JLabel itemDescriptionUpdateLabel;
     private javax.swing.JLabel itemIDButton;
     private javax.swing.JTextField itemIDField;
     private javax.swing.JTextField itemIDUpdateField;
     private javax.swing.JLabel itemIDUpdateLabel;
+    private javax.swing.JTextField itemStockLevelUpdateField;
+    private javax.swing.JLabel itemStockLevelUpdateLabel;
     private javax.swing.JLabel itemWeightButton;
     private javax.swing.JTextField itemWeightField;
     private javax.swing.JTextField itemWeightUpdateField;
@@ -821,22 +904,26 @@ public class Display_GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton logOutButton;
-    private javax.swing.JButton newOrderButton;
     private javax.swing.JPanel newOrderPanel;
-    private javax.swing.JButton orderSearchButton;
-    private javax.swing.JPanel searchCustomerPanel;
-    private javax.swing.JButton shipmentSearchButton;
+    private javax.swing.JButton newShipmentButton;
+    private javax.swing.JLabel notificationCustomerUpdateLabel;
+    private javax.swing.JLabel notificationLabel;
+    private javax.swing.JLabel notificationUpdateInventoryLabel;
+    private javax.swing.JButton searchInventoryButton;
+    private javax.swing.JButton searchUpdateCustomerButton;
+    private javax.swing.JTextField shipmentIDField;
+    private javax.swing.JLabel shipmentIDLabel;
     private javax.swing.JTextField shippingDateShippingUpdateField;
     private javax.swing.JLabel shippingDateShippingUpdateLabel;
     private javax.swing.JButton submitButton;
     private javax.swing.JLabel tableLabel;
     private javax.swing.JPanel tablePanel;
-    private javax.swing.JButton updateButtonFinal;
     private javax.swing.JButton updateCustomerButton;
     private javax.swing.JButton updateCustomerButtonFinal;
     private javax.swing.JPanel updateCustomerPanel;
-    private javax.swing.JButton updateOrderButton;
-    private javax.swing.JPanel updateOrderPanel;
+    private javax.swing.JButton updateInventoryButton;
+    private javax.swing.JButton updateInventoryButtonFinal;
+    private javax.swing.JPanel updateInventoryPanel;
     private javax.swing.JButton updateShipmentButton;
     private javax.swing.JPanel updateShipmentPanel;
     private javax.swing.JButton updateShippingButtonFinal;
