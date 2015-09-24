@@ -16,57 +16,38 @@ import javax.swing.*;
  * This pop-out simply displays SQL table information for Shipment
  */
 public class Shipment extends JFrame {
+    SQLTransferManager sqlMgr = new SQLTransferManager();
+    ArrayList<String> columns = new ArrayList<>();
+    
+    
+    
+    public boolean newShipment(ArrayList<String> info) {
+        return sqlMgr.insertRow("Shipment", getColumns(), info);
+    }
+    
+    /**
+     * @return the fields to be added for a new shipment
+     */
+    public ArrayList<String> getColumns() {
+        columns.add("ItemID");
+        columns.add("CustID");
+        columns.add("Destination");
+        // columns.add("Location");
+        columns.add("Weight");
+        columns.add("NumItems");
+        
+        return columns;
+    }
+    
+    
+    
     //  Establishing location, UID, password and sql command string
     String url = "jdbc:mysql://siteground324.com:3306/gunnargo_cmsc495";
     String userid = "gunnargo_umuc15";
     String password = "Ib7t5BRa74mTr0N9aS6";
     Connection con;
     
-    public boolean validShipID(int id) {
-        String sqlSelect = "SELECT id FROM gunnargo_cmsc495.Shipment WHERE id = " + id;
-        boolean success;
-        try {
-            con = DriverManager.getConnection(url, userid, password);
-            Statement stmt = con.createStatement();
-            success = stmt.execute(sqlSelect);
-            con.close();
-        } catch (SQLException ex) {
-            System.out.println("not found");
-            return false; // find failed
-        }
-        return success;
-    }
-    
-    public boolean createShipment(ArrayList<String> info) {
-        String shipID = "1"; // how are we generating our shipID?
-        //String custName = info.get(0);
-        String custAdd = info.get(1);
-        String custEmail = info.get(2);
-        String itemID = info.get(3);
-        String dest = info.get(4);
-        String weight = info.get(5);
-        String count = info.get(6);
-        String custID = custEmail; // getCustomerId(custEmail);
-        String sqlCreate = "INSERT INTO gunnargo_cmsc495.Shipment "
-                + "(ShipID, ItemID, CustID, Destination, Location, Weight, NumItems) "
-                + "VALUES ('" + shipID + "', '" + itemID + "', '" + custID + "', '"
-                + dest + "', '" + custAdd + "', '" + weight + "', '" + count + "')";
-        
-        try {
-            con = DriverManager.getConnection(url, userid, password);
-            Statement stmt = con.createStatement();
-            boolean success = stmt.execute(sqlCreate);
-            con.close();
-            return success;
-        } catch (SQLException ex) {
-            System.out.println("order was not created");
-            return false; // creation failed
-        }
-    }
-    
-    
-    
-    
+    /*
     public Shipment()
     {
         this.setTitle("TAPRO-IM Shipment Table");
@@ -145,6 +126,6 @@ public class Shipment extends JFrame {
 
         JPanel buttonPanel = new JPanel();
         getContentPane().add( buttonPanel, BorderLayout.SOUTH );
-    }
+    }*/
     
 }

@@ -6,6 +6,7 @@
 package taproim_cmsc495;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  *
@@ -881,13 +882,35 @@ public class Display_GUI extends javax.swing.JFrame {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         
         //code to check all fields are valid
+        String custName = customerNameField.getText();
+        String address = customerAddressField.getText();
+        String email = customerEmailField.getText();
+        
+        String itemID = itemIDField.getText();
+        String destination = destinationField.getText();
+        String itemWeight = itemWeightField.getText();
+        String itemCount = itemCountField.getText();
+        
+        // test for customer?? get customer ID??
+        
+        String custID = "1";
         
         //if all fields are not valid, display error message to employee
         //notificationLabel.setText("INVALID DATA! TRY AGAIN!");
         
         //code to submit all data to the database
+        ArrayList<String> info = new ArrayList<>();
+        info.add(itemID);
+        info.add(custID);
+        info.add(destination);
+        info.add(itemWeight);
+        info.add(itemCount);
         
-        
+        Shipment newShip = new Shipment();
+        if (!newShip.newShipment(info)) {
+            notificationLabel.setText("SHIPMENT NOT ADDED");
+            return;
+        }
         
         //clear all fields after data was successfully submitted
         customerNameField.setText("");
