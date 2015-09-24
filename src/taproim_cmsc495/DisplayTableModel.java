@@ -41,7 +41,7 @@ public class DisplayTableModel extends AbstractTableModel {
             // populate the rows
             while (rs.next()){
                 ArrayList<String> row = new ArrayList<>();
-                for (int i = 1; i <= columns; i++) row.add(rs.getString(i));
+                for (int i = 1; i <= columns; i++) row.add(rs.getString(columnNames.get(i).toString()));
                 data.add(row);
             }
         } catch (SQLException e) { 
