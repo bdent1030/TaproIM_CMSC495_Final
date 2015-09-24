@@ -16,17 +16,131 @@ import javax.swing.*;
  * This pop-out simply displays SQL table information for Customers
  */
 public class Customer extends JFrame {
+    //  Establishing location, UID, password and sql command string
+    String url = "jdbc:mysql://siteground324.com:3306/gunnargo_cmsc495";
+    String userid = "gunnargo_umuc15";
+    String password = "Ib7t5BRa74mTr0N9aS6";
+    
+    String custID;
+    String custName;
+    String custAddress;
+    String custEmail;
+    
+    Connection con;
+    
+    public Customer(){
+        this.custName = "";
+        this.custAddress = "";
+        this.custEmail = "";
+    }
+    
+    public Customer(String name, String address, String email){
+        this.custName = name;
+        this.custAddress = address;
+        this.custEmail = email;
+    }
+    
+    public void custFromShipment(){
+        
+    }
+    
+    public void retrieveCust(){
+        
+    }
+    
+    public boolean updateCustomer(ArrayList<String> info){
+        
+        String id = info.get(0);
+        String name = info.get(1);
+        String address = info.get(2);
+        String email = info.get(3);
+        
+        boolean result = false;
+        
+        if(custExists(custID)){
+            String sqlCreate = "UPDATE SET "
+                    + "Name = " + name
+                    + " Address = " + address
+                    + " E-mail = " + email
+                    + " WHERE CustID = " + id;
+        
+            try {
+                con = DriverManager.getConnection(url, userid, password);
+                Statement stmt = con.createStatement();
+                boolean success = stmt.execute(sqlCreate);
+                con.close();
+                return success;
+            } catch (SQLException ex) {
+                System.out.println("Customer was not updated");
+                return false; // creation failed
+            }
+        }
+        
+        return result;
+    }
+    
+    public boolean deleteCustomer(String custID){
+        this.custID = custID;
+        boolean result = false;
+            
+        if(custExists(custID)){
 
-    public Customer()
+            String sqlSelect = "DELETE id FROM gunnargo_cmsc495.Customer WHERE id = " + custID;
+
+            try {
+                con = DriverManager.getConnection(url, userid, password);
+                Statement stmt = con.createStatement();
+                result = stmt.execute(sqlSelect);
+                con.close();
+                result = true;
+            } catch (SQLException ex) {
+                System.out.println("Customer ID: " + custID +"not found");
+                return false; // find failed
+            }
+        }
+        
+        return result;
+    }
+    
+    public boolean custExists(String id){
+        boolean result;
+        
+        String sqlSelect = "SELECT id FROM gunnargo_cmsc495.Customer WHERE id = " + id;
+
+        try {
+            con = DriverManager.getConnection(url, userid, password);
+            Statement stmt = con.createStatement();
+            result = stmt.execute(sqlSelect);
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println("Customer ID: " + id +"not found");
+            return false; // find failed
+        }
+        
+        return result;
+    }
+    
+    public boolean createSQLRecord(String querry){
+        
+        try {
+            con = DriverManager.getConnection(url, userid, password);
+            Statement stmt = con.createStatement();
+            boolean success = stmt.execute(querry);
+            con.close();
+            return success;
+        } catch (SQLException ex) {
+            System.out.println("Querry:\n" + querry +"\nfailed");
+            return false; // SQL querry failed
+        }
+    }
+    
+    public void showCustomerTable()
     {
         this.setTitle("TAPRO-IM Customer Table");
         ArrayList columnNames = new ArrayList();
         ArrayList data = new ArrayList();
 
-        //  Establishing location, UID, password and sql command string
-        String url = "jdbc:mysql://siteground324.com:3306/gunnargo_cmsc495";
-        String userid = "gunnargo_umuc15";
-        String password = "Ib7t5BRa74mTr0N9aS6";
+        
         String sql = "SELECT * FROM gunnargo_cmsc495.Customer";
 
         // Try command to establish JDBC connection with above provided credentials
