@@ -34,10 +34,6 @@ public class Customer extends JFrame {
         this.custEmail = email;
     }
     
-    public void custFromShipment(){
-        
-    }
-    
     public HashMap retrieveCust(int custID){
         HashMap results = new HashMap();
         String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Customer WHERE id = " + custID;
