@@ -20,7 +20,7 @@ import javax.swing.table.AbstractTableModel;
 public class DisplayTableModel extends AbstractTableModel {
     ArrayList columnNames = new ArrayList();
     ArrayList data = new ArrayList();
-
+    
     //  Establishing location, UID, password and sql command string
     String url = "jdbc:mysql://siteground324.com:3306/gunnargo_cmsc495";
     String userid = "gunnargo_umuc15";
