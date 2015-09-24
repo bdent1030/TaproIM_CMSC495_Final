@@ -20,8 +20,22 @@ public class Shipment extends JFrame {
     String url = "jdbc:mysql://siteground324.com:3306/gunnargo_cmsc495";
     String userid = "gunnargo_umuc15";
     String password = "Ib7t5BRa74mTr0N9aS6";
-    String sql = "SELECT * FROM gunnargo_cmsc495.Shipment";
     Connection con;
+    
+    public boolean validShipID(int id) {
+        String sqlSelect = "SELECT id FROM gunnargo_cmsc495.Shipment WHERE id = " + id;
+        boolean success;
+        try {
+            con = DriverManager.getConnection(url, userid, password);
+            Statement stmt = con.createStatement();
+            success = stmt.execute(sqlSelect);
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println("not found");
+            return false; // find failed
+        }
+        return success;
+    }
     
     public boolean createShipment(ArrayList<String> info) {
         String shipID = "1"; // how are we generating our shipID?
@@ -32,9 +46,7 @@ public class Shipment extends JFrame {
         String dest = info.get(4);
         String weight = info.get(5);
         String count = info.get(6);
-        
         String custID = custEmail; // getCustomerId(custEmail);
-        
         String sqlCreate = "INSERT INTO gunnargo_cmsc495.Shipment "
                 + "(ShipID, ItemID, CustID, Destination, Location, Weight, NumItems) "
                 + "VALUES ('" + shipID + "', '" + itemID + "', '" + custID + "', '"
@@ -47,20 +59,20 @@ public class Shipment extends JFrame {
             con.close();
             return success;
         } catch (SQLException ex) {
-            System.out.println("It didn't work");
+            System.out.println("order was not created");
+            return false; // creation failed
         }
-        
-        return true;
     }
     
     
     
-
+    
     public Shipment()
     {
         this.setTitle("TAPRO-IM Shipment Table");
         ArrayList columnNames = new ArrayList();
         ArrayList data = new ArrayList();
+        String sql = "SELECT * FROM gunnargo_cmsc495.Shipment";
 
         // Try command to establish JDBC connection with above provided credentials
         try (Connection connection = DriverManager.getConnection( url, userid, password );
