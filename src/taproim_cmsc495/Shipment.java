@@ -43,7 +43,7 @@ public class Shipment extends JFrame {
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
-            boolean success = stmt.execute(sql);
+            boolean success = stmt.execute(sqlCreate);
             con.close();
             return success;
         } catch (SQLException ex) {
