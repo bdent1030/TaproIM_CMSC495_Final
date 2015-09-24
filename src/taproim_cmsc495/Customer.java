@@ -28,13 +28,7 @@ public class Customer extends JFrame {
     
     Connection con;
     
-    public Customer(){
-        this.custName = "";
-        this.custAddress = "";
-        this.custEmail = "";
-    }
-    
-    public Customer(String name, String address, String email){
+    public void addCustomerRecord(String name, String address, String email){
         this.custName = name;
         this.custAddress = address;
         this.custEmail = email;
@@ -44,8 +38,29 @@ public class Customer extends JFrame {
         
     }
     
-    public void retrieveCust(){
+    public HashMap retrieveCust(int custID){
+        HashMap results = new HashMap();
+        String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Customer WHERE id = " + custID;
         
+        try {
+                con = DriverManager.getConnection(url, userid, password);
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(sqlSelect);
+                int id = rs.getInt("CustID");
+                String name = rs.getString("Name");
+                String address = rs.getString("Address");
+                String email = rs.getString("E-mail");
+                results.put("CustID", id);
+                results.put("Name", name);
+                results.put("Address", address);
+                results.put("E-mail", email);
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Customer was not retrieved");
+            }
+        
+        
+        return results;
     }
     
     public boolean updateCustomer(ArrayList<String> info){
@@ -119,22 +134,8 @@ public class Customer extends JFrame {
         
         return result;
     }
-    
-    public boolean createSQLRecord(String querry){
-        
-        try {
-            con = DriverManager.getConnection(url, userid, password);
-            Statement stmt = con.createStatement();
-            boolean success = stmt.execute(querry);
-            con.close();
-            return success;
-        } catch (SQLException ex) {
-            System.out.println("Querry:\n" + querry +"\nfailed");
-            return false; // SQL querry failed
-        }
-    }
-    
-    public void showCustomerTable()
+  
+    public Customer()
     {
         this.setTitle("TAPRO-IM Customer Table");
         ArrayList columnNames = new ArrayList();

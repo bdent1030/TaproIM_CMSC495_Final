@@ -866,7 +866,6 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void viewCustomerTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerTableButtonActionPerformed
         Customer frame = new Customer();
-        frame.showCustomerTable();
         frame.pack();
         frame.setVisible(true);
         newShipmentPanel.setVisible(false);
