@@ -16,18 +16,24 @@ import javax.swing.*;
  * This pop-out simply displays SQL table information for Shipment
  */
 public class Shipment extends JFrame {
+    //  Establishing location, UID, password and sql command string
+    String url = "jdbc:mysql://siteground324.com:3306/gunnargo_cmsc495";
+    String userid = "gunnargo_umuc15";
+    String password = "Ib7t5BRa74mTr0N9aS6";
+    String sql = "SELECT * FROM gunnargo_cmsc495.Shipment";
+    
+    public void getShipID(int ID) {
+        
+    }
+    
+    
+    
 
     public Shipment()
     {
         this.setTitle("TAPRO-IM Shipment Table");
         ArrayList columnNames = new ArrayList();
         ArrayList data = new ArrayList();
-
-        //  Establishing location, UID, password and sql command string
-        String url = "jdbc:mysql://siteground324.com:3306/gunnargo_cmsc495";
-        String userid = "gunnargo_umuc15";
-        String password = "Ib7t5BRa74mTr0N9aS6";
-        String sql = "SELECT * FROM gunnargo_cmsc495.Shipment";
 
         // Try command to establish JDBC connection with above provided credentials
         try (Connection connection = DriverManager.getConnection( url, userid, password );
