@@ -21,9 +21,36 @@ public class Shipment extends JFrame {
     String userid = "gunnargo_umuc15";
     String password = "Ib7t5BRa74mTr0N9aS6";
     String sql = "SELECT * FROM gunnargo_cmsc495.Shipment";
+    Connection con;
     
-    public void getShipID(int ID) {
+    public boolean createShipment(ArrayList<String> info) {
+        String shipID = "1"; // how are we generating our shipID?
+        //String custName = info.get(0);
+        String custAdd = info.get(1);
+        String custEmail = info.get(2);
+        String itemID = info.get(3);
+        String dest = info.get(4);
+        String weight = info.get(5);
+        String count = info.get(6);
         
+        String custID = custEmail; // getCustomerId(custEmail);
+        
+        String sqlCreate = "INSERT INTO gunnargo_cmsc495.Shipment "
+                + "(ShipID, ItemID, CustID, Destination, Location, Weight, NumItems) "
+                + "VALUES ('" + shipID + "', '" + itemID + "', '" + custID + "', '"
+                + dest + "', '" + custAdd + "', '" + weight + "', '" + count + "')";
+        
+        try {
+            con = DriverManager.getConnection(url, userid, password);
+            Statement stmt = con.createStatement();
+            boolean success = stmt.execute(sql);
+            con.close();
+            return success;
+        } catch (SQLException ex) {
+            System.out.println("It didn't work");
+        }
+        
+        return true;
     }
     
     
