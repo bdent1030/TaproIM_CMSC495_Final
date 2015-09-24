@@ -14,8 +14,8 @@ import java.util.*;
 import javax.swing.table.AbstractTableModel;
 
 /**
- *
- * @author kakenyon32
+ * This class implements the abstract table model for updating user displays
+ * @author Dent, Gorder, Kenyon, Montoya, Ward
  */
 public class DisplayTableModel extends AbstractTableModel {
     ArrayList columnNames = new ArrayList();
@@ -27,6 +27,10 @@ public class DisplayTableModel extends AbstractTableModel {
     String password = "Ib7t5BRa74mTr0N9aS6";
     String sql = "SELECT * FROM gunnargo_cmsc495.";
     
+    /**
+     * Fires data updates in the table
+     * @param table the table to be displayed/updated
+     */
     public void SetData(String table) {
         String sqlAttempt = sql + table;
         try (Connection connection = DriverManager.getConnection(url,userid,password)) {
@@ -51,18 +55,22 @@ public class DisplayTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
     
+    /** @return the number of rows for the table */
     @Override public int getRowCount() {
         return data.size();
     }
-
+    /** @return the number of columns in the table */
     @Override public int getColumnCount() {
         return columnNames.size();
     }
-    
+    /** @index the particular index for the column name
+     *  @return the column names for the table */
     @Override public String getColumnName(int index) {
         return columnNames.get(index).toString();
     }
-
+    /** @rowIndex the row to be returned
+     *  @columnIndex the column to be returned
+     *  @return the values to be added to the table */
     @Override public Object getValueAt(int rowIndex, int columnIndex) {
         ArrayList<String> rows = new ArrayList<>();
         rows.addAll(data.get(rowIndex));

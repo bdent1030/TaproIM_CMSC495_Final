@@ -11,8 +11,8 @@ import java.util.*;
 import javax.swing.*;
 
 /**
- *
- * @author Spencer
+ * 
+ * @author Dent, Gorder, Kenyon, Montoya, Ward
  * This pop-out simply displays SQL table information for Shipment
  */
 public class Shipment extends JFrame {
