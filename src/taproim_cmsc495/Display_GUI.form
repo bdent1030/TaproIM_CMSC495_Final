@@ -224,45 +224,54 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="0" width="710" height="340"/>
+              <AbsoluteConstraints x="10" y="0" width="710" height="410"/>
             </Constraint>
           </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="shipmentIDLabel" max="32767" attributes="0"/>
-                          <Component id="customerEmailLabel" max="32767" attributes="0"/>
-                          <Component id="destinationLabel" max="32767" attributes="0"/>
-                          <Component id="itemWeightButton" max="32767" attributes="0"/>
-                          <Component id="itemCountButton" max="32767" attributes="0"/>
-                          <Component id="itemIDButton" max="32767" attributes="0"/>
-                          <Component id="customerAddressButton" pref="330" max="32767" attributes="0"/>
-                          <Component id="customerIDLabel" max="32767" attributes="0"/>
-                          <Component id="customerNameLabel" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="submitButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="clearAllButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="notificationLabel" min="-2" pref="178" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="shipmentIDLabel" max="32767" attributes="0"/>
+                                  <Component id="customerEmailLabel" max="32767" attributes="0"/>
+                                  <Component id="destinationLabel" max="32767" attributes="0"/>
+                                  <Component id="itemWeightButton" max="32767" attributes="0"/>
+                                  <Component id="itemCountButton" max="32767" attributes="0"/>
+                                  <Component id="itemIDButton" max="32767" attributes="0"/>
+                                  <Component id="customerAddressButton" pref="330" max="32767" attributes="0"/>
+                                  <Component id="customerNameLabel" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="customerNameField" max="32767" attributes="0"/>
+                                  <Component id="customerAddressField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="itemIDField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="itemCountField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="destinationField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="customerEmailField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="itemWeightField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="shipmentIDField" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="customerNameField" max="32767" attributes="0"/>
-                          <Component id="customerIDField" max="32767" attributes="0"/>
-                          <Component id="customerAddressField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="itemIDField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="itemCountField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="destinationField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="customerEmailField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="itemWeightField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="shipmentIDField" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="customerIDLabel" min="-2" pref="330" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="submitButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="clearAllButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="notificationLabel" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="customerIDField" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -271,50 +280,50 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="customerNameField" min="-2" max="-2" attributes="0"/>
-                          <Component id="customerNameLabel" min="-2" pref="16" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="customerIDField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="customerIDLabel" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="customerNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="customerNameLabel" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="customerAddressButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="customerAddressField" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="customerAddressField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="customerAddressButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="customerEmailLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="customerEmailField" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="customerEmailField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="customerEmailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="itemIDField" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemIDButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="itemIDField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="itemIDButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="destinationField" min="-2" max="-2" attributes="0"/>
+                          <Component id="destinationLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="destinationLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="destinationField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="itemWeightButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="itemWeightField" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="itemWeightField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="itemWeightButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="itemCountButton" min="-2" pref="16" max="-2" attributes="0"/>
                           <Component id="itemCountField" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="shipmentIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="shipmentIDField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="shipmentIDLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="shipmentIDField" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="customerIDLabel" min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="customerIDField" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -324,7 +333,7 @@
                           </Group>
                           <Component id="notificationLabel" min="-2" pref="14" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="81" max="32767" attributes="0"/>
+                      <EmptySpace pref="139" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -346,9 +355,13 @@
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Customer ID:"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="customerIDField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="customerAddressButton">
               <Properties>
@@ -448,9 +461,13 @@
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Shipment ID:"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="shipmentIDField">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
