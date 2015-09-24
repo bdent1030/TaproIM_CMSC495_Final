@@ -19,7 +19,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class DisplayTableModel extends AbstractTableModel {
     ArrayList columnNames = new ArrayList();
-    ArrayList data = new ArrayList();
+    ArrayList<ArrayList> data = new ArrayList<>();
     
     //  Establishing location, UID, password and sql command string
     String url = "jdbc:mysql://siteground324.com:3306/gunnargo_cmsc495";
@@ -29,20 +29,19 @@ public class DisplayTableModel extends AbstractTableModel {
     
     public void SetData(String table) {
         String sqlAttempt = sql + table;
-        try (Connection connection = DriverManager.getConnection( url, userid, password );
+        try (Connection connection = DriverManager.getConnection(url,userid,password)) {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sqlAttempt))
-        {
+            ResultSet rs = stmt.executeQuery(sqlAttempt);
             ResultSetMetaData md = rs.getMetaData();
             int columns = md.getColumnCount();
 
             //  Get column names
             for (int i = 1; i <= columns; i++) columnNames.add(md.getColumnName(i));
-
-            //  Get row data
+            
+            // populate the rows
             while (rs.next()){
-                ArrayList row = new ArrayList(columns);
-                for (int i = 1; i <= columns; i++) row.add(rs.getObject(i));
+                ArrayList<String> row = new ArrayList<>();
+                for (int i = 1; i <= columns; i++) row.add(rs.getString(i));
                 data.add(row);
             }
         } catch (SQLException e) { 
@@ -65,10 +64,8 @@ public class DisplayTableModel extends AbstractTableModel {
     }
 
     @Override public Object getValueAt(int rowIndex, int columnIndex) {
-        Object row = data.get(rowIndex);
-        for (int i = 0; i < getColumnCount(); i++) {
-            if (row != null) return row.getClass();
-        }
-        return Object.class;
+        ArrayList<String> rows = new ArrayList<>();
+        rows.addAll(data.get(rowIndex));
+        return rows.get(columnIndex);
     }
 }
