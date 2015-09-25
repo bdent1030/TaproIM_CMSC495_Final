@@ -101,9 +101,8 @@ public class Customer extends JFrame {
             try {
                 con = DriverManager.getConnection(url, userid, password);
                 Statement stmt = con.createStatement();
-                result = stmt.execute(sqlSelect);
+                return stmt.execute(sqlSelect);
                 con.close();
-                result = true; // careful here, I think you just want to return line 104
             } catch (SQLException ex) {
                 System.out.println("Customer ID: " + custID +"not found");
                 return false; // find failed
