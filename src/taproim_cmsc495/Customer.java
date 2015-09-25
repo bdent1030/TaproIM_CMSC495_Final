@@ -101,11 +101,11 @@ public class Customer extends JFrame {
             try {
                 con = DriverManager.getConnection(url, userid, password);
                 Statement stmt = con.createStatement();
-                return stmt.execute(sqlSelect);
+                result = stmt.execute(sqlSelect);
                 con.close();
             } catch (SQLException ex) {
                 System.out.println("Customer ID: " + custID +"not found");
-                return false; // find failed
+                result = false; // find failed
             }
         }
         
