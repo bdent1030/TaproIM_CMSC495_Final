@@ -103,10 +103,9 @@ public class Customer extends JFrame {
                 Statement stmt = con.createStatement();
                 result = stmt.execute(sqlSelect);
                 con.close();
-                result = true;
             } catch (SQLException ex) {
                 System.out.println("Customer ID: " + custID +"not found");
-                return false; // find failed
+                result = false; // find failed
             }
         }
         
