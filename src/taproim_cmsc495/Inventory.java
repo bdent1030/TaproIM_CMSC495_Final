@@ -13,17 +13,18 @@ import javax.swing.*;
 /**
  *
  * @author Spencer
- * This pop-out simply displays SQL table information for Inventory
+ * This pop-out simply displays SQL table information for Inventory here
  */
 public class Inventory extends JFrame {
    
     //private variable associated with inventory objects
     private String itemName;
-    private String category;
-    private String vendor;
-    private int vendorInventory;
-    private float vendorPrice;
+    private String description;
+    private int quantity;
+    private double price;
+    
 
+    
     public Inventory()
     {
         this.setTitle("TAPRO-IM Inventory Table");
@@ -35,6 +36,7 @@ public class Inventory extends JFrame {
         String userid = "gunnargo_umuc15";
         String password = "Ib7t5BRa74mTr0N9aS6";
         String sql = "SELECT * FROM gunnargo_cmsc495.Inventory";
+        Connection con;
 
         // Try command to establish JDBC connection with above provided credentials
         try (Connection connection = DriverManager.getConnection( url, userid, password );
@@ -108,45 +110,77 @@ public class Inventory extends JFrame {
         JPanel buttonPanel = new JPanel();
         getContentPane().add( buttonPanel, BorderLayout.SOUTH );
     }
+    
+    //default constructor  
+    public void setItem() {
+        itemName = "No name given";
+        description = "No description given";
+        quantity = 0;
+        price = 0.00;
+    }
+       
+    //non default constructor
+    public void setItem(String name, String desc, int amount, float value) {
+        itemName = name;
+        description = desc;
+        quantity = amount;
+        price = value;
+    }
+           
+    
     //setter for itemName
-    public void setItemName(String data) {
-        itemName = data;
+    public void setItemName(String newName) {
+        itemName = newName;
     }
+        
     //setter for category
-    public void setCategory(String data) {
-        category = data;
+    public void setDescription(String newDescription) {
+        description = newDescription;
     }
+    
     //setter for vendorInventory
-    public void setVendorInventory(int data) {
-        vendorInventory = data;
+    public void setQuantity(int newQuantity) {
+        if(newQuantity>0){
+            quantity = newQuantity;
+        }
+        else{
+            quantity = 0;
+        }
     }
-    //setter for vendor
-    public void setVendor(String data) {
-        vendor = data;
-    }
+
     //setter for vendorPrice
-    public void setVendorPrice(float data) {
-        vendorPrice = data;
+    public void setPrice(float newPrice) {
+        if(newPrice >0.00){
+            price = newPrice;
+        }
+        else{
+            price = 0.00;
+        }
     }
+    
     //getter for itemName
     public String getItemName() {
         return itemName;
     }
+    
     //getter for category
-    public String getCategory() {
-        return category;
+    public String getDescription() {
+        return description;
     }
+    
     //getter for vendorInventory
-    public int getVendorInventory() {
-        return vendorInventory;
+    public int getQuantity() {
+        return quantity;
     }
-    //getter for vendor
-    public String getVendor() {
-        return vendor;
-    }
+   
     //getter for vendorPrice
-    public float getVendorPrice() {
-        return vendorPrice;
+    public double getPrice() {
+        return price;
+    }
+    
+    //getter for value of item
+    public double getItemValue(){
+        return(price *(double)quantity);
     }
     
     
