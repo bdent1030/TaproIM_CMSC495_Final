@@ -28,15 +28,46 @@ public class Customer extends JFrame {
     
     Connection con;
     
-    public void addCustomerRecord(String name, String address, String email){
-        this.custName = name;
-        this.custAddress = address;
-        this.custEmail = email;
+    public boolean addCustomerRecord(ArrayList<String> info){
+        
+        String id = info.get(0);
+        String name = info.get(1);
+        String address = info.get(2);
+        String email = info.get(3);
+        
+        boolean result = false;
+        
+        if(custExists(custID)){
+            String sqlCreate = "INSERT INTO gunnargo_cmsc495.Customer SET "
+                    + " CustID = " + id
+                    + ", Name = " + name
+                    + ", Address = " + address
+                    + ", E-mail = " + email + ";";
+        
+            try {
+                con = DriverManager.getConnection(url, userid, password);
+                Statement stmt = con.createStatement();
+                boolean success = stmt.execute(sqlCreate);
+                con.close();
+                return success;
+            } catch (SQLException ex) {
+                System.out.println("Customer was not updated");
+                return false; // creation failed
+            }
+        }
+        
+        return result;
+    
+    
+//        this.custName = name;
+//        this.custAddress = address;
+//        this.custEmail = email;
+        
     }
     
     public HashMap retrieveCust(int custID){
         HashMap results = new HashMap();
-        String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Customer WHERE id = " + custID;
+        String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Customer WHERE id = " + custID + ";";
         
         try {
                 con = DriverManager.getConnection(url, userid, password);
@@ -69,11 +100,11 @@ public class Customer extends JFrame {
         boolean result = false;
         
         if(custExists(custID)){
-            String sqlCreate = "UPDATE SET "
+            String sqlCreate = "UPDATE gunnargo_cmsc495.Customer SET "
                     + "Name = " + name
                     + " Address = " + address
                     + " E-mail = " + email
-                    + " WHERE CustID = " + id;
+                    + " WHERE CustID = " + id + ";";
         
             try {
                 con = DriverManager.getConnection(url, userid, password);
@@ -96,7 +127,7 @@ public class Customer extends JFrame {
             
         if(custExists(custID)){
 
-            String sqlSelect = "DELETE id FROM gunnargo_cmsc495.Customer WHERE id = " + custID;
+            String sqlSelect = "DELETE id FROM gunnargo_cmsc495.Customer WHERE id = " + custID + ";";
 
             try {
                 con = DriverManager.getConnection(url, userid, password);
@@ -115,7 +146,7 @@ public class Customer extends JFrame {
     public boolean custExists(String id){
         boolean result;
         
-        String sqlSelect = "SELECT id FROM gunnargo_cmsc495.Customer WHERE id = " + id;
+        String sqlSelect = "SELECT id FROM gunnargo_cmsc495.Customer WHERE id = " + id + ";";
 
         try {
             con = DriverManager.getConnection(url, userid, password);
@@ -137,7 +168,7 @@ public class Customer extends JFrame {
         ArrayList data = new ArrayList();
 
         
-        String sql = "SELECT * FROM gunnargo_cmsc495.Customer";
+        String sql = "SELECT * FROM gunnargo_cmsc495.Customer;";
 
         // Try command to establish JDBC connection with above provided credentials
         try (Connection connection = DriverManager.getConnection( url, userid, password );

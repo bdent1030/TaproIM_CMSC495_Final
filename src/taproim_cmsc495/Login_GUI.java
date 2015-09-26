@@ -11,9 +11,9 @@ import javax.swing.JFrame;
 
 
 public class Login_GUI extends javax.swing.JFrame {
-    
-private String username = "Employee495";
-private char[] password = {'T','a','p','r','o','4','9','5'};
+//TODO: Add password and username back in, removed for testing    
+private String username = "";
+private char[] password = {};
     /**
      * Creates new form Login_GUI
      */
