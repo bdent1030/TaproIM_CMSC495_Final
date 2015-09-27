@@ -51,7 +51,23 @@ public class Shipment extends JFrame {
         return success;
     }
     
-    public HashMap<String, String> findShipment(String id) {
+    public boolean findShipment(String id) {
+        String sqlQ = "SELECT ShipID FROM gunnargo_cmsc495.Shipment WHERE ShipID = '" + id.trim() + "'";
+        boolean success;
+        try {
+            con = DriverManager.getConnection(url, userid, password);
+            Statement stmt = con.createStatement();
+            success = stmt.execute(sqlQ);
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            success = false;
+        }
+        
+        return success;
+    }
+    
+    public HashMap<String, String> getShipment(String id) {
         String sqlQ = "SELECT ShipID FROM gunnargo_cmsc495.Shipment WHERE ShipID = '" + id.trim() + "'";
         HashMap<String, String> data = new HashMap<>();
         

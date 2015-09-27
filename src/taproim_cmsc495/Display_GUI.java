@@ -1058,12 +1058,30 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_updateCustomerButtonFinalActionPerformed
 
     private void updateShipmentButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateShipmentButtonFinalActionPerformed
+        notificationShipmentUpdateLabel.setText("");
         //code to check all fields are valid
         
         //if all fields are not valid, display error message to employee
         //notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         
         //code to submit updated data to the database
+        HashMap<String, String> updates = new HashMap<>();
+        updates.put("ShipID", shipmentIDUpdateField.getText());
+        updates.put("ItemID", itemIDUpdateShipmentField.getText());
+        updates.put("CustID", customerIDUpdateShipmentField.getText());
+        updates.put("Destination", itemDestinationUpdateShipmentField.getText());
+        updates.put("Location", itemLocationUpdateShipmentField.getText());
+        updates.put("Weight", itemWeightUpdateShipmentField.getText());
+        updates.put("NumItems", itemCountUpdateShipmentField.getText());
+        updates.put("TrackingNum", trackingNumberUpdateShipmentField.getText());
+        updates.put("Carrier", carrierUpdateShipmentField.getText());
+        updates.put("Signer", signerUpdateShipmentField.getText());
+        
+        Shipment updateShipment = new Shipment();
+        if (!updateShipment.updateShipment(updates)) {
+            notificationCustomerUpdateLabel.setText("Shipment not updated");
+            return;
+        }
         
         //clear fields and disable fields/buttons
         shipmentIDUpdateField.setText("");
@@ -1132,7 +1150,7 @@ public class Display_GUI extends javax.swing.JFrame {
             return;
         }else{
             int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
-                    + "delet customer with id = " + custID ,"Delete Customer?", 
+                    + "delete customer with id = " + custID ,"Delete Customer?", 
                     JOptionPane.OK_CANCEL_OPTION);
             if(n == JOptionPane.OK_OPTION){
                 cust.deleteCustomer(custID);
@@ -1175,12 +1193,11 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void searchUpdateShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUpdateShipmentButtonActionPerformed
         //code to check search field is valid
-        
-        
-        
-        //if search field is not valid, display error message to employee
-        //notificationShippingUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
-        
+        Shipment searchShipments = new Shipment();
+        String id = shipmentIDUpdateField.getText();
+        if (!searchShipments.findShipment(id)) {
+            notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        }
         
         //if search field is valid, enable and populate associated fields/buttons to update information
         shipmentIDUpdateField.setEnabled(true);
@@ -1195,6 +1212,17 @@ public class Display_GUI extends javax.swing.JFrame {
         signerUpdateShipmentField.setEnabled(true);
         updateShipmentButtonFinal.setEnabled(true);
         deleteShipmentButton.setEnabled(true);
+        
+        HashMap<String, String> results = searchShipments.getShipment(id);
+        itemIDUpdateShipmentField.setText(results.get("ItemID"));
+        customerIDUpdateShipmentField.setText(results.get("CustID"));
+        itemDestinationUpdateShipmentField.setText(results.get("Destination"));
+        itemLocationUpdateShipmentField.setText(results.get("Location"));
+        itemWeightUpdateShipmentField.setText(results.get("Weight"));
+        itemCountUpdateShipmentField.setText(results.get("NumItems"));
+        trackingNumberUpdateShipmentField.setText(results.get("TrackingNum"));
+        carrierUpdateShipmentField.setText(results.get("Carrier"));
+        signerUpdateShipmentField.setText(results.get("Signer"));
     }//GEN-LAST:event_searchUpdateShipmentButtonActionPerformed
 
     private void deleteShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteShipmentButtonActionPerformed
@@ -1204,6 +1232,17 @@ public class Display_GUI extends javax.swing.JFrame {
         //notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         
         //if all fields are valid, code to delete data from the database
+        String id = shipmentIDUpdateField.getText();
+        Shipment delShipment = new Shipment();
+        
+        int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
+                    + "delete the shipment with id = " + id.trim() ,"Delete shipment?", 
+                    JOptionPane.OK_CANCEL_OPTION);
+        if(n == JOptionPane.OK_OPTION){
+            delShipment.deleteShipment(id);
+        }else if(n == JOptionPane.CANCEL_OPTION){
+            return;
+        }
         
         //clear fields and disable fields/buttons
         shipmentIDUpdateField.setText("");
