@@ -10,11 +10,11 @@ import java.sql.Statement;
 import java.util.*;
 import javax.swing.*;
 
-/**
- *
- * @author Spencer
- * This pop-out simply displays SQL table information for Customers
- */
+//Gunar Gorder, Brandon Dent, Frank Montoya, Kent Kenyon, Spencer Ward
+//TAMPROW IM FINAL PROJECT
+//CMSC 495 6380
+//9-27-15
+//Customer.java
 public class Customer extends JFrame {
     //  Establishing location, UID, password and sql command string
     String url = "jdbc:mysql://siteground324.com:3306/gunnargo_cmsc495";
