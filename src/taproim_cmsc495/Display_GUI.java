@@ -820,13 +820,24 @@ public class Display_GUI extends javax.swing.JFrame {
         updateShipmentPanel.setVisible(false);
     }//GEN-LAST:event_newShipmentButtonActionPerformed
 
-    private void updateInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateInventoryButtonActionPerformed
+    private void updateInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         //set updateInventoryPanel visible
         newShipmentPanel.setVisible(false);
         updateInventoryPanel.setVisible(true);
         updateCustomerPanel.setVisible(false);
         updateShipmentPanel.setVisible(false);
-    }//GEN-LAST:event_updateInventoryButtonActionPerformed
+        
+        notificationInventoryUpdateLabel.setText("");        
+        itemIDUpdateField.setText("");
+        itemWeightUpdateField.setText("");
+        itemStockLevelUpdateField.setText("");
+        itemIDUpdateField.setText("");
+        itemWeightUpdateField.setEnabled(false);
+        itemStockLevelUpdateField.setEnabled(false);
+        itemDescriptionUpdateField.setEnabled(false);
+        updateInventoryButtonFinal.setEnabled(false);
+        deleteInventoryButton.setEnabled(false);
+    } //GEN-LAST:event_updateInventoryButtonActionPerformed
 
     private void updateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerButtonActionPerformed
         //set updateCustomerPanel visible
@@ -960,19 +971,43 @@ public class Display_GUI extends javax.swing.JFrame {
         notificationLabel.setText("ALL FIELDS CLEARED!");
     }//GEN-LAST:event_clearAllButtonActionPerformed
 
-    private void updateInventoryButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateInventoryButtonFinalActionPerformed
-       //code to check all fields are valid
+    private void updateInventoryButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {                                                           
+        notificationShipmentUpdateLabel.setText("");
+        //code to check all fields are valid
         
         //if all fields are not valid, display error message to employee
-        //notificationInventoryUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        //notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         
         //code to submit updated data to the database
+        String item = itemIDUpdateField.getText();
+        String desc = itemIDUpdateField.getText();
+        String amount = itemStockLevelUpdateField.getText();
+        String value = itemWeightUpdateField.getText();
+
+        
+        Inventory update = new Inventory();
+        if (!update.itemExists(item)) {
+            notificationCustomerUpdateLabel.setText("Item not updated");
+            return;
+        }
+        
+                
+        ArrayList<String> itemInfo = new ArrayList<String>();        
+        itemInfo.add(item);
+        itemInfo.add(desc);
+        itemInfo.add(amount);
+        itemInfo.add(value);
+        
+        if(!update.updateItem(itemInfo)){
+            notificationCustomerUpdateLabel.setText("Item not updated!");
+            return;
+        }
         
         //clear fields and disable fields/buttons
         itemIDUpdateField.setText("");
         itemWeightUpdateField.setText("");
         itemStockLevelUpdateField.setText("");
-        itemDescriptionUpdateField.setText("");
+        itemIDUpdateField.setText("");
         itemWeightUpdateField.setEnabled(false);
         itemStockLevelUpdateField.setEnabled(false);
         itemDescriptionUpdateField.setEnabled(false);
@@ -980,13 +1015,31 @@ public class Display_GUI extends javax.swing.JFrame {
         deleteInventoryButton.setEnabled(false);
         //display notification to the employee that data was successfully updated
         notificationInventoryUpdateLabel.setText("SUCCESSFULLY UPDATED!");
-    }//GEN-LAST:event_updateInventoryButtonFinalActionPerformed
+    } //GEN-LAST:event_updateInventoryButtonFinalActionPerformed
 
-    private void deleteInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteInventoryButtonActionPerformed
+    private void deleteInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         //code to check all fields are valid
         
+        Inventory item = new Inventory();
+        String itemID = itemIDUpdateField.getText();
         //if all fields are not valid, display error message to employee
         //notificationInventoryUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        
+        
+        if(!item.itemExists(itemID)){
+            notificationInventoryUpdateLabel.setText("Item not found.");
+            return;
+        }
+        else{
+            int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
+                    + "delete item with id = " + itemID ,"Delete item?", 
+                    JOptionPane.OK_CANCEL_OPTION);
+            if(n == JOptionPane.OK_OPTION){
+                item.deleteItem(itemID);
+            }else if(n == JOptionPane.CANCEL_OPTION){
+                return;
+            }
+        }
         
         //if all fields are valid, code to delete data from the database
         
@@ -1002,7 +1055,7 @@ public class Display_GUI extends javax.swing.JFrame {
         deleteInventoryButton.setEnabled(false);
         //display notification to the employee that data was successfully deleted
         notificationInventoryUpdateLabel.setText("SUCCESSFULLY DELETED!");
-    }//GEN-LAST:event_deleteInventoryButtonActionPerformed
+    } //GEN-LAST:event_deleteInventoryButtonActionPerformed
 
     private void updateCustomerButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerButtonFinalActionPerformed
         
