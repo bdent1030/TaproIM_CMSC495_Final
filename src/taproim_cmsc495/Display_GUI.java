@@ -1,7 +1,7 @@
 //Gunar Gorder, Brandon Dent, Frank Montoya, Kent Kenyon, Spencer Ward
 //TAMPROW IM FINAL PROJECT
 //CMSC 495 6380
-//9-5-15
+//9-27-15
 //Display_GUI.java
 package taproim_cmsc495;
 
@@ -10,10 +10,7 @@ import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 
-/**
- *
- * @author Brandon
- */
+
 public class Display_GUI extends javax.swing.JFrame {
 
     /**
