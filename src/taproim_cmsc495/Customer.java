@@ -28,21 +28,26 @@ public class Customer extends JFrame {
     
     Connection con;
     
+    public Customer(){
+        
+        
+        
+    }
+    
     public boolean addCustomerRecord(ArrayList<String> info){
         
-        String id = info.get(0);
-        String name = info.get(1);
-        String address = info.get(2);
-        String email = info.get(3);
+        //String id = info.get(0);
+        String name = info.get(0);
+        String address = info.get(1);
+        String email = info.get(2);
         
         boolean result = false;
         
         if(custExists(custID)){
             String sqlCreate = "INSERT INTO gunnargo_cmsc495.Customer SET "
-                    + " CustID = " + id
-                    + ", Name = " + name
+                    + " Name = " + name
                     + ", Address = " + address
-                    + ", E-mail = " + email + ";";
+                    + ", Email = " + email + ";";
         
             try {
                 con = DriverManager.getConnection(url, userid, password);
@@ -65,25 +70,28 @@ public class Customer extends JFrame {
         
     }
     
-    public HashMap retrieveCust(int custID){
-        HashMap results = new HashMap();
-        String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Customer WHERE id = " + custID + ";";
+    public HashMap retrieveCust(String custID){
+        HashMap<String, String> results = new HashMap<String, String>();
+        String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Customer WHERE CustID = " + custID + ";";
         
         try {
                 con = DriverManager.getConnection(url, userid, password);
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(sqlSelect);
-                int id = rs.getInt("CustID");
-                String name = rs.getString("Name");
-                String address = rs.getString("Address");
-                String email = rs.getString("E-mail");
-                results.put("CustID", id);
-                results.put("Name", name);
-                results.put("Address", address);
-                results.put("E-mail", email);
+                if(rs.next()){
+                    int id = rs.getInt("CustID");
+                    String name = rs.getString("Name");
+                    String address = rs.getString("Address");
+                    String email = rs.getString("Email");
+                    results.put("CustID", id +"");
+                    results.put("Name", name);
+                    results.put("Address", address);
+                    results.put("Email", email);
+                }
                 con.close();
             } catch (SQLException ex) {
                 System.out.println("Customer was not retrieved");
+                System.out.println(ex);
             }
         
         
@@ -97,56 +105,55 @@ public class Customer extends JFrame {
         String address = info.get(2);
         String email = info.get(3);
         
-        boolean result = false;
         
-        if(custExists(custID)){
+        
+        
             String sqlCreate = "UPDATE gunnargo_cmsc495.Customer SET "
-                    + "Name = " + name
-                    + " Address = " + address
-                    + " E-mail = " + email
-                    + " WHERE CustID = " + id + ";";
+                    + "Name = '" + name
+                    + "', Address = '" + address
+                    + "', Email = '" + email
+                    + "' WHERE CustID = " + id.trim() + ";";
         
             try {
                 con = DriverManager.getConnection(url, userid, password);
                 Statement stmt = con.createStatement();
-                boolean success = stmt.execute(sqlCreate);
+                stmt.execute(sqlCreate);
                 con.close();
-                return success;
+                return true;
             } catch (SQLException ex) {
                 System.out.println("Customer was not updated");
+                System.out.println(ex);
                 return false; // creation failed
             }
-        }
         
-        return result;
+        
+        
     }
     
-    public boolean deleteCustomer(String custID){
-        this.custID = custID;
-        boolean result = false;
-            
-        if(custExists(custID)){
+    public boolean deleteCustomer(String custID){          
+        
 
-            String sqlSelect = "DELETE id FROM gunnargo_cmsc495.Customer WHERE id = " + custID + ";";
+        String sqlSelect = "DELETE FROM gunnargo_cmsc495.Customer WHERE CustID =" + custID.trim() + ";";
 
-            try {
-                con = DriverManager.getConnection(url, userid, password);
-                Statement stmt = con.createStatement();
-                result = stmt.execute(sqlSelect);
-                con.close();
-            } catch (SQLException ex) {
-                System.out.println("Customer ID: " + custID +"not found");
-                result = false; // find failed
-            }
+        try {
+            con = DriverManager.getConnection(url, userid, password);
+            Statement stmt = con.createStatement();
+            stmt.execute(sqlSelect);
+            con.close();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Customer ID: " + custID +" not found");
+            return false; // find failed
         }
         
-        return result;
+        
+        
     }
     
     public boolean custExists(String id){
         boolean result;
         
-        String sqlSelect = "SELECT id FROM gunnargo_cmsc495.Customer WHERE id = " + id + ";";
+        String sqlSelect = "SELECT CustID FROM gunnargo_cmsc495.Customer WHERE CustID = " + id.trim() + ";";
 
         try {
             con = DriverManager.getConnection(url, userid, password);
@@ -154,14 +161,14 @@ public class Customer extends JFrame {
             result = stmt.execute(sqlSelect);
             con.close();
         } catch (SQLException ex) {
-            System.out.println("Customer ID: " + id +"not found");
+            System.out.println("Customer ID: " + id +" not found");
             return false; // find failed
         }
         
         return result;
     }
   
-    public Customer()
+    public void showCustomerTable()
     {
         this.setTitle("TAPRO-IM Customer Table");
         ArrayList columnNames = new ArrayList();
