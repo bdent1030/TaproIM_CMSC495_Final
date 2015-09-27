@@ -10,11 +10,11 @@ import java.sql.Statement;
 import java.util.*;
 import javax.swing.*;
 
-/**
- *
- * @author Spencer
- * This pop-out simply displays SQL table information for Inventory here
- */
+//Gunar Gorder, Brandon Dent, Frank Montoya, Kent Kenyon, Spencer Ward
+//TAMPROW IM FINAL PROJECT
+//CMSC 495 6380
+//9-27-15
+//Inventory.java
 public class Inventory extends JFrame {
    
     //private variable associated with inventory objects
