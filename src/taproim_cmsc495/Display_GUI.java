@@ -871,6 +871,7 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void viewShipmentTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewShipmentTableButtonActionPerformed
         Shipment frame = new Shipment();
+        frame.showShipmentInfo();
         frame.pack();
         frame.setVisible(true);
         newShipmentPanel.setVisible(false);
@@ -906,17 +907,12 @@ public class Display_GUI extends javax.swing.JFrame {
         String itemWeight = itemWeightField.getText();
         String itemCount = itemCountField.getText();
         
-        // test for customer?? get customer ID??
-        
-        String custID = "1";
-        
         //if all fields are not valid, display error message to employee
         //notificationLabel.setText("INVALID DATA! TRY AGAIN!");
         
         //code to submit all data to the database
         ArrayList<String> info = new ArrayList<>();
         info.add(itemID);
-        info.add(custID);
         info.add(destination);
         info.add(itemWeight);
         info.add(itemCount);
@@ -1066,7 +1062,7 @@ public class Display_GUI extends javax.swing.JFrame {
         
         //code to submit updated data to the database
         HashMap<String, String> updates = new HashMap<>();
-        updates.put("ShipID", shipmentIDUpdateField.getText());
+        String id = shipmentIDUpdateField.getText();
         updates.put("ItemID", itemIDUpdateShipmentField.getText());
         updates.put("CustID", customerIDUpdateShipmentField.getText());
         updates.put("Destination", itemDestinationUpdateShipmentField.getText());
@@ -1078,7 +1074,7 @@ public class Display_GUI extends javax.swing.JFrame {
         updates.put("Signer", signerUpdateShipmentField.getText());
         
         Shipment updateShipment = new Shipment();
-        if (!updateShipment.updateShipment(updates)) {
+        if (!updateShipment.updateShipment(updates, id)) {
             notificationCustomerUpdateLabel.setText("Shipment not updated");
             return;
         }
@@ -1195,6 +1191,7 @@ public class Display_GUI extends javax.swing.JFrame {
         //code to check search field is valid
         Shipment searchShipments = new Shipment();
         String id = shipmentIDUpdateField.getText();
+        System.out.println("Searching for: " + id);
         if (!searchShipments.findShipment(id)) {
             notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         }
@@ -1213,7 +1210,7 @@ public class Display_GUI extends javax.swing.JFrame {
         updateShipmentButtonFinal.setEnabled(true);
         deleteShipmentButton.setEnabled(true);
         
-        HashMap<String, String> results = searchShipments.getShipment(id);
+        HashMap<String, String> results = searchShipments.getShipment(id);        
         itemIDUpdateShipmentField.setText(results.get("ItemID"));
         customerIDUpdateShipmentField.setText(results.get("CustID"));
         itemDestinationUpdateShipmentField.setText(results.get("Destination"));
