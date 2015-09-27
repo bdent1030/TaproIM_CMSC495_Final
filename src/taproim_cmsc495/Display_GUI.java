@@ -6,7 +6,9 @@
 package taproim_cmsc495;
 
 import java.awt.Color;
-import java.util.ArrayList;
+import java.util.*;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
@@ -835,6 +837,18 @@ public class Display_GUI extends javax.swing.JFrame {
         updateInventoryPanel.setVisible(false);
         updateCustomerPanel.setVisible(true);
         updateShipmentPanel.setVisible(false);
+        
+        //clear fields and disable fields/buttons
+        notificationCustomerUpdateLabel.setText("");
+        customerIDCustomerUpdateField.setText("");
+        customerNameUpdateField.setText("");
+        customerAddressUpdateField.setText("");
+        customerEmailUpdateField.setText("");
+        customerNameUpdateField.setEnabled(false);
+        customerAddressUpdateField.setEnabled(false);
+        customerEmailUpdateField.setEnabled(false);
+        updateCustomerButtonFinal.setEnabled(false);
+        deleteCustomerButton.setEnabled(false);
     }//GEN-LAST:event_updateCustomerButtonActionPerformed
 
     private void updateShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateShipmentButtonActionPerformed
@@ -867,6 +881,7 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void viewCustomerTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerTableButtonActionPerformed
         Customer frame = new Customer();
+        frame.showCustomerTable();
         frame.pack();
         frame.setVisible(true);
         newShipmentPanel.setVisible(false);
@@ -909,6 +924,17 @@ public class Display_GUI extends javax.swing.JFrame {
         Shipment newShip = new Shipment();
         if (!newShip.newShipment(info)) {
             notificationLabel.setText("SHIPMENT NOT ADDED");
+            return;
+        }
+        
+        ArrayList<String> custInfo = new ArrayList<>();
+        custInfo.add(custName);
+        custInfo.add(address);
+        custInfo.add(email);
+        
+        Customer newCust = new Customer();
+        if (!newCust.addCustomerRecord(custInfo)) {
+            notificationLabel.setText("CUSTOMER NOT ADDED");
             return;
         }
         
@@ -986,12 +1012,36 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteInventoryButtonActionPerformed
 
     private void updateCustomerButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerButtonFinalActionPerformed
+        
+        notificationCustomerUpdateLabel.setText(" ");
+
         //code to check all fields are valid
+        String id = customerIDCustomerUpdateField.getText();
+        String name = customerNameUpdateField.getText();
+        String address = customerAddressUpdateField.getText();
+        String email = customerEmailUpdateField.getText();
+        
+        
         
         //if all fields are not valid, display error message to employee
         //notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         
-        //code to submit updated data to the database
+        //code to submit updated data to the database  
+        Customer cust = new Customer();
+        if(!cust.custExists(id)){
+            notificationCustomerUpdateLabel.setText("Customer ID not found!");
+            return;
+        }
+        ArrayList<String> custInfo = new ArrayList<String>();        
+        custInfo.add(id);
+        custInfo.add(name);
+        custInfo.add(address);
+        custInfo.add(email);
+        
+        if(!cust.updateCustomer(custInfo)){
+            notificationCustomerUpdateLabel.setText("Customer not updated!");
+            return;
+        }
         
         //clear fields and disable fields/buttons
         customerIDCustomerUpdateField.setText("");
@@ -1043,28 +1093,54 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void searchUpdateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUpdateCustomerButtonActionPerformed
         //code to check search field is valid
-        
-        
-        
+        String custID = customerIDCustomerUpdateField.getText();
+        Customer cust = new Customer();
+        HashMap<String, String> custInfo = new HashMap();
         //if search field is not valid, display error message to employee
         //notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
-        
+        if(!cust.custExists(custID)){
+            notificationCustomerUpdateLabel.setText("Customer not found!");
+            return;
+        }else{
+            custInfo = cust.retrieveCust(custID);
+        }
         
         //if search field is valid, enable and populate associated fields/buttons to update information
         customerNameUpdateField.setEnabled(true);
+        customerNameUpdateField.setText(custInfo.get("Name"));
         customerAddressUpdateField.setEnabled(true);
+        customerAddressUpdateField.setText(custInfo.get("Address"));
         customerEmailUpdateField.setEnabled(true);
+        customerEmailUpdateField.setText(custInfo.get("Email"));
         updateCustomerButtonFinal.setEnabled(true);
         deleteCustomerButton.setEnabled(true);
     }//GEN-LAST:event_searchUpdateCustomerButtonActionPerformed
 
     private void deleteCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCustomerButtonActionPerformed
+        
+        Customer cust = new Customer();
+        String custID = customerIDCustomerUpdateField.getText();
+        
         //code to check all fields are valid
         
         //if all fields are not valid, display error message to employee
         //notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         
         //if all fields are valid, code to delete data from the database
+        if(!cust.custExists(custID)){
+            notificationCustomerUpdateLabel.setText("Customer not found!");
+            return;
+        }else{
+            int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
+                    + "delet customer with id = " + custID ,"Delete Customer?", 
+                    JOptionPane.OK_CANCEL_OPTION);
+            if(n == JOptionPane.OK_OPTION){
+                cust.deleteCustomer(custID);
+            }else if(n == JOptionPane.CANCEL_OPTION){
+                return;
+            }
+        }
+        
         
         //clear fields and disable fields/buttons
         customerIDCustomerUpdateField.setText("");
