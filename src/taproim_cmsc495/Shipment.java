@@ -15,12 +15,11 @@ public class Shipment extends JFrame {
     ArrayList<String> columns = new ArrayList<>();
     
     public boolean newShipment(ArrayList<String> info) {
-        ArrayList<String> col = getColumns();
-        String sqlQ = "INSERT INTO gunnargo_cmsc495.Shipment (";
-        sqlQ = col.stream().map((name) -> name + ",").reduce(sqlQ, String::concat);
-        sqlQ += ") VALUES (";
-        sqlQ = info.stream().map((name) -> "'" + name + "',").reduce(sqlQ, String::concat);
-        sqlQ += ")";
+        String sqlQ = "INSERT INTO gunnargo_cmsc495.Shipment SET "
+                + "ItemID = " + info.get(0) + ", "
+                + "Destination = " + info.get(1) + ", "
+                + "Weight = " + info.get(2) + ", "
+                + "NumItems = " + info.get(3) + ";";
         boolean success;
         try {
             con = DriverManager.getConnection(url, userid, password);
@@ -36,8 +35,7 @@ public class Shipment extends JFrame {
     
     
     public boolean deleteShipment(String id) {
-        String sqlQ = "DELETE FROM gunnargo_cmsc495.Shipment WHERE ShipID = '" + 
-                id.trim() + "'";
+        String sqlQ = "DELETE FROM gunnargo_cmsc495.Shipment WHERE ShipID = " + id.trim() + ";";
         boolean success;
         try {
             con = DriverManager.getConnection(url, userid, password);
@@ -52,7 +50,7 @@ public class Shipment extends JFrame {
     }
     
     public boolean findShipment(String id) {
-        String sqlQ = "SELECT ShipID FROM gunnargo_cmsc495.Shipment WHERE ShipID = '" + id.trim() + "'";
+        String sqlQ = "SELECT ShipID FROM gunnargo_cmsc495.Shipment WHERE ShipID = " + id.trim() + ";";
         boolean success;
         try {
             con = DriverManager.getConnection(url, userid, password);
@@ -64,53 +62,64 @@ public class Shipment extends JFrame {
             success = false;
         }
         
+        System.out.println(success);
         return success;
     }
     
     public HashMap<String, String> getShipment(String id) {
-        String sqlQ = "SELECT ShipID FROM gunnargo_cmsc495.Shipment WHERE ShipID = '" + id.trim() + "'";
+        String sqlQ = "SELECT * FROM gunnargo_cmsc495.Shipment WHERE ShipID = " + id.trim() + ";";
         HashMap<String, String> data = new HashMap<>();
         
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQ);
-            if (rs.next()) {
-                data.put("ShipID", id.trim());
-                data.put("ItemID", rs.getInt("ItemID")+"");
-                data.put("CustID", rs.getInt("CustID")+"");
+            
+            while (rs.next()) {
+                data.put("ShipID", rs.getString("ShipID"));
+                data.put("ItemID", rs.getString("ItemID"));
+                data.put("CustID", rs.getString("CustID"));
                 data.put("Destination", rs.getString("Destination"));
                 data.put("Location", rs.getString("Location"));
-                data.put("Weight", rs.getFloat("Weight")+"");
-                data.put("NumItems", rs.getInt("NumItems")+"");
-                data.put("TrackingNum", rs.getInt("TrackingNum")+"");
+                data.put("Weight", rs.getString("Weight"));
+                data.put("NumItems", rs.getString("NumItems"));
+                data.put("TrackingNum", rs.getString("TrackingNum"));
                 data.put("Carrier", rs.getString("Carrier"));
                 data.put("Signer", rs.getString("Signer"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            System.out.println("An exception has been reached");
         }
         
         return data;
     }
     
     
-    public boolean updateShipment(HashMap<String, String> updates) {
+    public boolean updateShipment(HashMap<String, String> updates, String id) {
         Set<String> keys = updates.keySet();
         boolean success = false;
         
-        for (String key : keys) {
-            String sqlQ = "UPDATE gunnargo_cmsc495.Shipment Set " + key + " = " +
-                    updates.get(key) + "' WHERE ShipID = '" + updates.get("ShipID") + "'";
-            try {
-                con = DriverManager.getConnection(url, userid, password);
-                Statement stmt = con.createStatement();
-                success = stmt.execute(sqlQ);
-                con.close();
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-                return false;
-            } 
+        String sqlQ = "UPDATE gunnargo_cmsc495.Shipment SET "
+                + "ItemID = '" + updates.get("ItemID") + "', "
+                + "CustID = '" + updates.get("CustID") + "', "
+                + "Destination = '" + updates.get("Destination") + "', "
+                + "Location = '" + updates.get("Location") + "', "
+                + "Weight = '" + updates.get("Weight") + "', "
+                + "NumItems = '" + updates.get("NumItems") + "', "
+                + "TrackingNum = '" + updates.get("TrackingNum") + "', "
+                + "Carrier = '" + updates.get("Carrier") + "', "
+                + "Signer = '" + updates.get("Signer") + "' "
+                + "WHERE ShipID = " + id.trim() + ";";
+        
+        try {
+            con = DriverManager.getConnection(url, userid, password);
+            Statement stmt = con.createStatement();
+            success = stmt.execute(sqlQ);
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
         }
         
         return success;
