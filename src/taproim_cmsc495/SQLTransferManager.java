@@ -62,7 +62,7 @@ public class SQLTransferManager {
      * @return whether or not the insertion was successful
      */
     public boolean insertRow(String dbName,
-            ArrayList<String> columns, ArrayList<String> values) {
+        ArrayList<String> columns, ArrayList<String> values) {
         String sqlQ = "INSERT INTO " + dbName + "(";
         sqlQ = columns.stream().map((name) -> name + ",").reduce(sqlQ, String::concat);
         sqlQ += ") VALUES (";
@@ -89,7 +89,7 @@ public class SQLTransferManager {
      * @return whether or not the deletion was successful
      */
     public boolean deleteRow(String keyName, String keyValue, String dbName) {
-        String sqlQ = "DLETE FROM " + dbName + " WHERE " + keyName + " = '" + keyValue + "'";
+        String sqlQ = "DELETE FROM " + dbName + " WHERE " + keyName + " = '" + keyValue + "'";
         boolean success;
         try {
             con = DriverManager.getConnection(url, userid, password);
