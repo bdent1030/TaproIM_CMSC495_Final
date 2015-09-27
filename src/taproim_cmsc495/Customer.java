@@ -43,25 +43,25 @@ public class Customer extends JFrame {
         
         boolean result = false;
         
-        if(custExists(custID)){
+        //if(custExists(custID)){
             String sqlCreate = "INSERT INTO gunnargo_cmsc495.Customer SET "
-                    + " Name = " + name
-                    + ", Address = " + address
-                    + ", Email = " + email + ";";
+                    + " Name = '" + name
+                    + "', Address = '" + address
+                    + "', Email = '" + email + "';";
         
             try {
                 con = DriverManager.getConnection(url, userid, password);
                 Statement stmt = con.createStatement();
-                boolean success = stmt.execute(sqlCreate);
+                stmt.execute(sqlCreate);
                 con.close();
-                return success;
+                return true;
             } catch (SQLException ex) {
-                System.out.println("Customer was not updated");
+                System.out.println("Customer was not added");
+                System.out.println(ex);
                 return false; // creation failed
             }
-        }
+       // }
         
-        return result;
     
     
 //        this.custName = name;
