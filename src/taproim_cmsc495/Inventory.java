@@ -46,7 +46,7 @@ public class Inventory extends JFrame {
     public HashMap retrieveItem(int itemID){
 
         HashMap<String, String> results = new HashMap<String, String>();
-        String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Item = " + itemID;
+        String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Inventory = " + itemID;
         
         try {
                 con = DriverManager.getConnection(url, userid, password);
@@ -77,7 +77,7 @@ public class Inventory extends JFrame {
         String value = info.get(3);
         
        
-            String sqlCreate = "UPDATE  gunnargo_cmsc495.Item SET "
+            String sqlCreate = "UPDATE  gunnargo_cmsc495.Inventory SET "
                     + "Item = " + item
                     + " Description = " + desc
                     + " StockLevel = " + amount
@@ -108,7 +108,7 @@ public class Inventory extends JFrame {
         boolean result = false;
         
 
-            String sqlCreate = "INSERT INTO gunnargo_cmsc495.Item SET "
+            String sqlCreate = "INSERT INTO gunnargo_cmsc495.Inventory SET "
                     + "Item = " + item
                     + " Description = " + desc
                     + " StockLevel = " + amount
@@ -131,7 +131,7 @@ public class Inventory extends JFrame {
     public boolean deleteItem(String itemID){
 
 
-            String sqlSelect = "DELETE item FROM gunnargo_cmsc495.Item = " + itemID;
+            String sqlSelect = "DELETE item FROM gunnargo_cmsc495.Inventory = " + itemID;
             //boolean success;
 
             try {
@@ -151,7 +151,7 @@ public class Inventory extends JFrame {
     public boolean itemExists(String itemID){
         boolean result;
         
-        String sqlSelect = "SELECT id FROM gunnargo_cmsc495.Item = " + itemID;
+        String sqlSelect = "SELECT id FROM gunnargo_cmsc495.Inventory = " + itemID;
 
         try {
             con = DriverManager.getConnection(url, userid, password);
@@ -171,7 +171,7 @@ public class Inventory extends JFrame {
         this.setTitle("TAPRO-IM Inventory Table");
         ArrayList columnNames = new ArrayList();
         ArrayList data = new ArrayList();
-        String sql = "SELECT * FROM gunnargo_cmsc495.Item;";
+        String sql = "SELECT * FROM gunnargo_cmsc495.Inventory;";
 
 
 
