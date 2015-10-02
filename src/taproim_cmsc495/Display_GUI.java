@@ -1240,10 +1240,10 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void searchUpdateShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUpdateShipmentButtonActionPerformed
         //code to check search field is valid
-        Shipment searchShipments = new Shipment();
+        Shipment shpmt = new Shipment();
         String id = shipmentIDUpdateField.getText();
         System.out.println("Searching for: " + id);
-        if (!searchShipments.findShipment(id)) {
+        if (!shpmt.findShipment(id)) {
             notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         }
         
@@ -1261,16 +1261,16 @@ public class Display_GUI extends javax.swing.JFrame {
         updateShipmentButtonFinal.setEnabled(true);
         deleteShipmentButton.setEnabled(true);
         
-        HashMap<String, String> results = searchShipments.getShipment(id);        
-        itemIDUpdateShipmentField.setText(results.get("ItemID"));
-        customerIDUpdateShipmentField.setText(results.get("CustID"));
-        itemDestinationUpdateShipmentField.setText(results.get("Destination"));
-        itemLocationUpdateShipmentField.setText(results.get("Location"));
-        itemWeightUpdateShipmentField.setText(results.get("Weight"));
-        itemCountUpdateShipmentField.setText(results.get("NumItems"));
-        trackingNumberUpdateShipmentField.setText(results.get("TrackingNum"));
-        carrierUpdateShipmentField.setText(results.get("Carrier"));
-        signerUpdateShipmentField.setText(results.get("Signer"));
+        shpmt.getShipment(id);        
+        itemIDUpdateShipmentField.setText(shpmt.getShipID());
+        customerIDUpdateShipmentField.setText(shpmt.getCustID());
+        itemDestinationUpdateShipmentField.setText(shpmt.getDestination());
+        itemLocationUpdateShipmentField.setText(shpmt.getLocation());
+        itemWeightUpdateShipmentField.setText(shpmt.getWeight());
+        itemCountUpdateShipmentField.setText(shpmt.getNumItems());
+        trackingNumberUpdateShipmentField.setText(shpmt.getTrackingNum());
+        carrierUpdateShipmentField.setText(shpmt.getCarrier());
+        signerUpdateShipmentField.setText(shpmt.getSigner());
     }//GEN-LAST:event_searchUpdateShipmentButtonActionPerformed
 
     private void deleteShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteShipmentButtonActionPerformed
