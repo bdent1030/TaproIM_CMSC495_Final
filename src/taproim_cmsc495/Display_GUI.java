@@ -1112,20 +1112,19 @@ public class Display_GUI extends javax.swing.JFrame {
         //notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         
         //code to submit updated data to the database
-        HashMap<String, String> updates = new HashMap<>();
-        String id = shipmentIDUpdateField.getText();
-        updates.put("ItemID", itemIDUpdateShipmentField.getText());
-        updates.put("CustID", customerIDUpdateShipmentField.getText());
-        updates.put("Destination", itemDestinationUpdateShipmentField.getText());
-        updates.put("Location", itemLocationUpdateShipmentField.getText());
-        updates.put("Weight", itemWeightUpdateShipmentField.getText());
-        updates.put("NumItems", itemCountUpdateShipmentField.getText());
-        updates.put("TrackingNum", trackingNumberUpdateShipmentField.getText());
-        updates.put("Carrier", carrierUpdateShipmentField.getText());
-        updates.put("Signer", signerUpdateShipmentField.getText());
+        Shipment shpmt = new Shipment();
+        shpmt.setShipID(shipmentIDUpdateField.getText());
+        shpmt.setItemID(itemIDUpdateShipmentField.getText());
+        shpmt.setCustID(customerIDUpdateShipmentField.getText());
+        shpmt.setDestination(itemDestinationUpdateShipmentField.getText());
+        shpmt.setLocation(itemLocationUpdateShipmentField.getText());
+        shpmt.setWeight(itemWeightUpdateShipmentField.getText());
+        shpmt.setNumItems(itemCountUpdateShipmentField.getText());
+        shpmt.setTrackingNum(trackingNumberUpdateShipmentField.getText());
+        shpmt.setCarrier(carrierUpdateShipmentField.getText());
+        shpmt.setSigner(signerUpdateShipmentField.getText());
         
-        Shipment updateShipment = new Shipment();
-        if (!updateShipment.updateShipment(updates, id)) {
+        if (!shpmt.updateShipment()) {
             notificationCustomerUpdateLabel.setText("Shipment not updated");
             return;
         }
@@ -1246,7 +1245,7 @@ public class Display_GUI extends javax.swing.JFrame {
         if (!shpmt.findShipment(id)) {
             notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         }
-        
+        System.out.println(shpmt.findShipment(id));
         //if search field is valid, enable and populate associated fields/buttons to update information
         shipmentIDUpdateField.setEnabled(true);
         itemIDUpdateShipmentField.setEnabled(true);

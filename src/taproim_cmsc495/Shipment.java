@@ -129,20 +129,20 @@ public class Shipment {
     }
     
     
-    public boolean updateShipment(HashMap<String, String> updates, String id) {
+    public boolean updateShipment() {
         boolean success;
         
         String sqlQ = "UPDATE gunnargo_cmsc495.Shipment SET "
-                + "ItemID = '" + updates.get("ItemID") + "', "
-                + "CustID = '" + updates.get("CustID") + "', "
-                + "Destination = '" + updates.get("Destination") + "', "
-                + "Location = '" + updates.get("Location") + "', "
-                + "Weight = '" + updates.get("Weight") + "', "
-                + "NumItems = '" + updates.get("NumItems") + "', "
-                + "TrackingNum = '" + updates.get("TrackingNum") + "', "
-                + "Carrier = '" + updates.get("Carrier") + "', "
-                + "Signer = '" + updates.get("Signer") + "' "
-                + "WHERE ShipID = " + id.trim() + ";";
+                + "ItemID = '" + getItemID() + "', "
+                + "CustID = '" + getCustID() + "', "
+                + "Destination = '" + getDestination() + "', "
+                + "Location = '" + getLocation() + "', "
+                + "Weight = '" + getWeight() + "', "
+                + "NumItems = '" + getNumItems() + "', "
+                + "TrackingNum = '" + getTrackingNum() + "', "
+                + "Carrier = '" + getCarrier() + "', "
+                + "Signer = '" + getSigner() + "' "
+                + "WHERE ShipID = " + getShipID() + ";";
         
         try {
             con = DriverManager.getConnection(url, userid, password);
