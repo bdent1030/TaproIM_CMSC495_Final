@@ -837,7 +837,7 @@ public class Display_GUI extends javax.swing.JFrame {
         itemDescriptionUpdateField.setEnabled(false);
         updateInventoryButtonFinal.setEnabled(false);
         deleteInventoryButton.setEnabled(false);
-    } //GEN-LAST:event_updateInventoryButtonActionPerformed
+    }                                                      
 
     private void updateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerButtonActionPerformed
         //set updateCustomerPanel visible
@@ -869,6 +869,7 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void viewInventoryTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInventoryTableButtonActionPerformed
         Inventory frame = new Inventory();
+        frame.showInventory();
         frame.pack();
         frame.setVisible(true);
         newShipmentPanel.setVisible(false);
@@ -878,8 +879,8 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_viewInventoryTableButtonActionPerformed
 
     private void viewShipmentTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewShipmentTableButtonActionPerformed
-        Shipment frame = new Shipment();
-        frame.showShipmentInfo();
+        DisplayTable frame = new DisplayTable("Shipment");
+        frame.showTable();
         frame.pack();
         frame.setVisible(true);
         newShipmentPanel.setVisible(false);
@@ -1015,7 +1016,7 @@ public class Display_GUI extends javax.swing.JFrame {
         deleteInventoryButton.setEnabled(false);
         //display notification to the employee that data was successfully updated
         notificationInventoryUpdateLabel.setText("SUCCESSFULLY UPDATED!");
-    } //GEN-LAST:event_updateInventoryButtonFinalActionPerformed
+    }                                                           
 
     private void deleteInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         //code to check all fields are valid
@@ -1055,7 +1056,7 @@ public class Display_GUI extends javax.swing.JFrame {
         deleteInventoryButton.setEnabled(false);
         //display notification to the employee that data was successfully deleted
         notificationInventoryUpdateLabel.setText("SUCCESSFULLY DELETED!");
-    } //GEN-LAST:event_deleteInventoryButtonActionPerformed
+    }                                                      
 
     private void updateCustomerButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerButtonFinalActionPerformed
         
