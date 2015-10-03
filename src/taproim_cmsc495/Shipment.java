@@ -109,18 +109,16 @@ public class Shipment {
             ResultSet rs = stmt.executeQuery(sqlQ);
             
             while (rs.next()) {
-                try {
-                    setShipID(rs.getString("ShipID"));
-                    setItemID(rs.getString("ItemID"));
-                    setCustID(rs.getString("CustID"));
-                    setDestination(rs.getString("Destination"));
-                    setLocation(rs.getString("Location"));
-                    setWeight(rs.getString("Weight"));
-                    setNumItems(rs.getString("NumItems"));
-                    setTrackingNum(rs.getString("TrackingNum"));
-                    setCarrier(rs.getString("Carrier"));
-                    setSigner(rs.getString("Signer"));
-                } catch (Exception ex) { /* do nothing */ }
+                try { setShipID(rs.getString("ShipID")); } catch (Exception ex) { /* do nothing */ }
+                try { setItemID(rs.getString("ItemID")); } catch (Exception ex) { /* do nothing */ }
+                try { setCustID(rs.getString("CustID")); } catch (Exception ex) { /* do nothing */ }
+                try { setDestination(rs.getString("Destination")); } catch (Exception ex) { /* do nothing */ }
+                try { setLocation(rs.getString("Location")); } catch (Exception ex) { /* do nothing */ }
+                try { setWeight(rs.getString("Weight")); } catch (Exception ex) { /* do nothing */ }
+                try { setNumItems(rs.getString("NumItems")); } catch (Exception ex) { /* do nothing */ }
+                try { setTrackingNum(rs.getString("TrackingNum")); } catch (Exception ex) { /* do nothing */ }
+                try { setCarrier(rs.getString("Carrier")); } catch (Exception ex) { /* do nothing */ }
+                try { setSigner(rs.getString("Signer")); } catch (Exception ex) { /* do nothing */ }
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

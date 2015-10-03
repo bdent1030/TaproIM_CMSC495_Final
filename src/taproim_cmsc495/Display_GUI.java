@@ -1261,7 +1261,7 @@ public class Display_GUI extends javax.swing.JFrame {
         deleteShipmentButton.setEnabled(true);
         
         shpmt.getShipment(id);        
-        itemIDUpdateShipmentField.setText(shpmt.getShipID());
+        itemIDUpdateShipmentField.setText(shpmt.getItemID());
         customerIDUpdateShipmentField.setText(shpmt.getCustID());
         itemDestinationUpdateShipmentField.setText(shpmt.getDestination());
         itemLocationUpdateShipmentField.setText(shpmt.getLocation());
