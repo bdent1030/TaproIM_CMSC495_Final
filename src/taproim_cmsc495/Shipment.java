@@ -87,14 +87,15 @@ public class Shipment {
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
-            success = stmt.execute(sqlQ);
+            // success = stmt.execute(sqlQ);
+            ResultSet rs = stmt.executeQuery(sqlQ);
+            if (rs.next()) success = !rs.getString("ShipID").equals((""));
+            else success = false;
             con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             success = false;
         }
-        
-        System.out.println(success);
         return success;
     }
     
@@ -108,17 +109,18 @@ public class Shipment {
             ResultSet rs = stmt.executeQuery(sqlQ);
             
             while (rs.next()) {
-                setShipID(rs.getString("ShipID"));
-                setShipID(rs.getString("ShipID"));
-                setItemID(rs.getString("ItemID"));
-                setCustID(rs.getString("CustID"));
-                setDestination(rs.getString("Destination"));
-                setLocation(rs.getString("Location"));
-                setWeight(rs.getString("Weight"));
-                setNumItems(rs.getString("NumItems"));
-                setTrackingNum(rs.getString("TrackingNum"));
-                setCarrier(rs.getString("Carrier"));
-                setSigner(rs.getString("Signer"));
+                try {
+                    setShipID(rs.getString("ShipID"));
+                    setItemID(rs.getString("ItemID"));
+                    setCustID(rs.getString("CustID"));
+                    setDestination(rs.getString("Destination"));
+                    setLocation(rs.getString("Location"));
+                    setWeight(rs.getString("Weight"));
+                    setNumItems(rs.getString("NumItems"));
+                    setTrackingNum(rs.getString("TrackingNum"));
+                    setCarrier(rs.getString("Carrier"));
+                    setSigner(rs.getString("Signer"));
+                } catch (Exception ex) { /* do nothing */ }
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
