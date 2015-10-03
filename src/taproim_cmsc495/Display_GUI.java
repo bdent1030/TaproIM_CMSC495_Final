@@ -868,8 +868,8 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_updateShipmentButtonActionPerformed
 
     private void viewInventoryTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInventoryTableButtonActionPerformed
-        Inventory frame = new Inventory();
-        frame.showInventory();
+        DisplayTable frame = new DisplayTable("Inventory");
+        frame.showTable();
         frame.pack();
         frame.setVisible(true);
     }//GEN-LAST:event_viewInventoryTableButtonActionPerformed
@@ -882,8 +882,8 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_viewShipmentTableButtonActionPerformed
 
     private void viewCustomerTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerTableButtonActionPerformed
-        Customer frame = new Customer();
-        frame.showCustomerTable();
+        DisplayTable frame = new DisplayTable("Customer");
+        frame.showTable();
         frame.pack();
         frame.setVisible(true);
     }//GEN-LAST:event_viewCustomerTableButtonActionPerformed
