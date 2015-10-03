@@ -8,8 +8,6 @@ import java.util.*;
  * This pop-out simply displays SQL table information for Shipment
  */
 public class Shipment {
-    // SQLTransferManager sqlMgr = new SQLTransferManager();
-    // ArrayList<String> columns = new ArrayList<>();
     private Connection con;
     private final String url = "jdbc:mysql://siteground324.com:3306/gunnargo_cmsc495";
     private final String userid = "gunnargo_umuc15";
@@ -46,17 +44,20 @@ public class Shipment {
     public String getCarrier()                      { return carrier;       }
     public String getSigner()                       { return signer;        }
     
-    public boolean newShipment(ArrayList<String> info) {
+    public boolean newShipment() {
         String sqlQ = "INSERT INTO gunnargo_cmsc495.Shipment SET "
-                + "ItemID = " + info.get(0) + ", "
-                + "Destination = " + info.get(1) + ", "
-                + "Weight = " + info.get(2) + ", "
-                + "NumItems = " + info.get(3) + ";";
+                + "ItemID = '" + getItemID() + "', "
+                + "Destination = '" + getDestination() + "', "
+                + "Weight = '" + getWeight() + "', "
+                + "NumItems = '" + getNumItems() + "';";
         boolean success;
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
-            success = stmt.execute(sqlQ);
+            stmt.execute(sqlQ);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM gunnargo_cmsc495.Shipment");
+            if (rs.last()) setShipID(rs.getString("ShipID"));
+            success = !getShipID().equals("");
             con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -87,7 +88,6 @@ public class Shipment {
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
-            // success = stmt.execute(sqlQ);
             ResultSet rs = stmt.executeQuery(sqlQ);
             if (rs.next()) success = !rs.getString("ShipID").equals((""));
             else success = false;
@@ -124,8 +124,6 @@ public class Shipment {
             System.out.println(ex.getMessage());
             System.out.println("An exception has been reached");
         }
-        
-        //return data;
     }
     
     
@@ -147,7 +145,8 @@ public class Shipment {
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
-            success = stmt.execute(sqlQ);
+            stmt.execute(sqlQ);
+            success = findShipment(getShipID());
             con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

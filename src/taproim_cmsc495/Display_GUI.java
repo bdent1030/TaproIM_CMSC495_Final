@@ -872,10 +872,6 @@ public class Display_GUI extends javax.swing.JFrame {
         frame.showInventory();
         frame.pack();
         frame.setVisible(true);
-        newShipmentPanel.setVisible(false);
-        updateInventoryPanel.setVisible(false);
-        updateCustomerPanel.setVisible(false);
-        updateShipmentPanel.setVisible(false);
     }//GEN-LAST:event_viewInventoryTableButtonActionPerformed
 
     private void viewShipmentTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewShipmentTableButtonActionPerformed
@@ -883,10 +879,6 @@ public class Display_GUI extends javax.swing.JFrame {
         frame.showTable();
         frame.pack();
         frame.setVisible(true);
-        newShipmentPanel.setVisible(false);
-        updateInventoryPanel.setVisible(false);
-        updateCustomerPanel.setVisible(false);
-        updateShipmentPanel.setVisible(false);
     }//GEN-LAST:event_viewShipmentTableButtonActionPerformed
 
     private void viewCustomerTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerTableButtonActionPerformed
@@ -894,10 +886,6 @@ public class Display_GUI extends javax.swing.JFrame {
         frame.showCustomerTable();
         frame.pack();
         frame.setVisible(true);
-        newShipmentPanel.setVisible(false);
-        updateInventoryPanel.setVisible(false);
-        updateCustomerPanel.setVisible(false);
-        updateShipmentPanel.setVisible(false);
     }//GEN-LAST:event_viewCustomerTableButtonActionPerformed
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
@@ -905,32 +893,17 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutButtonActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        Shipment shipment = new Shipment();
         
         //code to check all fields are valid
+        shipment.setItemID(itemIDField.getText());
+        shipment.setDestination(destinationField.getText());
+        shipment.setWeight(itemWeightField.getText());
+        shipment.setNumItems(itemCountField.getText());
+        
         String custName = customerNameField.getText();
         String address = customerAddressField.getText();
         String email = customerEmailField.getText();
-        
-        String itemID = itemIDField.getText();
-        String destination = destinationField.getText();
-        String itemWeight = itemWeightField.getText();
-        String itemCount = itemCountField.getText();
-        
-        //if all fields are not valid, display error message to employee
-        //notificationLabel.setText("INVALID DATA! TRY AGAIN!");
-        
-        //code to submit all data to the database
-        ArrayList<String> info = new ArrayList<>();
-        info.add(itemID);
-        info.add(destination);
-        info.add(itemWeight);
-        info.add(itemCount);
-        
-        Shipment newShip = new Shipment();
-        if (!newShip.newShipment(info)) {
-            notificationLabel.setText("SHIPMENT NOT ADDED");
-            return;
-        }
         
         ArrayList<String> custInfo = new ArrayList<>();
         custInfo.add(custName);
@@ -938,21 +911,38 @@ public class Display_GUI extends javax.swing.JFrame {
         custInfo.add(email);
         
         Customer newCust = new Customer();
-        if (!newCust.addCustomerRecord(custInfo)) {
-            notificationLabel.setText("CUSTOMER NOT ADDED");
+        if (!newCust.custExistsEmail(email)) {
+            if (!newCust.addCustomerRecord(custInfo)) {
+                notificationLabel.setText("CUSTOMER NOT ADDED");
+                return;
+            }
+        }
+        customerIDField.setText(newCust.custID);
+        shipment.setCustID(newCust.custID);
+        
+        
+        //if all fields are not valid, display error message to employee
+        //notificationLabel.setText("INVALID DATA! TRY AGAIN!");
+        
+        //code to submit all data to the database
+        if (!shipment.newShipment()) {
+            notificationLabel.setText("SHIPMENT NOT ADDED");
             return;
+        } else {
+            shipmentIDField.setText(shipment.getShipID());
         }
         
+        
+        
         //clear all fields after data was successfully submitted
-        customerNameField.setText("");
+        /* customerNameField.setText("");
         customerIDField.setText("");
         customerAddressField.setText("");
         customerEmailField.setText("");
         itemIDField.setText("");
         destinationField.setText("");
         itemWeightField.setText("");
-        itemCountField.setText("");
-        shipmentIDField.setText("");
+        itemCountField.setText(""); */
         //display notification to the employee that data was successfully submitted
         notificationLabel.setText("SUCCESSFULLY SUBMITTED!");
     }//GEN-LAST:event_submitButtonActionPerformed
@@ -1106,26 +1096,28 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void updateShipmentButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateShipmentButtonFinalActionPerformed
         notificationShipmentUpdateLabel.setText("");
+        Shipment shipment = new Shipment();
         //code to check all fields are valid
-        
         //if all fields are not valid, display error message to employee
-        //notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        if (!shipment.findShipment(shipmentIDUpdateField.getText())) {
+            notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+            return;
+        }
         
         //code to submit updated data to the database
-        Shipment shpmt = new Shipment();
-        shpmt.setShipID(shipmentIDUpdateField.getText());
-        shpmt.setItemID(itemIDUpdateShipmentField.getText());
-        shpmt.setCustID(customerIDUpdateShipmentField.getText());
-        shpmt.setDestination(itemDestinationUpdateShipmentField.getText());
-        shpmt.setLocation(itemLocationUpdateShipmentField.getText());
-        shpmt.setWeight(itemWeightUpdateShipmentField.getText());
-        shpmt.setNumItems(itemCountUpdateShipmentField.getText());
-        shpmt.setTrackingNum(trackingNumberUpdateShipmentField.getText());
-        shpmt.setCarrier(carrierUpdateShipmentField.getText());
-        shpmt.setSigner(signerUpdateShipmentField.getText());
+        shipment.setShipID(shipmentIDUpdateField.getText());
+        shipment.setItemID(itemIDUpdateShipmentField.getText());
+        shipment.setCustID(customerIDUpdateShipmentField.getText());
+        shipment.setDestination(itemDestinationUpdateShipmentField.getText());
+        shipment.setLocation(itemLocationUpdateShipmentField.getText());
+        shipment.setWeight(itemWeightUpdateShipmentField.getText());
+        shipment.setNumItems(itemCountUpdateShipmentField.getText());
+        shipment.setTrackingNum(trackingNumberUpdateShipmentField.getText());
+        shipment.setCarrier(carrierUpdateShipmentField.getText());
+        shipment.setSigner(signerUpdateShipmentField.getText());
         
-        if (!shpmt.updateShipment()) {
-            notificationCustomerUpdateLabel.setText("Shipment not updated");
+        if (!shipment.updateShipment()) {
+            notificationCustomerUpdateLabel.setText("SHIPMENT NOT UPDATED!");
             return;
         }
         
@@ -1245,8 +1237,8 @@ public class Display_GUI extends javax.swing.JFrame {
         if (!shpmt.findShipment(id)) {
             notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         }
-        System.out.println(shpmt.findShipment(id));
-        //if search field is valid, enable and populate associated fields/buttons to update information
+        // System.out.println(shpmt.findShipment(id));
+        // if search field is valid, enable and populate associated fields/buttons to update information
         shipmentIDUpdateField.setEnabled(true);
         itemIDUpdateShipmentField.setEnabled(true);
         customerIDUpdateShipmentField.setEnabled(true);
@@ -1273,21 +1265,20 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_searchUpdateShipmentButtonActionPerformed
 
     private void deleteShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteShipmentButtonActionPerformed
-        //code to check all fields are valid
-        
-        //if all fields are not valid, display error message to employee
-        //notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
-        
-        //if all fields are valid, code to delete data from the database
+        notificationShipmentUpdateLabel.setText("");
         String id = shipmentIDUpdateField.getText();
         Shipment delShipment = new Shipment();
-        
-        int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
-                    + "delete the shipment with id = " + id.trim() ,"Delete shipment?", 
-                    JOptionPane.OK_CANCEL_OPTION);
-        if(n == JOptionPane.OK_OPTION){
-            delShipment.deleteShipment(id);
-        }else if(n == JOptionPane.CANCEL_OPTION){
+        //code to check all fields are valid
+        if (delShipment.findShipment(id)) {
+            int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
+                        + "delete the shipment with id = " + id.trim() ,"Delete shipment?", 
+                        JOptionPane.OK_CANCEL_OPTION);
+            // if all fields are valid, code to delete data from the database
+            if (n == JOptionPane.OK_OPTION) delShipment.deleteShipment(id);
+            else return;
+        } else {
+            //if all fields are not valid, display error message to employee
+            notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
             return;
         }
         

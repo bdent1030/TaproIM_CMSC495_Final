@@ -35,13 +35,9 @@ public class Customer extends JFrame {
     }
     
     public boolean addCustomerRecord(ArrayList<String> info){
-        
-        //String id = info.get(0);
         String name = info.get(0);
         String address = info.get(1);
         String email = info.get(2);
-        
-        boolean result = false;
         
         //if(custExists(custID)){
             String sqlCreate = "INSERT INTO gunnargo_cmsc495.Customer SET "
@@ -52,9 +48,10 @@ public class Customer extends JFrame {
             try {
                 con = DriverManager.getConnection(url, userid, password);
                 Statement stmt = con.createStatement();
-                stmt.execute(sqlCreate);
-                con.close();
-                return true;
+                stmt.execute(sqlCreate); 
+                ResultSet rs = stmt.executeQuery("SELECT * FROM gunnargo_cmsc495.Customer WHERE Email = '" + email + "';"); 
+                if (rs.next()) custID = rs.getString("CustID");
+                return custExists(custID);
             } catch (SQLException ex) {
                 System.out.println("Customer was not added");
                 System.out.println(ex);
@@ -166,6 +163,21 @@ public class Customer extends JFrame {
         }
         
         return result;
+    }
+    
+    public boolean custExistsEmail(String email) {
+        String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Customer WHERE Email = '" + email + "';";
+        try {
+            con = DriverManager.getConnection(url, userid, password);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sqlSelect);
+            if (rs.next()) custID = rs.getString("CustID");
+            con.close();
+            return !custID.equals("");
+        } catch (SQLException ex) {
+            System.out.println("Customer Email: " + email +" not found");
+            return false; // find failed
+        }
     }
   
     public void showCustomerTable()
