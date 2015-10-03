@@ -20,16 +20,16 @@ public class Shipment {
     
     // Table Field SETTER Methods 
     // @param String value to be set
-    public void setShipID(String shipID)            { this.shipID = shipID.trim();           }
-    public void setItemID(String itemID)            { this.itemID = itemID.trim();           }
-    public void setCustID(String custID)            { this.custID = custID.trim();           }
-    public void setDestination(String destination)  { this.destination = destination.trim(); }
-    public void setLocation(String location)        { this.location = location.trim();       }
-    public void setWeight(String weight)            { this.weight = weight.trim();           }
-    public void setNumItems(String numItems)        { this.numItems = numItems.trim();       }
-    public void setTrackingNum(String trackingNum)  { this.trackingNum = trackingNum.trim(); }
-    public void setCarrier(String carrier)          { this.carrier = carrier.trim();         }
-    public void setSigner(String signer)            { this.signer = signer.trim();           }
+    public void setShipID(String shipID)            { this.shipID = cleanInput(shipID);           }
+    public void setItemID(String itemID)            { this.itemID = cleanInput(itemID);           }
+    public void setCustID(String custID)            { this.custID = cleanInput(custID);           }
+    public void setDestination(String destination)  { this.destination = cleanInput(destination); }
+    public void setLocation(String location)        { this.location = cleanInput(location);       }
+    public void setWeight(String weight)            { this.weight = cleanInput(weight);           }
+    public void setNumItems(String numItems)        { this.numItems = cleanInput(numItems);       }
+    public void setTrackingNum(String trackingNum)  { this.trackingNum = cleanInput(trackingNum); }
+    public void setCarrier(String carrier)          { this.carrier = cleanInput(carrier);         }
+    public void setSigner(String signer)            { this.signer = cleanInput(signer);           }
     
     // Table field GETTER methods 
     // @return requested field
@@ -43,6 +43,23 @@ public class Shipment {
     public String getTrackingNum()                  { return trackingNum;   }
     public String getCarrier()                      { return carrier;       }
     public String getSigner()                       { return signer;        }
+    
+    private String cleanInput(String text) {
+        String output = "";
+        char[] characters = {';', '/', '\\', '\'', '?', '!', '#', '$', '%', '^', '&', '*', '(', ')'};
+        char[] input = text.toCharArray();
+        
+        for (int i = 0; i < input.length; i++) {
+            for (char sc : characters) {
+                if (input[i] == sc) input[i] = ' ';
+            }
+        }
+        for (int i = 0; i < input.length; i ++) {
+            if (input[i] != ' ') output += input[i];
+        }
+        
+        return output;
+    }
     
     public boolean newShipment() {
         String sqlQ = "INSERT INTO gunnargo_cmsc495.Shipment SET "
