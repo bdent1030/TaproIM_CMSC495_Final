@@ -45,7 +45,10 @@ public class Shipment {
     
     private String cleanInput(String text) {
         String output = "";
-        char[] characters = {';', '/', '\\', '\'', '?', '!', '#', '$', '%', '^', '&', '*', '(', ')'};
+        char[] characters = {
+            '@', ':', ';', '/', '\\', '\'', '?', '!', 
+            '#', '$', '%', '^', '&',  '*',  '(', ')'
+        };
         char[] input = text.toCharArray();
         
         for (int i = 0; i < input.length; i++) {
