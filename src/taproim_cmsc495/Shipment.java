@@ -1,6 +1,5 @@
 package taproim_cmsc495;
 import java.sql.*;
-import java.util.*;
 
 /**
  * 
@@ -18,8 +17,7 @@ public class Shipment {
     
     
     
-    // Table Field SETTER Methods 
-    // @param String value to be set
+    // Table Field SETTER Methods @param String value to be set
     public void setShipID(String shipID)            { this.shipID = cleanInput(shipID);           }
     public void setItemID(String itemID)            { this.itemID = cleanInput(itemID);           }
     public void setCustID(String custID)            { this.custID = cleanInput(custID);           }
@@ -31,8 +29,7 @@ public class Shipment {
     public void setCarrier(String carrier)          { this.carrier = cleanInput(carrier);         }
     public void setSigner(String signer)            { this.signer = cleanInput(signer);           }
     
-    // Table field GETTER methods 
-    // @return requested field
+    // Table field GETTER methods @return requested field
     public String getShipID()                       { return shipID;        }
     public String getItemID()                       { return itemID;        }
     public String getCustID()                       { return custID;        }
@@ -44,23 +41,31 @@ public class Shipment {
     public String getCarrier()                      { return carrier;       }
     public String getSigner()                       { return signer;        }
     
-    private String cleanInput(String text) {
+    /**
+     * @param text - the text to be "cleaned"
+     * @return the "cleaned" text
+     */
+    private String cleanInput(String input) {
         String output = "";
-        char[] characters = {';', '/', '\\', '\'', '?', '!', '#', '$', '%', '^', '&', '*', '(', ')'};
-        char[] input = text.toCharArray();
+        char[] characters = {
+            '@', ':', ';', '/', '\\', '\'', '?', '!', 
+            '#', '$', '%', '^', '&',  '*',  '(', ')'
+        };
+        char[] cleaning = input.toCharArray();
         
-        for (int i = 0; i < input.length; i++) {
-            for (char sc : characters) {
-                if (input[i] == sc) input[i] = ' ';
-            }
-        }
-        for (int i = 0; i < input.length; i ++) {
-            if (input[i] != ' ') output += input[i];
-        }
+        for (int i = 0; i < cleaning.length; i++) 
+            for (char sc : characters) 
+                if (cleaning[i] == sc) cleaning[i] = ' ';
+        for (int i = 0; i < cleaning.length; i ++) 
+            if (cleaning[i] != ' ') output += cleaning[i];
         
         return output;
     }
     
+    /**
+     * Attempts to add a new shipment to the table
+     * @return boolean value for whether the shipment was added
+     */
     public boolean newShipment() {
         String sqlQ = "INSERT INTO gunnargo_cmsc495.Shipment SET "
                 + "ItemID = '" + getItemID() + "', "
@@ -83,7 +88,10 @@ public class Shipment {
         return success;
     }
     
-    
+    /**
+     * @param id - the Shipment ID to be deleted from the table
+     * @return boolean value for whether the command was successfully completed
+     */
     public boolean deleteShipment(String id) {
         String sqlQ = "DELETE FROM gunnargo_cmsc495.Shipment WHERE ShipID = " + id.trim() + ";";
         boolean success;
@@ -99,6 +107,11 @@ public class Shipment {
         return success;
     }
     
+    /**
+     * Searches for a shipment ID in the SQL table for Shipments
+     * @param id - the Shipment ID to be found
+     * @return boolean value for whether or not the shipment was found
+     */
     public boolean findShipment(String id) {
         String sqlQ = "SELECT ShipID FROM gunnargo_cmsc495.Shipment WHERE ShipID = " + id.trim() + ";";
         boolean success;
@@ -116,6 +129,10 @@ public class Shipment {
         return success;
     }
     
+    /**
+     * Updates the various fields for the provided Shipment ID
+     * @param id - the Shipment ID to be populated
+     */
     public void getShipment(String id) {
         String sqlQ = "SELECT * FROM gunnargo_cmsc495.Shipment WHERE ShipID = " + id.trim() + ";";
         //HashMap<String, String> data = new HashMap<>();
@@ -143,7 +160,10 @@ public class Shipment {
         }
     }
     
-    
+    /**
+     * Updates the currently displayed shipment of the ID searched
+     * @return boolean value of success for update
+     */
     public boolean updateShipment() {
         boolean success;
         
