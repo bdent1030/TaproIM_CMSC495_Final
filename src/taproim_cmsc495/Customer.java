@@ -167,13 +167,17 @@ public class Customer extends JFrame {
     
     public boolean custExistsEmail(String email) {
         String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Customer WHERE Email = '" + email + "';";
+        String id = "";
+        
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sqlSelect);
-            if (rs.next()) custID = rs.getString("CustID");
+            if (rs.next()){
+                id = rs.getString("CustID");
+            }
             con.close();
-            return !custID.equals("");
+            return !id.equals("");
         } catch (SQLException ex) {
             System.out.println("Customer Email: " + email +" not found");
             return false; // find failed
