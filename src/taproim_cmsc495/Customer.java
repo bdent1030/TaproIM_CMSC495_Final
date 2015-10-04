@@ -27,6 +27,7 @@ public class Customer{
     
     public Customer(){}
     
+    
     public void setCustID(String custID)            { this.custID        = cleanInput(custID);       }
     public void setCustName(String custName)        { this.custName      = cleanInput(custName);     }
     public void setCustAddress(String custAddress)  { this.custAddress   = cleanInput(custAddress);  }
@@ -36,26 +37,6 @@ public class Customer{
     public String getCustName()                     { return this.custName;     }
     public String getCustAddress()                  { return this.custAddress;  }
     public String getCustEmail()                    { return this.custEmail;    }
-      /**
-     * @param text - the text to be "cleaned"
-     * @return the "cleaned" text
-     */
-    private String cleanInput(String input) {
-        String output = "";
-        char[] characters = {
-            ':', ';', '/', '\\', '\'', '?', '!', 
-            '#', '$', '%', '^', '&',  '*',  '(', ')'
-        };
-        char[] cleaning = input.toCharArray();
-        
-        for (int i = 0; i < cleaning.length; i++) 
-            for (char sc : characters) 
-                if (cleaning[i] == sc) cleaning[i] = ' ';
-        for (int i = 0; i < cleaning.length; i ++) 
-            if (cleaning[i] != ' ') output += cleaning[i];
-        
-        return output;
-    }
     
     public boolean addCustomerRecord(ArrayList<String> info){
         String name = info.get(0);
@@ -117,6 +98,32 @@ public class Customer{
         
         
         return results;
+    }
+    
+    public String getCustIdFromEmail(String email){
+        String result = "";
+        email = cleanInput(email);
+        String sqlSelect = "SELECT CustID FROM gunnargo_cmsc495.Customer WHERE Email = " + email + ";";
+        
+        try {
+                con = DriverManager.getConnection(url, userid, password);
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(sqlSelect);
+                if(rs.next()){
+                    result = rs.getString("Email");
+                    if(result.equals("")){
+                        System.out.println("No such customer email ("+ email +")");
+                        return null;
+                     }
+                }
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Customer ID was not retrieved");
+                System.out.println(ex);
+            }
+        
+        
+        return result;
     }
     
     public boolean updateCustomer(ArrayList<String> info){
@@ -207,6 +214,27 @@ public class Customer{
             System.out.println("Customer Email: " + email +" not found");
             return false; // find failed
         }
+    }
+    
+          /**
+     * @param text - the text to be "cleaned"
+     * @return the "cleaned" text
+     */
+    private String cleanInput(String input) {
+        String output = "";
+        char[] characters = {
+            ':', ';', '/', '\\', '\'', '?', '!', 
+            '#', '$', '%', '^', '&',  '*',  '(', ')'
+        };
+        char[] cleaning = input.toCharArray();
+        
+        for (int i = 0; i < cleaning.length; i++) 
+            for (char sc : characters) 
+                if (cleaning[i] == sc) cleaning[i] = ' ';
+        for (int i = 0; i < cleaning.length; i ++) 
+            if (cleaning[i] != ' ') output += cleaning[i];
+        
+        return output;
     }
   
    
