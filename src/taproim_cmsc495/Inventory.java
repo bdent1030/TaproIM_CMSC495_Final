@@ -47,7 +47,11 @@ public class Inventory {
         
         return output;
     }
-       
+    
+    /**
+     * Gets the item from the database and sets all of the fields
+     * @param itemID the item to searched for
+     */
     public void retrieveItem(String itemID){
         String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Inventory = " + itemID;
         
