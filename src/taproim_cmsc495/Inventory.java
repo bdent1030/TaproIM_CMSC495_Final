@@ -40,9 +40,9 @@ public class Inventory {
         
         for (int i = 0; i < cleaning.length; i++) 
             for (char sc : characters) 
-                if (cleaning[i] == sc) cleaning[i] = ' ';
+                if (cleaning[i] == sc) cleaning[i] = '~';
         for (int i = 0; i < cleaning.length; i ++) 
-            if (cleaning[i] != ' ') output += cleaning[i];
+            if (cleaning[i] != '~') output += cleaning[i];
         
         return output;
     }
