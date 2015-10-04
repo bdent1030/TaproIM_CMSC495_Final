@@ -51,23 +51,30 @@ public class Inventory {
      * Gets the item from the database and sets all of the fields
      * @param itemID the item to searched for
      */
-    public void retrieveItem(String itemID){
+    public boolean retrieveItem(String itemID){
         String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Inventory WHERE ItemID = " + itemID.trim() + ";";
         
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(sqlSelect);
+            ResultSet rs = stmt.executeQuery(sqlSelect);            
             if (rs.next()) {
                 setItemID(rs.getString("ItemID"));
                 setDescription(rs.getString("Description"));
                 setStockLevel(rs.getString("StockLevel"));
                 setWeight(rs.getString("Weight"));
+            }else{
+                return false;
+            }
+            if(getItemID().equals("")){
+                return false;
             }
             con.close();
+            return true;
         } catch (SQLException ex) {
             System.out.println("Item was not retrieved");
             System.out.println(ex.getMessage());
+            return false;
         }
     }
     

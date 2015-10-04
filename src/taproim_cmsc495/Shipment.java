@@ -65,13 +65,15 @@ public class Shipment {
      * @return boolean value for whether the shipment was added
      */
     public boolean newShipment() {
+        boolean success;
+                
         String sqlQ = "INSERT INTO gunnargo_cmsc495.Shipment SET "
                 + "ItemID = '" + getItemID() + "', "
                 + "CustID = '" + getCustID() + "', "
                 + "Destination = '" + getDestination() + "', "
                 + "Weight = '" + getWeight() + "', "
                 + "NumItems = '" + getNumItems() + "';";
-        boolean success;
+
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
@@ -189,5 +191,49 @@ public class Shipment {
         }
         
         return success;
+    }
+    
+    public boolean checkStockLevel(){
+        
+        if(getItemID().equals("")){
+            System.out.println("No item id entered to check stock level");
+            return false;
+        }
+        
+        if(getNumItems().equals("")){
+            System.out.println("No number of items entered to evaluate stock level");
+            return false;
+        }
+        
+        //Check inventory level
+        String sqlGetInventory = "SELECT StockLevel "
+                + "FROM gunnargo_cmsc495.Inventory "
+                + "WHERE ItemID = '" + getItemID()+"';";
+        
+        String invLevel = "";
+        
+        try {
+                con = DriverManager.getConnection(url, userid, password);
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(sqlGetInventory);
+                if(rs.next()){
+                    invLevel = rs.getString("StockLevel");
+                    if(invLevel.equals("")){
+                        System.out.println("No inventory");
+                        return false;
+                     }
+                }
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Current inventory was not retrieved");
+                System.out.println(ex);
+            }
+        
+        if((Integer.parseInt(invLevel) - Integer.parseInt(getNumItems()) < 0)){
+            System.out.println("Not enough inventory for this order");
+            return false;
+        }
+        
+        return true;
     }
 }

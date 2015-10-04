@@ -231,8 +231,18 @@ public class Display_GUI extends javax.swing.JFrame {
         itemCountButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         itemCountButton.setText("Item Count:");
 
+        itemCountField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                itemCountFieldFocusLost(evt);
+            }
+        });
+
         itemWeightButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        itemWeightButton.setText("Item Weight:");
+        itemWeightButton.setText("Shipment Weight:");
+        itemWeightButton.setEnabled(false);
+
+        itemWeightField.setEditable(false);
+        itemWeightField.setEnabled(false);
 
         submitButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         submitButton.setText("SUBMIT");
@@ -273,25 +283,26 @@ public class Display_GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(newShipmentPanelLayout.createSequentialGroup()
-                        .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(shipmentIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(customerEmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(destinationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(itemWeightButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(itemCountButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(itemIDButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(customerAddressButton, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-                            .addComponent(customerNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(shipmentIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(customerEmailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(destinationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(itemWeightButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(itemIDButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(customerAddressButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(customerNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(itemCountButton))
                         .addGap(18, 18, 18)
                         .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(customerNameField)
                             .addComponent(customerAddressField)
                             .addComponent(itemIDField)
-                            .addComponent(itemCountField)
                             .addComponent(destinationField)
                             .addComponent(customerEmailField)
-                            .addComponent(itemWeightField)
-                            .addComponent(shipmentIDField)))
+                            .addComponent(shipmentIDField)
+                            .addComponent(itemCountField)
+                            .addComponent(itemWeightField, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(newShipmentPanelLayout.createSequentialGroup()
                         .addComponent(customerIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -302,7 +313,7 @@ public class Display_GUI extends javax.swing.JFrame {
                                 .addComponent(clearAllButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(notificationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 2, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(customerIDField))))
                 .addContainerGap())
         );
@@ -331,12 +342,12 @@ public class Display_GUI extends javax.swing.JFrame {
                     .addComponent(destinationLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(itemWeightButton)
-                    .addComponent(itemWeightField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(itemCountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(itemCountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(itemWeightButton)
+                    .addComponent(itemWeightField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(newShipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(shipmentIDLabel)
@@ -351,7 +362,7 @@ public class Display_GUI extends javax.swing.JFrame {
                         .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(clearAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(notificationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(newShipmentPanel);
@@ -413,7 +424,7 @@ public class Display_GUI extends javax.swing.JFrame {
                     .addComponent(itemStockLevelUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(itemDescriptionUpdateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(itemIDUpdateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(searchInventoryButton)
                     .addComponent(deleteInventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -431,7 +442,7 @@ public class Display_GUI extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateInventoryPanelLayout.createSequentialGroup()
                                 .addComponent(itemIDUpdateField, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8)))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         updateInventoryPanelLayout.setVerticalGroup(
             updateInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -890,6 +901,18 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutButtonActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        Inventory item = new Inventory();
+        if(!item.retrieveItem(itemIDField.getText().trim())){
+            notificationLabel.setText("No such item id: " 
+                    + itemIDField.getText().trim());
+            itemIDField.setText("");            
+            itemIDField.requestFocus();
+            return;
+        }
+        double weight = Double.parseDouble(item.getWeight());
+        double numItems = Double.parseDouble(itemCountField.getText().trim());
+        itemWeightField.setText(""+ (int)(weight * numItems));
+        
         Shipment shipment = new Shipment();
         
         //code to check all fields are valid
@@ -901,6 +924,8 @@ public class Display_GUI extends javax.swing.JFrame {
         String custName = customerNameField.getText();
         String address = customerAddressField.getText();
         String email = customerEmailField.getText();
+        
+        
         
         ArrayList<String> custInfo = new ArrayList<>();
         custInfo.add(custName);
@@ -923,6 +948,14 @@ public class Display_GUI extends javax.swing.JFrame {
         //if all fields are not valid, display error message to employee
         //notificationLabel.setText("INVALID DATA! TRY AGAIN!");
         
+        //check inventory level
+        if(!shipment.checkStockLevel()){
+            notificationLabel.setText("IN ADEQUATE INVENTORY LEVELS");
+            itemCountField.setText("");
+            itemCountField.requestFocus();
+            return;
+        }
+        
         //code to submit all data to the database
         if (!shipment.newShipment()) {
             notificationLabel.setText("SHIPMENT NOT ADDED");
@@ -930,6 +963,7 @@ public class Display_GUI extends javax.swing.JFrame {
         } else {
             shipmentIDField.setText(shipment.getShipID());
         }
+        
         
         
         
@@ -1295,6 +1329,10 @@ public class Display_GUI extends javax.swing.JFrame {
         //display notification to the employee that data was successfully deleted
         notificationShipmentUpdateLabel.setText("SUCCESSFULLY DELETED!");
     }//GEN-LAST:event_deleteShipmentButtonActionPerformed
+
+    private void itemCountFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_itemCountFieldFocusLost
+        
+    }//GEN-LAST:event_itemCountFieldFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField carrierUpdateShipmentField;
