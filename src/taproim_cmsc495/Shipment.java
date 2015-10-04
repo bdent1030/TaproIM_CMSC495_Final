@@ -182,8 +182,7 @@ public class Shipment {
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
-            stmt.execute(sqlQ);
-            success = findShipment(getShipID());
+            success = stmt.execute(sqlQ);
             con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
