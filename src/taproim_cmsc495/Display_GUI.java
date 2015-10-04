@@ -966,32 +966,22 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void updateInventoryButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {                                                           
         notificationShipmentUpdateLabel.setText("");
+        Inventory update = new Inventory();
+        
         //code to check all fields are valid
+        update.setItemID(itemIDUpdateField.getText());
+        update.setDescription(itemDescriptionUpdateField.getText());
+        update.setStockLevel(itemStockLevelUpdateField.getText());
+        update.setWeight(itemWeightUpdateField.getText());
         
         //if all fields are not valid, display error message to employee
-        //notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
-        
         //code to submit updated data to the database
-        String item = itemIDUpdateField.getText();
-        String desc = itemIDUpdateField.getText();
-        String amount = itemStockLevelUpdateField.getText();
-        String value = itemWeightUpdateField.getText();
-
-        
-        Inventory update = new Inventory();
-        if (!update.itemExists(item)) {
-            notificationCustomerUpdateLabel.setText("Item not updated");
+        if (!update.itemExists(update.getItemID())) {
+            notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
             return;
         }
         
-                
-        ArrayList<String> itemInfo = new ArrayList<String>();        
-        itemInfo.add(item);
-        itemInfo.add(desc);
-        itemInfo.add(amount);
-        itemInfo.add(value);
-        
-        if(!update.updateItem(itemInfo)){
+        if(!update.updateItem()){
             notificationCustomerUpdateLabel.setText("Item not updated!");
             return;
         }
@@ -1012,26 +1002,19 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void deleteInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         //code to check all fields are valid
-        
         Inventory item = new Inventory();
-        String itemID = itemIDUpdateField.getText();
+        item.setItemID(itemIDUpdateField.getText());
+        
         //if all fields are not valid, display error message to employee
-        //notificationInventoryUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
-        
-        
-        if(!item.itemExists(itemID)){
-            notificationInventoryUpdateLabel.setText("Item not found.");
+        if (!item.itemExists(item.getItemID())){ 
+            notificationInventoryUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
             return;
-        }
-        else{
+        } else {
             int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
-                    + "delete item with id = " + itemID ,"Delete item?", 
+                    + "delete item with id = " + item.getItemID() ,"Delete item?", 
                     JOptionPane.OK_CANCEL_OPTION);
-            if(n == JOptionPane.OK_OPTION){
-                item.deleteItem(itemID);
-            }else if(n == JOptionPane.CANCEL_OPTION){
-                return;
-            }
+            if (n == JOptionPane.OK_OPTION) { item.deleteItem(item.getItemID()); } 
+            else if (n == JOptionPane.CANCEL_OPTION) { return; }
         }
         
         //if all fields are valid, code to delete data from the database
@@ -1185,18 +1168,15 @@ public class Display_GUI extends javax.swing.JFrame {
         //notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         
         //if all fields are valid, code to delete data from the database
-        if(!cust.custExists(custID)){
+        if (!cust.custExists(custID)) {
             notificationCustomerUpdateLabel.setText("Customer not found!");
             return;
-        }else{
+        } else {
             int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
                     + "delete customer with id = " + custID ,"Delete Customer?", 
                     JOptionPane.OK_CANCEL_OPTION);
-            if(n == JOptionPane.OK_OPTION){
-                cust.deleteCustomer(custID);
-            }else if(n == JOptionPane.CANCEL_OPTION){
-                return;
-            }
+            if (n == JOptionPane.OK_OPTION) { cust.deleteCustomer(custID); }
+            else if (n == JOptionPane.CANCEL_OPTION) { return; }
         }
         
         
@@ -1215,20 +1195,27 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteCustomerButtonActionPerformed
 
     private void searchInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInventoryButtonActionPerformed
+        Inventory inventory = new Inventory();
+        
         //code to check search field is valid
-        
-        
+        inventory.setItemID(itemIDUpdateField.getText());
         
         //if search field is not valid, display error message to employee
-        //notificationInventoryUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
-        
-        
-        //if search field is valid, enable and populate associated fields/buttons to update information
-        itemWeightUpdateField.setEnabled(true);
-        itemStockLevelUpdateField.setEnabled(true);
-        itemDescriptionUpdateField.setEnabled(true);
-        updateInventoryButtonFinal.setEnabled(true);
-        deleteInventoryButton.setEnabled(true);
+        if (!inventory.itemExists(inventory.getItemID())) {
+            notificationInventoryUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        } else {
+            //if search field is valid, enable and populate associated fields/buttons to update information
+            itemWeightUpdateField.setEnabled(true);
+            itemStockLevelUpdateField.setEnabled(true);
+            itemDescriptionUpdateField.setEnabled(true);
+            updateInventoryButtonFinal.setEnabled(true);
+            deleteInventoryButton.setEnabled(true);
+            
+            inventory.retrieveItem(inventory.getItemID());
+            itemWeightUpdateField.setText(inventory.getWeight());
+            itemStockLevelUpdateField.setText(inventory.getStockLevel());
+            itemDescriptionUpdateField.setText(inventory.getDescription());
+        }
     }//GEN-LAST:event_searchInventoryButtonActionPerformed
 
     private void searchUpdateShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUpdateShipmentButtonActionPerformed

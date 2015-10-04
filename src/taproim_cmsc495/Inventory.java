@@ -48,7 +48,7 @@ public class Inventory {
         return output;
     }
        
-    public void retrieveItem(int itemID){
+    public void retrieveItem(String itemID){
         String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Inventory = " + itemID;
         
         try {
