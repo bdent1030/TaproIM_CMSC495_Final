@@ -917,8 +917,10 @@ public class Display_GUI extends javax.swing.JFrame {
                 return;
             }
         }
-        customerIDField.setText(newCust.custID);
-        shipment.setCustID(newCust.custID);
+        
+        String newID = newCust.getCustIdFromEmail(email);
+        customerIDField.setText(newID);
+        shipment.setCustID(newID);
         
         
         //if all fields are not valid, display error message to employee
