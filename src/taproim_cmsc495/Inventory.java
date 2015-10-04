@@ -1,6 +1,5 @@
 package taproim_cmsc495;
 import java.sql.*;
-import java.util.*;
 
 //Gunar Gorder, Brandon Dent, Frank Montoya, Kent Kenyon, Spencer Ward
 //TAMPROW IM FINAL PROJECT
@@ -53,21 +52,22 @@ public class Inventory {
      * @param itemID the item to searched for
      */
     public void retrieveItem(String itemID){
-        String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Inventory = " + itemID;
+        String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Inventory WHERE ItemID = " + itemID.trim() + ";";
         
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sqlSelect);
-            while (rs.next()) {
+            if (rs.next()) {
                 setItemID(rs.getString("ItemID"));
-                setDescription(rs.getString("description"));
-                setStockLevel(rs.getString("stockLevel"));
-                setWeight(rs.getString("weight"));
+                setDescription(rs.getString("Description"));
+                setStockLevel(rs.getString("StockLevel"));
+                setWeight(rs.getString("Weight"));
             }
             con.close();
         } catch (SQLException ex) {
             System.out.println("Item was not retrieved");
+            System.out.println(ex.getMessage());
         }
     }
     
@@ -76,23 +76,24 @@ public class Inventory {
      * @return whether item has been updated successfully
      */
     public boolean updateItem(){
-        boolean result;
-        String sqlCreate = "UPDATE  gunnargo_cmsc495.Inventory SET "
-                + "Item = '" + getItemID() + "', "
+        String sqlUpdate = "UPDATE gunnargo_cmsc495.Inventory SET "
+                /*+ "ItemID = '" + getItemID() + "', "*/
                 + "Description = '" + getDescription() + "', "
                 + "StockLevel = '" + getStockLevel() + "', "
-                + "Weight = '" + getWeight() + "';";
+                + "Weight = '" + getWeight() + "'"
+                + "WHERE ItemID = '" + getItemID() + "';";
 
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
-            result = stmt.execute(sqlCreate);
+            stmt.execute(sqlUpdate);
             con.close();
+            return true;
         } catch (SQLException ex) {
             System.out.println("Item was not updated");
-            result = false; // creation failed
+            System.out.println(ex.getMessage());
+            return false; // creation failed
         }
-        return result;
     }
     
     /**
@@ -117,6 +118,7 @@ public class Inventory {
             con.close();
         } catch (SQLException ex) {
             System.out.println("Item was not updated");
+            System.out.println(ex.getMessage());
             result = false; // creation failed
         }
         return result;
@@ -127,7 +129,7 @@ public class Inventory {
      * @return boolean value of whether the item was deleted from the table
      */
     public boolean deleteItem(String itemID){
-        String sqlSelect = "DELETE FROM gunnargo_cmsc495.Inventory WHERE ItemID = '" + itemID + "';";
+        String sqlSelect = "DELETE FROM gunnargo_cmsc495.Inventory WHERE ItemID = " + itemID.trim() + ";";
         boolean success;
 
         try {
@@ -137,6 +139,7 @@ public class Inventory {
             con.close();
         } catch (SQLException ex) {
             System.out.println("ItemID: " + itemID + " not found");
+            System.out.println(ex.getMessage());
             success = false; // find failed
         }
         return success;
@@ -148,7 +151,7 @@ public class Inventory {
      */
     public boolean itemExists(String itemID){
         boolean result;
-        String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Inventory WHERE ItemID = '" + itemID + "';";
+        String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Inventory WHERE ItemID = " + itemID.trim() + ";";
 
         try {
             con = DriverManager.getConnection(url, userid, password);
@@ -159,6 +162,7 @@ public class Inventory {
             con.close();
         } catch (SQLException ex) {
             System.out.println("Item ID: " + itemID + "not found");
+            System.out.println(ex.getMessage());
             result = false; // find failed
         }
         return result;

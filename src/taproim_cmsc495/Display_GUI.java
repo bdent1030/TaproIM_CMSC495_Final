@@ -981,7 +981,7 @@ public class Display_GUI extends javax.swing.JFrame {
             return;
         }
         
-        if(!update.updateItem()){
+        if (!update.updateItem()) {
             notificationCustomerUpdateLabel.setText("Item not updated!");
             return;
         }
@@ -990,12 +990,13 @@ public class Display_GUI extends javax.swing.JFrame {
         itemIDUpdateField.setText("");
         itemWeightUpdateField.setText("");
         itemStockLevelUpdateField.setText("");
-        itemIDUpdateField.setText("");
+        itemDescriptionUpdateField.setText("");
         itemWeightUpdateField.setEnabled(false);
         itemStockLevelUpdateField.setEnabled(false);
         itemDescriptionUpdateField.setEnabled(false);
         updateInventoryButtonFinal.setEnabled(false);
         deleteInventoryButton.setEnabled(false);
+        
         //display notification to the employee that data was successfully updated
         notificationInventoryUpdateLabel.setText("SUCCESSFULLY UPDATED!");
     }                                                           
@@ -1195,6 +1196,7 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteCustomerButtonActionPerformed
 
     private void searchInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInventoryButtonActionPerformed
+        notificationInventoryUpdateLabel.setText("");
         Inventory inventory = new Inventory();
         
         //code to check search field is valid
