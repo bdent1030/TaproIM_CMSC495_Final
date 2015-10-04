@@ -4,10 +4,7 @@
 //9-27-15
 //Display_GUI.java
 package taproim_cmsc495;
-
-import java.awt.Color;
 import java.util.*;
-import java.awt.*;
 import javax.swing.*;
 
 
