@@ -103,14 +103,14 @@ public class Customer{
     public String getCustIdFromEmail(String email){
         String result = "";
         email = cleanInput(email);
-        String sqlSelect = "SELECT CustID FROM gunnargo_cmsc495.Customer WHERE Email = " + email + ";";
+        String sqlSelect = "SELECT CustID FROM gunnargo_cmsc495.Customer WHERE EMail = '" + email + "';";
         
         try {
                 con = DriverManager.getConnection(url, userid, password);
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(sqlSelect);
                 if(rs.next()){
-                    result = rs.getString("Email");
+                    result = rs.getString("CustID");
                     if(result.equals("")){
                         System.out.println("No such customer email ("+ email +")");
                         return null;

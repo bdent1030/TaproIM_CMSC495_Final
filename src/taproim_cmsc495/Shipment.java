@@ -67,6 +67,7 @@ public class Shipment {
     public boolean newShipment() {
         String sqlQ = "INSERT INTO gunnargo_cmsc495.Shipment SET "
                 + "ItemID = '" + getItemID() + "', "
+                + "CustID = '" + getCustID() + "', "
                 + "Destination = '" + getDestination() + "', "
                 + "Weight = '" + getWeight() + "', "
                 + "NumItems = '" + getNumItems() + "';";
