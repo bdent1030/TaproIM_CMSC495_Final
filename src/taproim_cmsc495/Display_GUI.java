@@ -14,9 +14,7 @@ public class Display_GUI extends javax.swing.JFrame {
      * Creates new form Display_GUI
      */
     public Display_GUI() {
-        this.setTitle("                               "
-                + "                                         "
-                + "                      TAPRO-IM SYSTEMS");
+        this.setTitle("TAPRO-IM SYSTEMS");
         //getContentPane().setBackground(Color.GRAY);
         initComponents();
         newShipmentPanel.setVisible(false);
@@ -38,10 +36,6 @@ public class Display_GUI extends javax.swing.JFrame {
         updateCustomerButton = new javax.swing.JButton();
         updateInventoryButton = new javax.swing.JButton();
         updateShipmentButton = new javax.swing.JButton();
-        tablePanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        tableLabel = new javax.swing.JLabel();
         viewInventoryTableButton = new javax.swing.JButton();
         viewShipmentTableButton = new javax.swing.JButton();
         viewCustomerTableButton = new javax.swing.JButton();
@@ -150,38 +144,6 @@ public class Display_GUI extends javax.swing.JFrame {
                 updateShipmentButtonActionPerformed(evt);
             }
         });
-
-        tablePanel.setBackground(new java.awt.Color(204, 204, 204));
-        tablePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 102)));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        tableLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        tableLabel.setText("      TABLE DISPLAY");
-
-        javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
-        tablePanel.setLayout(tablePanelLayout);
-        tablePanelLayout.setHorizontalGroup(
-            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tablePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tablePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tableLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(251, 251, 251))
-        );
-        tablePanelLayout.setVerticalGroup(
-            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tablePanelLayout.createSequentialGroup()
-                .addComponent(tableLabel)
-                .addGap(3, 3, 3)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
 
         viewInventoryTableButton.setText("VIEW INVENTORY TABLE");
         viewInventoryTableButton.addActionListener(new java.awt.event.ActionListener() {
@@ -772,7 +734,6 @@ public class Display_GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -796,7 +757,7 @@ public class Display_GUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newShipmentButton)
@@ -813,8 +774,7 @@ public class Display_GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(viewCustomerTableButton)
                     .addComponent(logOutButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -1386,8 +1346,6 @@ public class Display_GUI extends javax.swing.JFrame {
     private javax.swing.JTextField itemWeightUpdateShipmentField;
     private javax.swing.JLabel itemWeightUpdateShipmentLabel;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton logOutButton;
     private javax.swing.JButton newShipmentButton;
     private javax.swing.JPanel newShipmentPanel;
@@ -1405,8 +1363,6 @@ public class Display_GUI extends javax.swing.JFrame {
     private javax.swing.JTextField signerUpdateShipmentField;
     private javax.swing.JLabel signerUpdateShipmentLabel;
     private javax.swing.JButton submitButton;
-    private javax.swing.JLabel tableLabel;
-    private javax.swing.JPanel tablePanel;
     private javax.swing.JTextField trackingNumberUpdateShipmentField;
     private javax.swing.JLabel trackingNumberUpdateShipmentLabel;
     private javax.swing.JButton updateCustomerButton;
