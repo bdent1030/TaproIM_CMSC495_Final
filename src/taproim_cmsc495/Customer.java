@@ -1,14 +1,11 @@
 package taproim_cmsc495;
 
-import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
-import javax.swing.*;
 
 //Gunar Gorder, Brandon Dent, Frank Montoya, Kent Kenyon, Spencer Ward
 //TAMPROW IM FINAL PROJECT
@@ -28,10 +25,36 @@ public class Customer{
     
     Connection con;
     
-    public Customer(){
+    public Customer(){}
+    
+    public void setCustID(String custID)            { this.custID        = cleanInput(custID);       }
+    public void setCustName(String custName)        { this.custName      = cleanInput(custName);     }
+    public void setCustAddress(String custAddress)  { this.custAddress   = cleanInput(custAddress);  }
+    public void setCustEmail(String custEmail)      { this.custEmail     = cleanInput(custEmail);    }
+    
+    public String getCustID()                       { return this.custID;       }
+    public String getCustName()                     { return this.custName;     }
+    public String getCustAddress()                  { return this.custAddress;  }
+    public String getCustEmail()                    { return this.custEmail;    }
+      /**
+     * @param text - the text to be "cleaned"
+     * @return the "cleaned" text
+     */
+    private String cleanInput(String input) {
+        String output = "";
+        char[] characters = {
+            ':', ';', '/', '\\', '\'', '?', '!', 
+            '#', '$', '%', '^', '&',  '*',  '(', ')'
+        };
+        char[] cleaning = input.toCharArray();
         
+        for (int i = 0; i < cleaning.length; i++) 
+            for (char sc : characters) 
+                if (cleaning[i] == sc) cleaning[i] = ' ';
+        for (int i = 0; i < cleaning.length; i ++) 
+            if (cleaning[i] != ' ') output += cleaning[i];
         
-        
+        return output;
     }
     
     public boolean addCustomerRecord(ArrayList<String> info){
@@ -69,6 +92,7 @@ public class Customer{
     
     public HashMap retrieveCust(String custID){
         HashMap<String, String> results = new HashMap<String, String>();
+        custID = cleanInput(custID);
         String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Customer WHERE CustID = " + custID + ";";
         
         try {
@@ -97,10 +121,10 @@ public class Customer{
     
     public boolean updateCustomer(ArrayList<String> info){
         
-        String id = info.get(0);
-        String name = info.get(1);
-        String address = info.get(2);
-        String email = info.get(3);
+        String id = cleanInput(info.get(0));
+        String name = cleanInput(info.get(1));
+        String address = cleanInput(info.get(2));
+        String email = cleanInput(info.get(3));
         
         
         
@@ -129,6 +153,7 @@ public class Customer{
     
     public boolean deleteCustomer(String custID){          
         
+        custID = cleanInput(custID);
 
         String sqlSelect = "DELETE FROM gunnargo_cmsc495.Customer WHERE CustID =" + custID.trim() + ";";
 
@@ -149,7 +174,7 @@ public class Customer{
     
     public boolean custExists(String id){
         boolean result;
-        
+        id = cleanInput(id);
         String sqlSelect = "SELECT CustID FROM gunnargo_cmsc495.Customer WHERE CustID = " + id.trim() + ";";
 
         try {
@@ -168,7 +193,7 @@ public class Customer{
     public boolean custExistsEmail(String email) {
         String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Customer WHERE Email = '" + email + "';";
         String id = "";
-        
+        email = cleanInput(email);
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
