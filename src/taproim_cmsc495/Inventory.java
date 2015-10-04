@@ -70,10 +70,10 @@ public class Inventory {
         
        
             String sqlCreate = "UPDATE  gunnargo_cmsc495.Inventory SET "
-                    + "Item = " + item
-                    + " Description = " + desc
-                    + " StockLevel = " + amount
-                    + " Weight = " + value;
+                    + "Item = '" + item
+                    + "', Description = '" + desc
+                    + "', StockLevel = '" + amount
+                    + "', Weight = '" + value + "';";
         
             try {
                 con = DriverManager.getConnection(url, userid, password);
