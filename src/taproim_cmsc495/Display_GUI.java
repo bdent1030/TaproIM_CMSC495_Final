@@ -1096,6 +1096,7 @@ public class Display_GUI extends javax.swing.JFrame {
         shipInfo.setSigner(signerUpdateShipmentField.getText());
         
         if (!shipment.updateShipment(shipInfo)) {
+            System.out.println("Shipment not updated");
             notificationCustomerUpdateLabel.setText("SHIPMENT NOT UPDATED!");
             return;
         }
@@ -1216,7 +1217,6 @@ public class Display_GUI extends javax.swing.JFrame {
     private void searchUpdateShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUpdateShipmentButtonActionPerformed
         //code to check search field is valid
         ShipmentDAO shipment = new ShipmentDAO();
-        ShipmentDTO shipInfo = new ShipmentDTO();
         String id = shipmentIDUpdateField.getText();
         System.out.println("Searching for: " + id);
         if (!shipment.findShipment(id)) {
@@ -1238,8 +1238,7 @@ public class Display_GUI extends javax.swing.JFrame {
         updateShipmentButtonFinal.setEnabled(true);
         deleteShipmentButton.setEnabled(true);
         
-        shipInfo.setItemID(id);
-        shipment.getShipment(shipInfo);        
+        ShipmentDTO shipInfo = shipment.getShipment(id);        
         itemIDUpdateShipmentField.setText(shipInfo.getItemID());
         customerIDUpdateShipmentField.setText(shipInfo.getCustID());
         itemDestinationUpdateShipmentField.setText(shipInfo.getDestination());

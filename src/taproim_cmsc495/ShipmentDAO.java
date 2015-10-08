@@ -85,10 +85,12 @@ public class ShipmentDAO {
     
     /**
      * Updates the various fields for the provided ShipmentDAO ID
-     * @param dto - the ShipmentDAO to be populated
+     * @param id - the ShipmentDAO to be populated
+     * @return the ShipmentDTO
      */
-    public void getShipment(ShipmentDTO dto) {
-        String sqlQ = "SELECT * FROM gunnargo_cmsc495.Shipment WHERE ShipID = " + dto.getShipID() + ";";
+    public ShipmentDTO getShipment(String id) {
+        ShipmentDTO dto = new ShipmentDTO();
+        String sqlQ = "SELECT * FROM gunnargo_cmsc495.Shipment WHERE ShipID = " + id.trim() + ";";
         //HashMap<String, String> data = new HashMap<>();
         
         try {
@@ -112,6 +114,7 @@ public class ShipmentDAO {
             System.out.println(ex.getMessage());
             System.out.println("An exception has been reached");
         }
+        return dto;
     }
     
     /**
@@ -138,6 +141,7 @@ public class ShipmentDAO {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
             success = stmt.execute(sqlQ);
+            System.out.println("Updating Shipment: " + success);
             con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
