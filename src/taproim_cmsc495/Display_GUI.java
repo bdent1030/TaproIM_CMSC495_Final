@@ -873,13 +873,14 @@ public class Display_GUI extends javax.swing.JFrame {
         double numItems = Double.parseDouble(itemCountField.getText().trim());
         itemWeightField.setText(""+ (int)(weight * numItems));
         
-        Shipment shipment = new Shipment();
+        ShipmentDTO shipInfo = new ShipmentDTO();
+        ShipmentDAO shipment = new ShipmentDAO();
         
         //code to check all fields are valid
-        shipment.setItemID(itemIDField.getText());
-        shipment.setDestination(destinationField.getText());
-        shipment.setWeight(itemWeightField.getText());
-        shipment.setNumItems(itemCountField.getText());
+        shipInfo.setItemID(itemIDField.getText());
+        shipInfo.setDestination(destinationField.getText());
+        shipInfo.setWeight(itemWeightField.getText());
+        shipInfo.setNumItems(itemCountField.getText());
         
         String custName = customerNameField.getText();
         String address = customerAddressField.getText();
@@ -902,14 +903,14 @@ public class Display_GUI extends javax.swing.JFrame {
         
         String newID = newCust.getCustIdFromEmail(email);
         customerIDField.setText(newID);
-        shipment.setCustID(newID);
+        shipInfo.setCustID(newID);
         
         
         //if all fields are not valid, display error message to employee
         //notificationLabel.setText("INVALID DATA! TRY AGAIN!");
         
         //check inventory level
-        if(!shipment.checkStockLevel()){
+        if(!shipment.checkStockLevel(shipInfo)){
             notificationLabel.setText("IN ADEQUATE INVENTORY LEVELS");
             itemCountField.setText("");
             itemCountField.requestFocus();
@@ -917,11 +918,11 @@ public class Display_GUI extends javax.swing.JFrame {
         }
         
         //code to submit all data to the database
-        if (!shipment.newShipment()) {
+        if (!shipment.newShipment(shipInfo)) {
             notificationLabel.setText("SHIPMENT NOT ADDED");
             return;
         } else {
-            shipmentIDField.setText(shipment.getShipID());
+            shipmentIDField.setText(shipInfo.getShipID());
         }
         
         
@@ -1073,7 +1074,8 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void updateShipmentButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateShipmentButtonFinalActionPerformed
         notificationShipmentUpdateLabel.setText("");
-        Shipment shipment = new Shipment();
+        ShipmentDTO shipInfo = new ShipmentDTO();
+        ShipmentDAO shipment = new ShipmentDAO();
         //code to check all fields are valid
         //if all fields are not valid, display error message to employee
         if (!shipment.findShipment(shipmentIDUpdateField.getText())) {
@@ -1082,18 +1084,18 @@ public class Display_GUI extends javax.swing.JFrame {
         }
         
         //code to submit updated data to the database
-        shipment.setShipID(shipmentIDUpdateField.getText());
-        shipment.setItemID(itemIDUpdateShipmentField.getText());
-        shipment.setCustID(customerIDUpdateShipmentField.getText());
-        shipment.setDestination(itemDestinationUpdateShipmentField.getText());
-        shipment.setLocation(itemLocationUpdateShipmentField.getText());
-        shipment.setWeight(itemWeightUpdateShipmentField.getText());
-        shipment.setNumItems(itemCountUpdateShipmentField.getText());
-        shipment.setTrackingNum(trackingNumberUpdateShipmentField.getText());
-        shipment.setCarrier(carrierUpdateShipmentField.getText());
-        shipment.setSigner(signerUpdateShipmentField.getText());
+        shipInfo.setShipID(shipmentIDUpdateField.getText());
+        shipInfo.setItemID(itemIDUpdateShipmentField.getText());
+        shipInfo.setCustID(customerIDUpdateShipmentField.getText());
+        shipInfo.setDestination(itemDestinationUpdateShipmentField.getText());
+        shipInfo.setLocation(itemLocationUpdateShipmentField.getText());
+        shipInfo.setWeight(itemWeightUpdateShipmentField.getText());
+        shipInfo.setNumItems(itemCountUpdateShipmentField.getText());
+        shipInfo.setTrackingNum(trackingNumberUpdateShipmentField.getText());
+        shipInfo.setCarrier(carrierUpdateShipmentField.getText());
+        shipInfo.setSigner(signerUpdateShipmentField.getText());
         
-        if (!shipment.updateShipment()) {
+        if (!shipment.updateShipment(shipInfo)) {
             notificationCustomerUpdateLabel.setText("SHIPMENT NOT UPDATED!");
             return;
         }
@@ -1213,11 +1215,13 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void searchUpdateShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUpdateShipmentButtonActionPerformed
         //code to check search field is valid
-        Shipment shpmt = new Shipment();
+        ShipmentDAO shipment = new ShipmentDAO();
+        ShipmentDTO shipInfo = new ShipmentDTO();
         String id = shipmentIDUpdateField.getText();
         System.out.println("Searching for: " + id);
-        if (!shpmt.findShipment(id)) {
+        if (!shipment.findShipment(id)) {
             notificationShipmentUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+            return;
         }
         // System.out.println(shpmt.findShipment(id));
         // if search field is valid, enable and populate associated fields/buttons to update information
@@ -1234,22 +1238,23 @@ public class Display_GUI extends javax.swing.JFrame {
         updateShipmentButtonFinal.setEnabled(true);
         deleteShipmentButton.setEnabled(true);
         
-        shpmt.getShipment(id);        
-        itemIDUpdateShipmentField.setText(shpmt.getItemID());
-        customerIDUpdateShipmentField.setText(shpmt.getCustID());
-        itemDestinationUpdateShipmentField.setText(shpmt.getDestination());
-        itemLocationUpdateShipmentField.setText(shpmt.getLocation());
-        itemWeightUpdateShipmentField.setText(shpmt.getWeight());
-        itemCountUpdateShipmentField.setText(shpmt.getNumItems());
-        trackingNumberUpdateShipmentField.setText(shpmt.getTrackingNum());
-        carrierUpdateShipmentField.setText(shpmt.getCarrier());
-        signerUpdateShipmentField.setText(shpmt.getSigner());
+        shipInfo.setItemID(id);
+        shipment.getShipment(shipInfo);        
+        itemIDUpdateShipmentField.setText(shipInfo.getItemID());
+        customerIDUpdateShipmentField.setText(shipInfo.getCustID());
+        itemDestinationUpdateShipmentField.setText(shipInfo.getDestination());
+        itemLocationUpdateShipmentField.setText(shipInfo.getLocation());
+        itemWeightUpdateShipmentField.setText(shipInfo.getWeight());
+        itemCountUpdateShipmentField.setText(shipInfo.getNumItems());
+        trackingNumberUpdateShipmentField.setText(shipInfo.getTrackingNum());
+        carrierUpdateShipmentField.setText(shipInfo.getCarrier());
+        signerUpdateShipmentField.setText(shipInfo.getSigner());
     }//GEN-LAST:event_searchUpdateShipmentButtonActionPerformed
 
     private void deleteShipmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteShipmentButtonActionPerformed
         notificationShipmentUpdateLabel.setText("");
         String id = shipmentIDUpdateField.getText();
-        Shipment delShipment = new Shipment();
+        ShipmentDAO delShipment = new ShipmentDAO();
         //code to check all fields are valid
         if (delShipment.findShipment(id)) {
             int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
