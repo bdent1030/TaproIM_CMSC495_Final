@@ -13,6 +13,16 @@ public class ShipmentDTO {
     private String shipID, itemID, custID, destination, location, 
             weight, numItems, trackingNum, carrier, signer;
     
+    /**
+     * Constructor ensures that all elements have been initialized
+     */
+    public ShipmentDTO() {
+        shipID = itemID = custID = "";
+        destination = location = "";
+        weight = numItems = "";
+        trackingNum = carrier = signer = "";
+    }
+    
     // Table Field SETTER Methods @param String value to be set
     public void setShipID(String shipID)            { this.shipID = cleanInput(shipID);           }
     public void setItemID(String itemID)            { this.itemID = cleanInput(itemID);           }

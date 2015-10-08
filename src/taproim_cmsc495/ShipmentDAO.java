@@ -140,12 +140,12 @@ public class ShipmentDAO {
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
-            success = stmt.execute(sqlQ);
-            System.out.println("Updating Shipment: " + success);
+            stmt.execute(sqlQ);
             con.close();
+            success = true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            return false;
+            success = false;
         }
         
         return success;
