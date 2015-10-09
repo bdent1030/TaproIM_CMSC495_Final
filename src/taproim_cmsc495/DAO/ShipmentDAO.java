@@ -1,4 +1,5 @@
-package taproim_cmsc495;
+package taproim_cmsc495.DAO;
+import taproim_cmsc495.DTO.ShipmentDTO;
 import java.sql.*;
 
 /**
@@ -47,7 +48,10 @@ public class ShipmentDAO {
      * @return boolean value for whether the command was successfully completed
      */
     public boolean deleteShipment(String id) {
-        String sqlQ = "DELETE FROM gunnargo_cmsc495.Shipment WHERE ShipID = " + id.trim() + ";";
+        ShipmentDTO dto = new ShipmentDTO();
+        dto.setShipID(id);
+        
+        String sqlQ = "DELETE FROM gunnargo_cmsc495.Shipment WHERE ShipID = " + dto.getShipID() + ";";
         boolean success;
         try {
             con = DriverManager.getConnection(url, userid, password);
@@ -67,7 +71,10 @@ public class ShipmentDAO {
      * @return boolean value for whether or not the shipment was found
      */
     public boolean findShipment(String id) {
-        String sqlQ = "SELECT ShipID FROM gunnargo_cmsc495.Shipment WHERE ShipID = " + id.trim() + ";";
+        ShipmentDTO dto = new ShipmentDTO();
+        dto.setShipID(id);
+        
+        String sqlQ = "SELECT ShipID FROM gunnargo_cmsc495.Shipment WHERE ShipID = " + dto.getShipID() + ";";
         boolean success;
         try {
             con = DriverManager.getConnection(url, userid, password);

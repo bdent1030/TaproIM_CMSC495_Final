@@ -11,7 +11,7 @@
   </persistence-unit>
   <persistence-unit name="gunnargo_cmsc495?zeroDateTimeBehavior=convertToNullPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>taproim_cmsc495.Customer</class>
+    <class>taproim_cmsc495.DAO.CustomerDAO</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://siteground324.com:3306/gunnargo_cmsc495?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="gunnargo_umuc15"/>

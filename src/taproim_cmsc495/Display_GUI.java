@@ -4,7 +4,12 @@
 //9-27-15
 //Display_GUI.java
 package taproim_cmsc495;
-import java.util.*;
+import taproim_cmsc495.DAO.ShipmentDAO;
+import taproim_cmsc495.DAO.InventoryDAO;
+import taproim_cmsc495.DAO.CustomerDAO;
+import taproim_cmsc495.DTO.ShipmentDTO;
+import taproim_cmsc495.DTO.InventoryDTO;
+import taproim_cmsc495.DTO.CustomerDTO;
 import javax.swing.*;
 
 
@@ -757,7 +762,7 @@ public class Display_GUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newShipmentButton)
@@ -774,7 +779,7 @@ public class Display_GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(viewCustomerTableButton)
                     .addComponent(logOutButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -861,55 +866,49 @@ public class Display_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutButtonActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        Inventory item = new Inventory();
-        if(!item.retrieveItem(itemIDField.getText().trim())){
+        InventoryDAO item = new InventoryDAO();
+        InventoryDTO itemInfo = new InventoryDTO();
+        itemInfo.setItemID(itemIDField.getText());
+        
+        if(!item.itemExists(itemInfo.getItemID())){
             notificationLabel.setText("No such item id: " 
                     + itemIDField.getText().trim());
             itemIDField.setText("");            
             itemIDField.requestFocus();
             return;
+        } else {
+            itemInfo = item.retrieveItem(itemInfo.getItemID());
         }
-        double weight = Double.parseDouble(item.getWeight());
+        double weight = Double.parseDouble(itemInfo.getWeight());
         double numItems = Double.parseDouble(itemCountField.getText().trim());
         itemWeightField.setText(""+ (int)(weight * numItems));
         
-        ShipmentDTO shipInfo = new ShipmentDTO();
-        ShipmentDAO shipment = new ShipmentDAO();
-        
         //code to check all fields are valid
+        ShipmentDTO shipInfo = new ShipmentDTO();
         shipInfo.setItemID(itemIDField.getText());
         shipInfo.setDestination(destinationField.getText());
         shipInfo.setWeight(itemWeightField.getText());
         shipInfo.setNumItems(itemCountField.getText());
         
-        String custName = customerNameField.getText();
-        String address = customerAddressField.getText();
-        String email = customerEmailField.getText();
+        CustomerDTO custInfo = new CustomerDTO();
+        custInfo.setCustName(customerNameField.getText());
+        custInfo.setCustAddress(customerAddressField.getText());
+        custInfo.setCustEmail(customerEmailField.getText());
         
-        
-        
-        ArrayList<String> custInfo = new ArrayList<>();
-        custInfo.add(custName);
-        custInfo.add(address);
-        custInfo.add(email);
-        
-        Customer newCust = new Customer();
-        if (!newCust.custExistsEmail(email)) {
+        CustomerDAO newCust = new CustomerDAO();
+        if (!newCust.custExistsEmail(custInfo.getCustEmail())) {
             if (!newCust.addCustomerRecord(custInfo)) {
                 notificationLabel.setText("CUSTOMER NOT ADDED");
                 return;
             }
         }
         
-        String newID = newCust.getCustIdFromEmail(email);
+        String newID = newCust.getCustIdFromEmail(custInfo.getCustEmail());
         customerIDField.setText(newID);
         shipInfo.setCustID(newID);
         
-        
-        //if all fields are not valid, display error message to employee
-        //notificationLabel.setText("INVALID DATA! TRY AGAIN!");
-        
         //check inventory level
+        ShipmentDAO shipment = new ShipmentDAO();
         if(!shipment.checkStockLevel(shipInfo)){
             notificationLabel.setText("IN ADEQUATE INVENTORY LEVELS");
             itemCountField.setText("");
@@ -925,18 +924,6 @@ public class Display_GUI extends javax.swing.JFrame {
             shipmentIDField.setText(shipInfo.getShipID());
         }
         
-        
-        
-        
-        //clear all fields after data was successfully submitted
-        /* customerNameField.setText("");
-        customerIDField.setText("");
-        customerAddressField.setText("");
-        customerEmailField.setText("");
-        itemIDField.setText("");
-        destinationField.setText("");
-        itemWeightField.setText("");
-        itemCountField.setText(""); */
         //display notification to the employee that data was successfully submitted
         notificationLabel.setText("SUCCESSFULLY SUBMITTED!");
     }//GEN-LAST:event_submitButtonActionPerformed
@@ -958,22 +945,23 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void updateInventoryButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {                                                           
         notificationShipmentUpdateLabel.setText("");
-        Inventory update = new Inventory();
+        InventoryDAO update = new InventoryDAO();
         
         //code to check all fields are valid
-        update.setItemID(itemIDUpdateField.getText());
-        update.setDescription(itemDescriptionUpdateField.getText());
-        update.setStockLevel(itemStockLevelUpdateField.getText());
-        update.setWeight(itemWeightUpdateField.getText());
+        InventoryDTO updateInfo = new InventoryDTO();
+        updateInfo.setItemID(itemIDUpdateField.getText());
+        updateInfo.setDescription(itemDescriptionUpdateField.getText());
+        updateInfo.setStockLevel(itemStockLevelUpdateField.getText());
+        updateInfo.setWeight(itemWeightUpdateField.getText());
         
         //if all fields are not valid, display error message to employee
         //code to submit updated data to the database
-        if (!update.itemExists(update.getItemID())) {
+        if (!update.itemExists(updateInfo.getItemID())) {
             notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
             return;
         }
         
-        if (!update.updateItem()) {
+        if (!update.updateItem(updateInfo)) {
             notificationCustomerUpdateLabel.setText("Item not updated!");
             return;
         }
@@ -995,18 +983,20 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void deleteInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                      
         //code to check all fields are valid
-        Inventory item = new Inventory();
-        item.setItemID(itemIDUpdateField.getText());
+        InventoryDAO item = new InventoryDAO();
+        InventoryDTO itemInfo = new InventoryDTO();
+        
+        itemInfo.setItemID(itemIDUpdateField.getText());
         
         //if all fields are not valid, display error message to employee
-        if (!item.itemExists(item.getItemID())){ 
+        if (!item.itemExists(itemInfo.getItemID())){ 
             notificationInventoryUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
             return;
         } else {
             int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
-                    + "delete item with id = " + item.getItemID() ,"Delete item?", 
+                    + "delete item with id = " + itemInfo.getItemID() ,"Delete item?", 
                     JOptionPane.OK_CANCEL_OPTION);
-            if (n == JOptionPane.OK_OPTION) { item.deleteItem(item.getItemID()); } 
+            if (n == JOptionPane.OK_OPTION) { item.deleteItem(itemInfo.getItemID()); } 
             else if (n == JOptionPane.CANCEL_OPTION) { return; }
         }
         
@@ -1031,27 +1021,18 @@ public class Display_GUI extends javax.swing.JFrame {
         notificationCustomerUpdateLabel.setText(" ");
 
         //code to check all fields are valid
-        String id = customerIDCustomerUpdateField.getText();
-        String name = customerNameUpdateField.getText();
-        String address = customerAddressUpdateField.getText();
-        String email = customerEmailUpdateField.getText();
-        
-        
-        
-        //if all fields are not valid, display error message to employee
-        //notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        CustomerDTO custInfo = new CustomerDTO();
+        custInfo.setCustID(customerIDCustomerUpdateField.getText());
+        custInfo.setCustName(customerNameUpdateField.getText());
+        custInfo.setCustAddress(customerAddressUpdateField.getText());
+        custInfo.setCustEmail(customerEmailUpdateField.getText());
         
         //code to submit updated data to the database  
-        Customer cust = new Customer();
-        if(!cust.custExists(id)){
+        CustomerDAO cust = new CustomerDAO();
+        if(!cust.custExists(custInfo.getCustID())){
             notificationCustomerUpdateLabel.setText("Customer ID not found!");
             return;
         }
-        ArrayList<String> custInfo = new ArrayList<String>();        
-        custInfo.add(id);
-        custInfo.add(name);
-        custInfo.add(address);
-        custInfo.add(email);
         
         if(!cust.updateCustomer(custInfo)){
             notificationCustomerUpdateLabel.setText("Customer not updated!");
@@ -1129,33 +1110,33 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void searchUpdateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUpdateCustomerButtonActionPerformed
         //code to check search field is valid
-        String custID = customerIDCustomerUpdateField.getText();
-        Customer cust = new Customer();
-        HashMap<String, String> custInfo = new HashMap();
-        //if search field is not valid, display error message to employee
-        //notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
-        if(!cust.custExists(custID)){
+        CustomerDAO cust = new CustomerDAO();
+        CustomerDTO custInfo = new CustomerDTO();
+        custInfo.setCustID(customerIDCustomerUpdateField.getText());
+        
+        if(!cust.custExists(custInfo.getCustID())){
             notificationCustomerUpdateLabel.setText("Customer not found!");
             return;
         }else{
-            custInfo = cust.retrieveCust(custID);
+            custInfo = cust.retrieveCust(custInfo.getCustID());
         }
         
         //if search field is valid, enable and populate associated fields/buttons to update information
         customerNameUpdateField.setEnabled(true);
-        customerNameUpdateField.setText(custInfo.get("Name"));
+        customerNameUpdateField.setText(custInfo.getCustName());
         customerAddressUpdateField.setEnabled(true);
-        customerAddressUpdateField.setText(custInfo.get("Address"));
+        customerAddressUpdateField.setText(custInfo.getCustAddress());
         customerEmailUpdateField.setEnabled(true);
-        customerEmailUpdateField.setText(custInfo.get("Email"));
+        customerEmailUpdateField.setText(custInfo.getCustEmail());
         updateCustomerButtonFinal.setEnabled(true);
         deleteCustomerButton.setEnabled(true);
     }//GEN-LAST:event_searchUpdateCustomerButtonActionPerformed
 
     private void deleteCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCustomerButtonActionPerformed
         
-        Customer cust = new Customer();
-        String custID = customerIDCustomerUpdateField.getText();
+        CustomerDAO cust = new CustomerDAO();
+        CustomerDTO custInfo = new CustomerDTO();
+        custInfo.setCustID(customerIDCustomerUpdateField.getText());
         
         //code to check all fields are valid
         
@@ -1163,14 +1144,14 @@ public class Display_GUI extends javax.swing.JFrame {
         //notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         
         //if all fields are valid, code to delete data from the database
-        if (!cust.custExists(custID)) {
+        if (!cust.custExists(custInfo.getCustID())) {
             notificationCustomerUpdateLabel.setText("Customer not found!");
             return;
         } else {
             int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
-                    + "delete customer with id = " + custID ,"Delete Customer?", 
+                    + "delete customer with id = " + custInfo.getCustID() ,"Delete Customer?", 
                     JOptionPane.OK_CANCEL_OPTION);
-            if (n == JOptionPane.OK_OPTION) { cust.deleteCustomer(custID); }
+            if (n == JOptionPane.OK_OPTION) { cust.deleteCustomer(custInfo.getCustID()); }
             else if (n == JOptionPane.CANCEL_OPTION) { return; }
         }
         
@@ -1191,13 +1172,14 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void searchInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInventoryButtonActionPerformed
         notificationInventoryUpdateLabel.setText("");
-        Inventory inventory = new Inventory();
+        InventoryDAO inventory = new InventoryDAO();
+        InventoryDTO inventoryInfo = new InventoryDTO();
         
         //code to check search field is valid
-        inventory.setItemID(itemIDUpdateField.getText());
+        inventoryInfo.setItemID(itemIDUpdateField.getText());
         
         //if search field is not valid, display error message to employee
-        if (!inventory.itemExists(inventory.getItemID())) {
+        if (!inventory.itemExists(inventoryInfo.getItemID())) {
             notificationInventoryUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
         } else {
             //if search field is valid, enable and populate associated fields/buttons to update information
@@ -1207,10 +1189,10 @@ public class Display_GUI extends javax.swing.JFrame {
             updateInventoryButtonFinal.setEnabled(true);
             deleteInventoryButton.setEnabled(true);
             
-            inventory.retrieveItem(inventory.getItemID());
-            itemWeightUpdateField.setText(inventory.getWeight());
-            itemStockLevelUpdateField.setText(inventory.getStockLevel());
-            itemDescriptionUpdateField.setText(inventory.getDescription());
+            inventoryInfo = inventory.retrieveItem(inventoryInfo.getItemID());
+            itemWeightUpdateField.setText(inventoryInfo.getWeight());
+            itemStockLevelUpdateField.setText(inventoryInfo.getStockLevel());
+            itemDescriptionUpdateField.setText(inventoryInfo.getDescription());
         }
     }//GEN-LAST:event_searchInventoryButtonActionPerformed
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package taproim_cmsc495;
+package taproim_cmsc495.DTO;
 
 /**
  * This class provides the data fields for Shipments
