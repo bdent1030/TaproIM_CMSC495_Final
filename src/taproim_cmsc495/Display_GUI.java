@@ -1015,9 +1015,10 @@ public class Display_GUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Item ID " + 
                             itemInfo.getItemID() + " exists in an outstanding order, "
                             + "please delete related orders first.");
-                }else{
-                    notificationInventoryUpdateLabel.setText("SUCCESSFULLY DELETED!");
+                    return;
                 } 
+                
+                notificationInventoryUpdateLabel.setText("SUCCESSFULLY DELETED!");
                 
                 
                 
@@ -1209,6 +1210,15 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void searchInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchInventoryButtonActionPerformed
         notificationInventoryUpdateLabel.setText("");
+        itemWeightUpdateField.setText("");
+        itemStockLevelUpdateField.setText("");
+        itemDescriptionUpdateField.setText("");
+        itemWeightUpdateField.setEnabled(false);
+        itemStockLevelUpdateField.setEnabled(false);
+        itemDescriptionUpdateField.setEnabled(false);
+        updateInventoryButtonFinal.setEnabled(false);
+        deleteInventoryButton.setEnabled(false);
+        
         InventoryDAO inventory = new InventoryDAO();
         InventoryDTO inventoryInfo = new InventoryDTO();
         
