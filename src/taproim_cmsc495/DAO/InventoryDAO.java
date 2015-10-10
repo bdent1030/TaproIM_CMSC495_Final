@@ -106,19 +106,18 @@ public class InventoryDAO {
         dto.setItemID(itemID);
         
         String sqlSelect = "DELETE FROM gunnargo_cmsc495.Inventory WHERE ItemID = " + dto.getItemID() + ";";
-        boolean success;
 
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
-            success = stmt.execute(sqlSelect);
+            stmt.execute(sqlSelect);
             con.close();
+            return true;
         } catch (SQLException ex) {
             System.out.println("ItemID: " + itemID + " not found");
             System.out.println(ex.getMessage());
-            success = false; // find failed
+            return false; // find failed
         }
-        return success;
     }
 
     /**
@@ -131,14 +130,18 @@ public class InventoryDAO {
         
         boolean result;
         String sqlSelect = "SELECT * FROM gunnargo_cmsc495.Inventory WHERE ItemID = " + dto.getItemID() + ";";
-
+        String strResult = "";
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sqlSelect);
-            if (rs.next()) dto.setItemID(rs.getString("ItemID"));
-            result = !dto.getItemID().equals("");
+            
+            if (rs.next()){
+                strResult = rs.getString("ItemID");
+            }
+            result = !strResult.equals("");
             con.close();
+            
         } catch (SQLException ex) {
             System.out.println("Item ID: " + itemID + "not found");
             System.out.println(ex.getMessage());

@@ -118,7 +118,8 @@ public class CustomerDAO{
             con.close();
             return true;
         } catch (SQLException ex) {
-            System.out.println("Customer ID: " + custID +" not found");
+            System.out.println("Connot delete Customer ID: " + custID );
+            System.out.println(ex.toString());
             return false; // find failed
         }
     }
@@ -128,18 +129,24 @@ public class CustomerDAO{
         CustomerDTO dto = new CustomerDTO();
         dto.setCustID(id);
         String sqlSelect = "SELECT CustID FROM gunnargo_cmsc495.Customer WHERE CustID = " + dto.getCustID() + ";";
-
+        String strResult = "";
         try {
             con = DriverManager.getConnection(url, userid, password);
             Statement stmt = con.createStatement();
-            result = stmt.execute(sqlSelect);
+            //result = stmt.execute(sqlSelect);
+            //con.close();
+            ResultSet rs = stmt.executeQuery(sqlSelect);
+            if (rs.next()){
+                strResult = rs.getString("CustID");
+            }
             con.close();
+            return !strResult.equals("");
         } catch (SQLException ex) {
             System.out.println("Customer ID: " + id +" not found");
             return false; // find failed
         }
         
-        return result;
+        //return result;
     }
     
     public boolean custExistsEmail(String email) {

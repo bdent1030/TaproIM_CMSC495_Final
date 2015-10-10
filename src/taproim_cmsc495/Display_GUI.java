@@ -879,7 +879,16 @@ public class Display_GUI extends javax.swing.JFrame {
         } else {
             itemInfo = item.retrieveItem(itemInfo.getItemID());
         }
-        double weight = Double.parseDouble(itemInfo.getWeight());
+        String strWeight = itemInfo.getWeight();
+        if(strWeight.equals("")){
+            notificationLabel.setText("No such item id: " 
+                    + itemIDField.getText().trim());
+            itemIDField.setText("");            
+            itemIDField.requestFocus();
+            return;
+        }
+        
+        double weight = Double.parseDouble(strWeight);
         double numItems = Double.parseDouble(itemCountField.getText().trim());
         itemWeightField.setText(""+ (int)(weight * numItems));
         
@@ -957,7 +966,10 @@ public class Display_GUI extends javax.swing.JFrame {
         //if all fields are not valid, display error message to employee
         //code to submit updated data to the database
         if (!update.itemExists(updateInfo.getItemID())) {
-            notificationCustomerUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+            notificationInventoryUpdateLabel.setText("Item '"+
+                    itemIDUpdateField.getText() +"' not found!");
+            itemIDUpdateField.setText("");            
+            itemIDUpdateField.requestFocus();
             return;
         }
         
@@ -985,7 +997,7 @@ public class Display_GUI extends javax.swing.JFrame {
         //code to check all fields are valid
         InventoryDAO item = new InventoryDAO();
         InventoryDTO itemInfo = new InventoryDTO();
-        
+        notificationInventoryUpdateLabel.setText("");
         itemInfo.setItemID(itemIDUpdateField.getText());
         
         //if all fields are not valid, display error message to employee
@@ -996,7 +1008,20 @@ public class Display_GUI extends javax.swing.JFrame {
             int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
                     + "delete item with id = " + itemInfo.getItemID() ,"Delete item?", 
                     JOptionPane.OK_CANCEL_OPTION);
-            if (n == JOptionPane.OK_OPTION) { item.deleteItem(itemInfo.getItemID()); } 
+            if (n == JOptionPane.OK_OPTION) { 
+                if(!item.deleteItem(itemInfo.getItemID())){
+                    notificationInventoryUpdateLabel.setText("Cannot delete, "
+                            + "item exists in an outstanding order!");
+                    JOptionPane.showMessageDialog(null, "Item ID " + 
+                            itemInfo.getItemID() + " exists in an outstanding order, "
+                            + "please delete related orders first.");
+                }else{
+                    notificationInventoryUpdateLabel.setText("SUCCESSFULLY DELETED!");
+                } 
+                
+                
+                
+            } 
             else if (n == JOptionPane.CANCEL_OPTION) { return; }
         }
         
@@ -1013,7 +1038,7 @@ public class Display_GUI extends javax.swing.JFrame {
         updateInventoryButtonFinal.setEnabled(false);
         deleteInventoryButton.setEnabled(false);
         //display notification to the employee that data was successfully deleted
-        notificationInventoryUpdateLabel.setText("SUCCESSFULLY DELETED!");
+        
     }                                                      
 
     private void updateCustomerButtonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerButtonFinalActionPerformed
@@ -1110,12 +1135,16 @@ public class Display_GUI extends javax.swing.JFrame {
 
     private void searchUpdateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchUpdateCustomerButtonActionPerformed
         //code to check search field is valid
+        notificationCustomerUpdateLabel.setText("");
         CustomerDAO cust = new CustomerDAO();
         CustomerDTO custInfo = new CustomerDTO();
         custInfo.setCustID(customerIDCustomerUpdateField.getText());
         
         if(!cust.custExists(custInfo.getCustID())){
-            notificationCustomerUpdateLabel.setText("Customer not found!");
+            notificationCustomerUpdateLabel.setText("Customer '"+
+                    customerIDCustomerUpdateField.getText() +"' not found!");
+            customerIDCustomerUpdateField.setText("");            
+            customerIDCustomerUpdateField.requestFocus();
             return;
         }else{
             custInfo = cust.retrieveCust(custInfo.getCustID());
@@ -1151,7 +1180,15 @@ public class Display_GUI extends javax.swing.JFrame {
             int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to\n"
                     + "delete customer with id = " + custInfo.getCustID() ,"Delete Customer?", 
                     JOptionPane.OK_CANCEL_OPTION);
-            if (n == JOptionPane.OK_OPTION) { cust.deleteCustomer(custInfo.getCustID()); }
+            if (n == JOptionPane.OK_OPTION) { 
+                if(!cust.deleteCustomer(custInfo.getCustID())){
+                    notificationCustomerUpdateLabel.setText("Cannot delete, "
+                            + "customer has outstanding order!");
+                    JOptionPane.showMessageDialog(null, "Customer ID " + 
+                            custInfo.getCustID() + " has an outstanding order, "
+                            + "please delete related orders first.");
+                } 
+            }
             else if (n == JOptionPane.CANCEL_OPTION) { return; }
         }
         
@@ -1179,8 +1216,11 @@ public class Display_GUI extends javax.swing.JFrame {
         inventoryInfo.setItemID(itemIDUpdateField.getText());
         
         //if search field is not valid, display error message to employee
-        if (!inventory.itemExists(inventoryInfo.getItemID())) {
-            notificationInventoryUpdateLabel.setText("INVALID DATA! TRY AGAIN!");
+        if (!inventory.itemExists(inventoryInfo.getItemID())) {           
+            notificationInventoryUpdateLabel.setText("Item '"+
+                    itemIDUpdateField.getText() +"' not found!");
+            itemIDUpdateField.setText("");            
+            itemIDUpdateField.requestFocus();
         } else {
             //if search field is valid, enable and populate associated fields/buttons to update information
             itemWeightUpdateField.setEnabled(true);
